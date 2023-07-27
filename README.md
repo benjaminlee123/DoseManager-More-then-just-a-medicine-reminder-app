@@ -2,4 +2,6 @@
 
 ## An agile project done by Team 66 
 
-### Now still in progress
+### Now still in progress 
+
+outsourced to CodeheroSG
