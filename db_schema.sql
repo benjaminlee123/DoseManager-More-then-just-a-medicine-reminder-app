@@ -1,4 +1,4 @@
--- db_schema.sql
+
 
 -- Profile Table
 CREATE TABLE IF NOT EXISTS ProfileTable (
