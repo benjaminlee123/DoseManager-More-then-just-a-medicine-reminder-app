@@ -24,6 +24,7 @@
         <label for="medName"><h3>Medication Name: </h3></label>
         <input type="text" id="medName" name="`medName"><br><br>
       </form>
+      
 
     <h3>Dosage</h3>
     <h3>Frequency</h3>
@@ -45,7 +46,12 @@
 
     <br>
     <h3>Add Image</h3>
-    <a href=""><button>Camera</button></a> 
+    <input type="file" id="imageUpload" accept="image/*">
+    <button type="button" class="btn btn-secondary">Upload</button>
+    <!-- need to check if the camera function works correctly -->
+    <button id="cameraButton" class="btn btn-secondary">Camera</button>
 
+
+    <script src="www/js/addMeds.js"></script>
 </body>
 </html>
