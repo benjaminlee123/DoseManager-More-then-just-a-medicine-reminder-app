@@ -20,7 +20,11 @@
     <h1> Add Medication </h1>
     <h2> ----- Enter Manually ----- </h2>
 
-    <h3>Medication Name</h3>
+    <form action="/action_page.php">
+        <label for="medName"><h3>Medication Name: </h3></label>
+        <input type="text" id="medName" name="`medName"><br><br>
+      </form>
+
     <h3>Dosage</h3>
     <h3>Frequency</h3>
 
@@ -35,7 +39,7 @@
         <input type="date" id="endDate" name="endDate">
         <input type="submit">
       </form>
-      
+
     <h3>Description</h3>
     <h3>Drug Allergy</h3>
 
