@@ -1,1 +1,82 @@
-<p>hello my name is zd</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome John</h1>
+    <div class="row">
+      <div class="col-md-12">
+        <h2 style="text-decoration: underline;">Medication Overview</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="col-md-3">Medication Name</th>
+              <th class="col-md-3">Medication Information</th>
+              <th class="col-md-2">Frequency</th>
+              <th class="col-md-2"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Advil</td>
+              <td>Advil is</td>
+              <td>2 tablets every 4 hours</td>
+              <td><a href="#">Edit</a></td>
+            </tr>
+            <tr>
+              <td>Tylenol</td>
+              <td>Tylenol is</td>
+              <td>1 tablet every 6 hours</td>
+              <td><a href="#">Edit</a></td>
+            </tr>
+            <tr>
+                <td>Paracetomal</td>
+                <td>Paracetomal is</td>
+                <td>1 tablet every 6 hours</td>
+                <td><a href="#">Edit</a></td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <form action="/add-medication" method="POST">
+          <button type="submit" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+          </svg>  Add New Medication</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+<footer id="footer" style="position: fixed; bottom: 0; width: 100%; height: 60px; background-color: blue; opacity: 0.5; display: flex; justify-content: space-between;">
+    <div class="footer-left" style="margin-right: 100px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-prescription2">
+          <path d="M7 6h2v2h2v2H9v2H7v-2H5V8h2V6Z"/>
+          <path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v10.5a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 3 14.5V4a1 1 0 0 1-1-1V1Zm2 3v10.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V4H4ZM3 3h10V1H3v2Z"/>
+        </svg>
+    </div>
+    <div class="footer-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-calendar-check">
+          <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+          <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+        </svg>
+    </div>
+    <div class="footer-right" style="margin-left: 100px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-person-circle">
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+        </svg>
+    </div>
+  </footer>
+  
+  
+</html>
+
