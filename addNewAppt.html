@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dose Manager - Add New Appointment</title>
+    <!-- CSS -->
+    <!-- <link rel="stylesheet" href=""> -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>Create Appointment</h1>
+
+    <h3>Clinic Name</h3>
+    <h3>Level Number</h3>
+    <h3>Department</h3>
+
+    <form action="/action_page.php">
+        <label for="apptTime"><h3>Choose Appointment Time</h3></label>
+        <input type="time" id="apptTime" name="apptTime" required/>
+        <input type="submit">
+    </form>
+
+    <form action="/action_page.php">
+        <label for="endDate"><h3>Choose Appointment Date</h3></label>
+        <input type="date" id="apptDate" name="apptDate" required/>
+        <input type="submit">
+    </form>
+
+    <a href=""><button>Save</button></a> 
+</body>
+</html>
