@@ -20,28 +20,74 @@
     <h1> Add Medication </h1>
     <h2> ----- Enter Manually ----- </h2>
 
+    <p>** to enter medication name **</p>
     <form action="/action_page.php">
         <label for="medName"><h3>Medication Name: </h3></label>
         <input type="text" id="medName" name="`medName"><br><br>
       </form>
       
+      <p>** to enter medication description **</p>
+      <form action="/action_page.php">
+        <label for="medDescription"><h3>Description: </h3></label>
+        <input type="text" id="medDescription" name="`medDescription"><br><br>
+      </form>
 
-    <h3>Dosage</h3>
-    <h3>Frequency</h3>
+      <p>** choose what kind of medication - need this? **</p>
+      <form action="/action_page.php">
+        <label for="medDescription"><h3>Type of medication: </h3></label>
+        <input list="medType" name="medType">
+        <datalist id="medType">
+          <option value="Pill">
+          <option value="Injection">
+          <option value="Liquid">
+          <option value="Drops">
+          <option value="Powder">
+          <option value="Other">
+        </datalist>
+        <input type="submit">
+      </form>
 
-    <form action="/action_page.php">
+      <p>** how long do you need to take it **</p>
+      <form action="/action_page.php">
         <label for="startDate"><h3>Start Date:</h3></label>
         <input type="date" id="startDate" name="startDate">
         <input type="submit">
       </form>
-
     <form action="/action_page.php">
         <label for="endDate"><h3>End Date:</h3></label>
         <input type="date" id="endDate" name="endDate">
         <input type="submit">
       </form>
 
-    <h3>Description</h3>
+      <p>** before or after food? **</p>
+      <form action="/action_page.php">
+        <label for="beforeAfter"><h3> Before or After Food: </h3></label>
+        <input list="beforeAfter" name="beforeAfter">
+        <datalist id="beforeAfter">
+          <option value="Before">
+          <option value="After">
+        </datalist>
+        <input type="submit">
+      </form>
+      
+      <p>** how often do you take it? **</p>
+      <form action="/action_page.php">
+        <label for="medFrequency"><h3> idk </h3></label>
+        <input list="medFrequency" name="medFrequency">
+        <datalist id="medFrequency">
+          <option value="Day(s)">
+          <option value="Hour(s)">
+          <option value="Week(s)">
+          <option value="Month(s)">
+        </datalist>
+        <input type="submit">
+      </form>
+
+    <h3>Dosage</h3>
+    <h3>Frequency</h3>
+
+
+
     <h3>Drug Allergy</h3>
 
     <br>
