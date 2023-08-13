@@ -1,0 +1,217 @@
+/* Apply centering styles to the body */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0; /* Set a background color */
+}
+/* Center content within a container */
+.container {
+    text-align: center;
+}
+
+
+
+/* ------------------------------------------------------------------------------------------------------------ */
+/* to centralise and align all the elements */
+.form-container {
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+
+/* ------------------------------------------------------------------------------------------------------------ */
+/* Style for circular buttons */
+.circular-button {
+    display: inline-block;
+    width: 50px; /* Adjust the width and height as needed */
+    height: 50px;
+    border-radius: 50%; /* This makes the button circular */
+    text-align: center;
+    line-height: 50px; /* Vertically center the text */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    flex-shrink: 0; /* Prevent button from shrinking */
+    border: 2px solid black; /* Add a black border */
+    box-sizing: border-box; /* Ensure the border is included in the button's dimensions */
+}
+/* Close button style */
+.circular-button.close {
+    background-color: red; /* Set the background color to red */
+    color: white; /* Set the text color to white */
+}
+/* Save button style */
+.circular-button.save {
+    background-color: green; /* Set the background color to green */
+    color: white; /* Set the text color to white */
+}
+/* Flex container for button positioning */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+/* ------------------------------------------------------------------------------------------------------------ */
+/* Style for textboxes */
+input[type="text"] {
+    width: 75%; /* Adjust the width as needed */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: blue; /* Set the background color to blue */
+    color: white; /* Set the font color to white for better contrast */
+    margin-left: 10px; /* Add some spacing between label and input */
+}
+/* Add spacing below the textbox */
+input[type="text"] + br {
+    margin-bottom: 10px;
+}
+
+
+
+/* ------------------------------------------------------------------------------------------------------------ */
+/* Style for the datalist input */
+input[name="medType"] {
+    width: 75%; /* Adjust the width as needed */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: blue; /* Set the background color to blue */
+    color: white; /* Set the font color to white for better contrast */
+    position: relative; /* To position the arrow icon */
+    appearance: none; /* Hide default arrow in some browsers */
+}
+/* Style for the down pointing arrow icon */
+input[name="medType"]::after {
+    content: '\25BC'; /* Unicode character for down pointing arrow */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: white;
+    pointer-events: none; /* Allow clicking through the arrow */
+}
+/* Style for the datalist dropdown */
+datalist#medType {
+    display: none; /* Hide the default dropdown */
+}
+/* Show the datalist dropdown when input is focused */
+input[name="medType"]:focus + datalist#medType {
+    display: block;
+}
+/* Highlight the selected option in the dropdown */
+datalist#medType option:checked {
+    background-color: lightblue; /* Highlight color */
+}
+
+
+
+/* ------------------------------------------------------------------------------------------------------------ */
+/* Style for the date and time input boxes */
+input[type="date"], input[type="time"] {
+    width: 40%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: blue; /* Set the background color to blue */
+    color: white; /* Set the font color to white */
+}
+/* Arrange the date input boxes on the same line */
+form {
+    display: flex;
+    flex-direction: column;
+}
+.dateInput {
+    display: flex;
+    align-items: center;
+}
+/* Add spacing between form elements */
+.dateInput + .dateInput {
+    margin-top: 10px;
+}
+
+
+
+/* ------------------------------------------------------------------------------------------------------------ */
+/* Style for the beforeAfter input */
+input[name="beforeAfter"] {
+    width: 75%; /* Adjust the width as needed */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: blue; /* Set the background color to blue */
+    color: white; /* Set the font color to white for better contrast */
+    position: relative; /* To position the arrow icon */
+    appearance: none; /* Hide default arrow in some browsers */
+}
+/* Style for the down pointing arrow icon */
+input[name="beforeAfter"]::after {
+    content: '\25BC'; /* Unicode character for down pointing arrow */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: white;
+    pointer-events: none; /* Allow clicking through the arrow */
+}
+/* Style for the datalist dropdown */
+datalist#beforeAfter {
+    display: none; /* Hide the default dropdown */
+}
+/* Show the datalist dropdown when input is focused */
+input[name="beforeAfter"]:focus + datalist#beforeAfter {
+    display: block;
+}
+/* Highlight the selected option in the dropdown */
+datalist#beforeAfter option:checked {
+    background-color: lightblue; /* Highlight color */
+}
+
+
+
+
+/* ------------------------------------------------------------------------------------------------------------ */
+/* Style for the medFrequency input */
+input[name="medFrequency"] {
+    width: 75%; /* Adjust the width as needed */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: blue; /* Set the background color to blue */
+    color: white; /* Set the font color to white for better contrast */
+    position: relative; /* To position the arrow icon */
+    appearance: none; /* Hide default arrow in some browsers */
+}
+/* Style for the down pointing arrow icon */
+input[name="medFrequency"]::after {
+    content: '\25BC'; /* Unicode character for down pointing arrow */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: white;
+    pointer-events: none; /* Allow clicking through the arrow */
+}
+/* Style for the datalist dropdown */
+datalist#medFrequency {
+    display: none; /* Hide the default dropdown */
+}
+/* Show the datalist dropdown when input is focused */
+input[name="medFrequency"]:focus + datalist#medFrequency {
+    display: block;
+}
+/* Highlight the selected option in the dropdown */
+datalist#medFrequency option:checked {
+    background-color: lightblue; /* Highlight color */
+}

@@ -9,101 +9,119 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
+  <div class="container">
+
     <header>
         <!-- logo -->
         <img src="img/DoseManager.png" alt="Dose Manager Logo">
     </header>
-
-    <a href="home.html"><button>Close</button></a> 
-    <a href=""><button>Save</button></a> 
-
-    <h1> Add Medication </h1>
-    <h2> ----- Enter Manually ----- </h2>
-
-    <form action="/action_page.php">
-      <label for="medName"><h3>Medication Name: </h3></label>
-      <input type="text" id="medName" name="`medName">
-    </form>
-    <br>
+    
+    <div class="button-container">
+      <a href="home.html" class="circular-button close">Close</a>
+      <a href="#" class="circular-button save">Save</a>
+    </div>
       
+  
+      <h1> Add Medication </h1>
+      <h2> ----- Enter Manually ----- </h2>
+  
 
-    <form action="/action_page.php">
-      <label for="medDescription"><h3>Description: </h3></label>
-      <input type="text" id="medDescription" name="`medDescription">
+      <form action="/action_page.php">
+        <div class="form-container">
+          <label for="medName"><h3>Medication Name: </h3></label>
+          <input type="text" id="medName" name="medName">
+        </div>
     </form>
-    <br>
-
-
-    <form action="/action_page.php">
-      <label for="medDescription"><h3>Type of medication: </h3></label>
-      <input list="medType" name="medType">
-      <datalist id="medType">
-        <option value="Pill">
-        <option value="Injection">
-        <option value="Liquid">
-        <option value="Drops">
-        <option value="Powder">
-        <option value="Other">
-      </datalist>
-      <!-- <input type="submit"> -->
-    </form>
-    <br>
-
-
-    <form action="/action_page.php">
-      <label for="startDate"><h3>Start Date:</h3></label>
-      <input type="date" id="startDate" name="startDate">
-      <!-- <input type="submit"> -->
-    </form>
-    <form action="/action_page.php">
-      <label for="endDate"><h3>End Date:</h3></label>
-      <input type="date" id="endDate" name="endDate">
-      <!-- <input type="submit"> -->
-    </form>
-    <br>
-
-
-    <form action="/action_page.php">
-      <label for="beforeAfter"><h3> Before or After Food: </h3></label>
-      <input list="beforeAfter" name="beforeAfter">
-      <datalist id="beforeAfter">
-        <option value="Before">
-        <option value="After">
-      </datalist>
-      <!-- <input type="submit"> -->
-    </form>
-    <br>
-
-
-    <form action="/action_page.php">
-      <label for="medTime"><h3>Set Time: </h3></label>
-      <input type="time" id="medTime" name="medTime">
-      <!-- <input type="submit"> -->
-    </form>
-    <br>
-
-
-    <form action="/action_page.php">
-      <label for="medFrequency"><h3> Repeat: </h3></label>
-      <input list="medFrequency" name="medFrequency">
-      <datalist id="medFrequency">
-        <option value="Everyday">
-        <option value="Every Week">
-        <option value="Every Month">
-      </datalist>
-      <!-- <input type="submit"> -->
-    </form>
-    <br>
-
+    <br>  
+        
+      <form action="/action_page.php">
+        <div class="form-container">
+          <label for="medDescription"><h3>Description: </h3></label>
+          <input type="text" id="medDescription" name="`medDescription">
+        </div>
+      </form>
+      <br>
       
-    <h3>Add Image</h3>
-    <input type="file" id="imageUpload" accept="image/*">
-    <button type="button" class="btn btn-secondary">Upload</button>
-    <!-- need to check if the camera function works correctly -->
-    <button id="cameraButton" class="btn btn-secondary">Camera</button>
-    <div id="cameraContainer"></div> <!-- This is where we will display the camera feed -->
+      <form action="/action_page.php">
+        <div class="form-container">
+          <label for="medDescription"><h3>Type of medication: </h3></label>
+          <input list="medType" name="medType">
+          <datalist id="medType">
+            <option value="Pill">
+            <option value="Injection">
+            <option value="Liquid">
+            <option value="Drops">
+            <option value="Powder">
+            <option value="Other">
+          </datalist>
+          <!-- <input type="submit"> -->
+        </div>
+      </form>
+      <br>
+  
+      <form action="/action_page.php">
+        <div class="dateInput">
+            <label for="startDate"><h3>Start Date:</h3></label>
+            <input type="date" id="startDate" name="startDate">
+        </div>
+        <div class="dateInput">
+            <label for="endDate"><h3>End Date:</h3></label>
+            <input type="date" id="endDate" name="endDate">
+        </div>
+    </form>
     <br>
+  
+      <form action="/action_page.php">
+        <div class="form-container">
+          <label for="beforeAfter"><h3> Before or After Food: </h3></label>
+          <input list="beforeAfter" name="beforeAfter">
+          <datalist id="beforeAfter">
+            <option value="Before">
+            <option value="After">
+          </datalist>
+          <!-- <input type="submit"> -->
+        </div>
+      </form>
+      <br>
+  
+      <form action="/action_page.php">
+        <div class="form-container">
+          <label for="medTime"><h3>Set Time: </h3></label>
+          <input type="time" id="medTime" name="medTime">
+        </div>
+        <!-- <input type="submit"> -->
+      </form>
+      <br>
+  
+      <form action="/action_page.php">
+        <div class="form-container">
+          <label for="medFrequency"><h3> Repeat: </h3></label>
+          <input list="medFrequency" name="medFrequency">
+          <datalist id="medFrequency">
+            <option value="Everyday">
+            <option value="Every Week">
+            <option value="Every Month">
+          </datalist>
+          <!-- <input type="submit"> -->
+        </div>
+      </form>
+      <br>
+        
+      <h3>Add Image</h3>
+      <div class="form-container">
+        <input type="file" id="imageUpload" accept="image/*">
+        <button type="button" class="btn btn-secondary">Upload</button>
+        <!-- need to check if the camera function works correctly -->
+        <button id="cameraButton" class="btn btn-secondary">Camera</button>
+        <div id="cameraContainer"></div> <!-- This is where we will display the camera feed -->
+      
+      </div>
+ <br>
+  
 
+    </div>
+
+ 
 
     <script src="www/js/addMeds.js"></script>
 </body>
