@@ -10,7 +10,7 @@ body
     font-size:12px;
     height:100vh;
     margin:0px;
-    margin-top: 30px;
+    margin-top: 15px;
     padding:0px;
     padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
     text-transform:uppercase;
