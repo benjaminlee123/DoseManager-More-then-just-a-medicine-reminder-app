@@ -17,7 +17,6 @@ h1
 {
     font-size:24px;
     font-weight:normal;
-    margin-top: 75px;
     overflow:visible;
     padding:0px;
     text-align:center;
@@ -26,28 +25,29 @@ h1
 
 
 /* --------------------------------------- styling buttons ----------------------------------------------- */
-.button 
+.closeButton
 {
-    position: absolute;
-    top: 20px; 
-    left: 20px; 
-    width: 65px;
+    display: inline-block;
+    width: 65px; 
     height: 65px;
-    border-radius: 50%;
+    border-radius: 50%; 
     text-align: center;
     line-height: 65px;
     text-decoration: none;
     font-weight: bold;
     font-size: 16px;
-    flex-shrink: 0;
-    border: 2px solid black;
-    box-sizing: border-box;
-    background-color: #FF0096;
-    color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-shrink: 0; 
+    border: 2px solid black; 
+    box-sizing: border-box; 
+    background-color: #FF0096; 
+    color: black; 
 }
+.button
+{
+    display: flex;
+    justify-content: space-between;
+}
+
 
 /* --------------------------------------- align images  ----------------------------------------------- */
 .medImage 
@@ -57,8 +57,7 @@ h1
     justify-content: center; 
     max-width: 75%; 
     margin: 0 auto; 
-}
-
+}=
 .medImage img 
 {
     max-width: 100%; 
