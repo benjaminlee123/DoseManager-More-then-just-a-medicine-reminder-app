@@ -17,7 +17,7 @@ h1
 {
     font-size:24px;
     font-weight:normal;
-    margin:0px;
+    margin-top: 75px;
     overflow:visible;
     padding:0px;
     text-align:center;
@@ -26,7 +26,8 @@ h1
 
 
 /* --------------------------------------- styling buttons ----------------------------------------------- */
-.button {
+.button 
+{
     position: absolute;
     top: 20px; 
     left: 20px; 
