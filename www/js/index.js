@@ -35,13 +35,14 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 */
 // Wait for the deviceready event before using any of Cordova's device APIs.
+var db;
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
   /*logEvent(analytics, 'app_open');//log firebase*/
 
   console.log("Running cordova-" + cordova.platformId + "@" + cordova.version);
-  var db = window.sqlitePlugin.openDatabase({
+  db = window.sqlitePlugin.openDatabase({
     name: "dosemanager.db",
     location: "default",
   });

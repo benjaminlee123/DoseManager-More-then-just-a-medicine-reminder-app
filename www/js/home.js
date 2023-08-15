@@ -12,7 +12,7 @@ document.addEventListener("deviceready", function () {
       [],
       function (tx, result) {
         var data = result.rows; // The retrieved data
-        displayMedsCard(data);
+        displayMedsCard(data); //function to load data dynamically in html
       },
       function (error) {
         console.log("Unable to retrieve data!");
