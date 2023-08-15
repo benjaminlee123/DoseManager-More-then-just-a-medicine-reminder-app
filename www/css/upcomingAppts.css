@@ -1,12 +1,6 @@
 #card {
     background-color: rgb(179, 236, 236);
   }
-  button {
-    width: 80%;
-    position: fixed;
-    bottom: 100px;
-    z-index: 1;
-  }
   
   .footer {
     position: fixed;
@@ -19,7 +13,7 @@
     justify-content: space-between;
     align-items: center;
   }
-  
+
   a {
     text-decoration: none;
   }
