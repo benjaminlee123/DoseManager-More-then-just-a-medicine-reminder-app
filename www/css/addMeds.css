@@ -10,7 +10,7 @@ body
     font-size:12px;
     height:100vh;
     margin:0px;
-    margin-top: 15px;
+    margin-top: 60px;
     padding:0px;
     padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
     text-transform:uppercase;
@@ -159,3 +159,30 @@ form
     margin-top: 10px;
 }
 
+/* --------------------------------------- styling footer ----------------------------------------------- */
+.footer 
+{
+    bottom: 0; 
+    margin: 0;
+    width: 100%; 
+    background-color: #0096FF; 
+    justify-content: space-between;
+    display: flex;
+    justify-content: space-between; /* Adjust as needed */
+    align-items: center; /* Align items vertically */
+
+}
+.navBarLinks
+{
+    text-align: center; 
+    flex: 1; 
+}
+.navBarIcons
+{
+    margin-top: 10px;
+    width: 20%; 
+}
+.h4
+{
+    color: black;
+}
