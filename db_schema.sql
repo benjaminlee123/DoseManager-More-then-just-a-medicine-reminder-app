@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS MedicationTable (
 CREATE TABLE IF NOT EXISTS AppointmentTable (
   Appointment_id INTEGER PRIMARY KEY,
   Profile_id INTEGER,
+  AppointmentName TEXT,
   AppointmentDate DATE,
   DoctorName TEXT,
   AppointmentLocation TEXT,

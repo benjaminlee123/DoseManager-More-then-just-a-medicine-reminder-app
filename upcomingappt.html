@@ -1,56 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dose Manager - Upcoming Appointments</title>
-    <!-- CSS -->
-    <!-- <link rel="stylesheet" href=""> -->
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upcoming Appointments Page</title>
+    <link rel="stylesheet" href="www/css/upcomingAppts.css" />
+    <script src="cordova.js"></script>
+    <script src="www/js/index.js"></script>
+    <script src="www/js/upcomingAppts.js"></script>
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+        crossorigin="anonymous"
+    />
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"
+    ></script>
 </head>
 <body>
-    <h1>Upcoming Appointments</h1>
-
-    <p>You have xxx Upcoming Appointments and xxx Missed Appointments</p>
-
-    <div class="card cardA">
-        <div class="card-body">
-            <h5 class="card-title">
-                1st Avenue Hospital
-            </h5>
-            <p class="card-text">
-                Level xxx Physiotheraphy
-            </p>
+    <div class="container">
+        <h1 class="text-center p-4">Upcoming Appointments</h1>
+        <div id="appts-list" class="container p-2">
+        <div class="card">
+            <div class="card-body">
+            <h5 class="card-title">Appointment Name</h5>
+            <p class="card-text">Appointment Location & Doctor's Name goes here</p>
+            <button class="btn btn-light float-end" id="editAppt">Edit</button>
+            </div>
+        </div>
+        </div>
+        <div class="d-flex justify-content-center">
+        <a href='addNewAppt.html' class="btn btn-primary" id="addNewAppt">Add New Appointment</button>
         </div>
     </div>
-    <button class="btn btn-light" id="editCardA">Edit</button>
-
-    <div class="card cardB">
-        <div class="card-body">
-            <h5 class="card-title">
-                1st Avenue Hospital
-            </h5>
-            <p class="card-text">
-                Level xxx Physiotheraphy
-            </p>
+    <footer class="footer">
+        <a href="home.html">
+        <div class="navBarLinks">
+            <img
+            src="www/img/medicineIcon.png"
+            alt="Medicine Icon"
+            class="navBarIcons"
+            />
+            <p class="text-white">Medications</p>
         </div>
-    </div>
-    <button class="btn btn-light" id="editCardB">Edit</button>
+        </a>
 
-    <div class="card cardC">
-        <div class="card-body">
-            <h5 class="card-title">
-                1st Avenue Hospital
-            </h5>
-            <p class="card-text">
-                Level xxx Physiotheraphy
-            </p>
+        <a href="upcomingappt.html">
+        <div class="navBarLinks">
+            <img
+            src="www/img/calendarIcon.png"
+            alt="Calendar Icon"
+            class="navBarIcons"
+            />
+            <p class="text-white">Appointments</p>
         </div>
-    </div>
-    <button class="btn btn-light" id="editCardC">Edit</button>
+        </a>
 
-
-    <button class="btn btn-light" id="addNewAppt" onclick="window.open('addNewAppt.html')">Add New Appointment</button>
-    
-</body>
+        <a href="profile.html">
+        <div class="navBarLinks">
+            <img
+            src="www/img/profileIcon.png"
+            alt="Profile Icon"
+            class="navBarIcons"
+            />
+            <p class="text-white">Profile</p>
+        </div>
+        </a>
+    </footer>
+    </body>
 </html>

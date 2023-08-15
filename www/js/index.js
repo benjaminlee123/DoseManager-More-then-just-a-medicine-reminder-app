@@ -56,7 +56,7 @@ function onDeviceReady() {
             console.log('Error occurred while creating the table.');
         });
 
-        transaction.executeSql('CREATE TABLE IF NOT EXISTS AppointmentTable (Appointment_id INTEGER PRIMARY KEY, Profile_id INTEGER, AppointmentDate DATE, DoctorName TEXT, AppointmentLocation TEXT, FOREIGN KEY(Profile_id) REFERENCES ProfileTable(Profile_id));', [], function(tx, results) {
+        transaction.executeSql('CREATE TABLE IF NOT EXISTS AppointmentTable (Appointment_id INTEGER PRIMARY KEY, Profile_id INTEGER, AppointmentName TEXT, AppointmentDate DATE, DoctorName TEXT, AppointmentLocation TEXT, FOREIGN KEY(Profile_id) REFERENCES ProfileTable(Profile_id));', [], function(tx, results) {
             console.log('AppointmentTable created successfully');
         }, function(error) {
             console.log('Error occurred while creating the table.');
