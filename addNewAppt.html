@@ -23,23 +23,51 @@
 <body>
     <h1>Create Appointment</h1>
 
-    <h3>Clinic Name</h3>
-    <h3>Level Number</h3>
-    <h3>Department</h3>
+    <div class="cs-form">
+        <label for="clinicName">Clinic Name:</label>
+        <input type="text" class="form-control" id="clinicName"/>
+    </div>
 
-    <form action="/action_page.php">
-        <label for="apptTime"><h3>Choose Appointment Time</h3></label>
-        <input type="time" id="apptTime" name="apptTime" required/>
-        <input type="submit">
-    </form>
+    <br>
 
-    <form action="/action_page.php">
-        <label for="endDate"><h3>Choose Appointment Date</h3></label>
-        <input type="date" id="apptDate" name="apptDate" required/>
-        <input type="submit">
-    </form>
+    <div class="cs-form">
+        <label for="levelNumber">Level Number:</label>
+        <input type="text" class="form-control" id="levelNumber"/>
+    </div>
 
-    <a href="upcomingappt.html"><button>Save</button></a> 
+    <br>
+
+    <div class="cs-form">
+        <label for="department">Department:</label>
+        <input type="text" class="form-control" id="department"/>
+    </div>
+
+    <br>
+    
+    <div class="cs-form">
+        <label for="docName">Doctor's Name:</label>
+        <input type="text" class="form-control" id="docName"/>
+    </div>
+
+    <br>
+
+    <div class="cs-form">
+        <label for="apptTime">Choose Appointment Time</label>
+        <input type="time" class="form-control" id="apptTime" value="00:00 AM"/>
+    </div>
+
+    <br>
+
+    <div class="cs-form">
+        <label for="apptDate">Choose Appointment Date</label>
+        <input type="date" class="form-control" id="apptDate" value="MM/DD/YYYY"/>
+    </div>
+
+    <br>
+
+        <div class="d-flex justify-content-center">
+            <a href='upcomingappt.html' class="btn btn-success" id="saveAppt">Save</a>
+        </div>
 
     <footer class="footer">
         <a href="home.html">
