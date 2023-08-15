@@ -74,9 +74,28 @@ h1
     justify-content: space-between;
 }
 
+/* --------------------------------------- styling icon buttons ----------------------------------------------- */
+/* .buttons 
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+#cancelIcon
+{
+    width: 20%;
+    margin-top: 10px; 
+    margin-right: auto; 
+}
+#saveIcon
+{
+    width: 20%;
+    margin-top: 10px; 
+    margin-left: auto; 
+} */
+
 
 /* -------------------------------------- styling the textboxes ---------------------------------------- */
-
 input[type="text"] 
 {
     width: 75%; 
