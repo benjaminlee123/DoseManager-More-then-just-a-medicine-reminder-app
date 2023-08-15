@@ -52,20 +52,21 @@ h1
     font-weight: bold;
     font-size: 16px;
     flex-shrink: 0; 
-    border: 2px solid black; 
     box-sizing: border-box; 
 }
 /* close button*/
 .button.close 
 {
-    background-color: red; 
-    color: black; 
+    background-color: #D69C94; 
+    border: 2px solid #E04A3A ; 
+    color: #EBF3F3; 
 }
 /* save button */
 .button.save 
 {
-    background-color: green;
-    color: black;
+    background-color: #75CD9B;
+    border: 2px solid #2BC872; 
+    color: #EBF3F3;
 }
 /* to position the buttons at the corners */
 .buttons
