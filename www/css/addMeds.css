@@ -32,8 +32,8 @@ h1
 
 
 /* ----------------- to align the title of the textbox and the textbox on the same line ------------------ */
-/*  */
-.form-container {
+.form-container 
+{
     display: flex;
     align-items: center;
 }
@@ -58,13 +58,13 @@ h1
 /* close button*/
 .button.close 
 {
-    background-color: #FF0096; 
+    background-color: red; 
     color: black; 
 }
 /* save button */
 .button.save 
 {
-    background-color: #96FF00;
+    background-color: green;
     color: black;
 }
 /* to position the buttons at the corners */
@@ -168,9 +168,8 @@ form
     background-color: #0096FF; 
     justify-content: space-between;
     display: flex;
-    justify-content: space-between; /* Adjust as needed */
-    align-items: center; /* Align items vertically */
-
+    justify-content: space-between; 
+    align-items: center; 
 }
 .navBarLinks
 {
