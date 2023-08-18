@@ -15,7 +15,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="cordova.js"></script>
-    <script src="www/js/index.js"></script>
+    <!--<script src="www/js/index.js"></script>-->
     <script src="www/js/addMeds.js"></script>
     <title>add Medication</title>
   </head>
@@ -28,25 +28,14 @@
             <label for="exampleInputEmail1" class="form-label"
               >Medicine Name</label
             >
-            <input
-              type="email"
-              class="form-control"
-              id="medName"
-              aria-describedby="emailHelp"
-            />
+            <input type="text" class="form-control" id="medName" />
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Dosage</label>
-            <input
-              type="text"
-              class="form-control"
-              id="exampleInputPassword1"
-            />
+            <label class="form-label">Dosage</label>
+            <input type="text" class="form-control" />
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label"
-              >Medicine Description</label
-            >
+            <label class="form-label">Medicine Description</label>
             <textarea class="form-control" id="medDesc" rows="3"></textarea>
           </div>
 

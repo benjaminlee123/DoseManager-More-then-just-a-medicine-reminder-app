@@ -1,10 +1,10 @@
 document.addEventListener("deviceready", function () {
   //connecting to db
-  var db = window.sqlitePlugin.openDatabase({
+  /*var db = window.sqlitePlugin.openDatabase({
     name: "dosemanager.db",
     location: "default",
-  });
-
+  });*/
+  console.log("home.js");
   // Query to retrieve medication data
   db.transaction(function (tx) {
     tx.executeSql(
