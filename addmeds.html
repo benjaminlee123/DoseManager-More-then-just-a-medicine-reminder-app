@@ -24,22 +24,14 @@
       <h1 class="text-center fw-bold p-4">Add Medication</h1>
       <div class="container">
         <form>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label"
-              >Medicine Name</label
-            >
-            <input type="text" class="form-control" id="medName" />
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Dosage</label>
-            <input type="text" class="form-control" />
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Medicine Description</label>
-            <textarea class="form-control" id="medDesc" rows="3"></textarea>
-          </div>
+          <label for="medName">Medicine Name:</label><br />
+          <input type="text" id="medName" name="medName" /><br />
+          <label for="medDesc">Medicine Description:</label><br />
+          <input type="text" id="medDesc" name="medDesc" />
 
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button id="submitBtn" type="submit" class="btn btn-primary">
+            Submit
+          </button>
         </form>
         <a href="home.html" class="btn btn-danger">Back to home</a>
       </div>

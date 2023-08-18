@@ -1,8 +1,8 @@
 document.addEventListener("deviceready", function () {
   console.log("this is from addMeds.js");
-  const submitButton = document.querySelector("button");
+  const submitButton = document.getElementById("submitBtn");
 
-  submitButton.addEventListener = ("click", addMeds());
+  submitButton.addEventListener("click", addMeds);
 });
 
 function addMeds() {
@@ -10,11 +10,11 @@ function addMeds() {
   const description = document.getElementById("medDesc").value;
 
   //connecting to db
-  /*var db = window.sqlitePlugin.openDatabase({
+  var db = window.sqlitePlugin.openDatabase({
     name: "dosemanager.db",
     location: "default",
-  });*/
-
+  });
+  console.log("addMeds()");
   // Query to add medication data
   db.transaction(function (tx) {
     tx.executeSql(
@@ -22,7 +22,7 @@ function addMeds() {
       [medicineName, description],
       function (tx, result) {
         console.log("Added medicine to database!");
-        window.location.href = "home.html";
+        //window.location.href = "home.html";
       },
       function (error) {
         console.log("Unable to add Medicine!", error);
