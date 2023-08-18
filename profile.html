@@ -1,11 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>Select Profile</title>
+    <link rel="stylesheet" href="css/index.css">
 </head>
+
 <body>
-    
+    <div class="container">
+        <img src="path_to_logo.png" alt="Your Logo" class="logo">
+        <h1>Welcome to DoseManager</h1>
+        <h2>Select Your Profile</h2>
+        <div class="profiles">
+            <!-- Sample profile, you can duplicate this block for multiple profiles -->
+            <div class="profile">
+                <a href="profile-dashboard.html" class="profile-link">
+                    <div class="profile-picture">
+                        <!-- You can put a profile picture here -->
+                    </div>
+                    <p class="profile-name">Profile Name</p>
+                </a>
+            </div>
+        </div>
+        <button onclick="location.href='create-profile.html'">Add New Profile</button>
+
+    </div>
+    <script src="cordova.js"></script>
+<script type="text/javascript" src="js/init.js"></script>
+<script type="text/javascript" src="js/profile.js"></script>
+
 </body>
+
 </html>
