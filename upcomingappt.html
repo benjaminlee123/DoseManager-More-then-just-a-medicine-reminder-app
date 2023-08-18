@@ -23,7 +23,18 @@
 <body>
     <div class="container">
         <h1 class="text-center p-4">Upcoming Appointments</h1>
+
+        <!--
         <div id="appts-list" class="container p-2">
+        -->
+
+        <div class="card p-2" id="totalApptCard">
+            <div class="card-body">
+                <p class="card-text">You have XX upcoming appointments and XX missed appointments.</p>
+            </div>
+        </div>
+
+        <br>
         
         <div class="row">
             <div class="col-4 col-md-4 rounded text-center" id="upcomingApptBox">
@@ -35,14 +46,6 @@
 
             <div class="col-4 col-md-4 rounded text-center" id="missedApptBox">
                 <p>Missed Appointment</p>
-            </div>
-        </div>
-
-        <br>
-        
-        <div class="card p-2" id="totalApptCard">
-            <div class="card-body">
-                <p class="card-text">You have XX upcoming appointments and XX missed appointments.</p>
             </div>
         </div>
 
