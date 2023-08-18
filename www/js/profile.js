@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (typeof db !== 'undefined') {
             loadProfiles();
         } else {
-            document.addEventListener('deviceready', loadProfiles, false);
+            document.addEventListener('deviceready', loadProfiles, false); //check
         }
     }
 });

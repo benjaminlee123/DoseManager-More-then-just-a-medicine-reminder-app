@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoseManager - Add Medication</title>
+    <link rel="stylesheet" href="www/css/addMeds.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <header>
+      </header> 
+
+      <!-- buttons -->
+      <div class="buttons">
+        <a href="home.html" class="button close">Close</a>
+        <a href="#" class="button save">Save</a>
+      </div>
+
+       <!-- image buttons -->
+      <!-- <div class="buttons">
+        <a href="home.html">
+          <img src="www/img/cancelIcon.png" alt="Cancel Icon" id="cancelIcon">
+        </a>
+        <a href="#">
+          <img src="www/img/saveIcon.png" alt="Save Icon" id="saveIcon">
+        </a>
+      </div> -->
+
+      <div class="heading">
+        <h1> Add Medication </h1>
+        <h2> ----- Enter Manually ----- </h2>
+      </div>
+      
+      <form action="/action_page.php">
+        <div class="form-container">
+          <label for="medName"><h3>Medication Name: </h3></label>
+          <input type="text" id="medName" name="medName">
+        </div>
+      </form>
+      <br>  
+
+      <form action="/action_page.php">
+        <div class="form-container">
+          <label for="medDescription"><h3>Description: </h3></label>
+          <input type="text" id="medDescription" name="`medDescription">
+        </div>
+      </form>
+
+      <form action="/action_page.php">
+        <div class="form-container">
+          <label for="medDescription"><h3>Type of medication: </h3></label>
+          <input list="medType" name="medType" class="datalistStyling">
+            <datalist id="medType">
+              <option value="Pill">
+              <option value="Injection">
+              <option value="Liquid">
+              <option value="Drops">
+              <option value="Powder">
+              <option value="Other">
+            </datalist>
+        </div>
+      </form>
+
+      <form action="/action_page.php">
+        <div class="dateInput">
+          <label for="startDate"><h3>Start Date: </h3></label>
+          <input type="date" id="startDate" name="startDate">
+        </div>
+        <div class="dateInput">
+          <label for="endDate"><h3>End Date: </h3></label>
+          <input type="date" id="endDate" name="endDate">
+        </div>
+      </form>
+      <br>
+
+      <form action="/action_page.php">
+        <div class="form-container">
+          <label for="beforeAfter"><h3> Before/After: </h3></label>
+          <input list="beforeAfter" name="beforeAfter" class="datalistStyling">
+            <datalist id="beforeAfter">
+              <option value="Before Food">
+              <option value="After Food">
+            </datalist>
+        </div>
+      </form>
+      <br>
+
+      <form action="/action_page.php">
+        <div class="form-container">
+          <label for="medTime"><h3>Set Time: </h3></label>
+          <input type="time" id="medTime" name="medTime">
+        </div>
+      </form>
+      <br>
+
+      <form action="/action_page.php">
+        <div class="form-container">
+          <label for="medFrequency"><h3> Repeat: </h3></label>
+          <input list="medFrequency" name="medFrequency" class="datalistStyling">
+            <datalist id="medFrequency">
+              <option value="Everyday">
+              <option value="Every Week">
+              <option value="Every Month">
+            </datalist>
+        </div>
+      </form>
+      <br>
+
+      <div class="form-container">
+        <h3>Add Image</h3>
+        <input type="file" id="imageUpload" accept="image/*">
+        <button type="button" class="btn btn-secondary">Upload</button>
+        <button id="cameraButton" class="btn btn-secondary">Camera</button>
+          <div id="cameraContainer">
+          </div> 
+      </div>
+      <br>
+
+      <footer class="footer">
+        <a href="home.html">
+          <div class="navBarLinks">
+            <img src="www/img/medicineIcon.png" alt="Medicine Icon" class="navBarIcons">
+            <h4>Medications</h4>
+          </div>  
+        </a>
+
+        <a href="upcomingappt.html">
+          <div class="navBarLinks">
+            <img src="www/img/calendarIcon.png" alt="Calendar Icon" class="navBarIcons">
+            <h4>Appointments</h4>
+          </div>      
+        </a>  
+
+        <a href="profile.html">
+          <div class="navBarLinks">
+            <img src="www/img/profileIcon.png" alt="Profile Icon" class="navBarIcons">
+            <h4>Profile</h4>
+          </div>
+        </a>
+      </footer>
+
+    </div>
+         
+    <script src="www/js/addMeds.js"></script>
+
+  </body>
+
+</html>
