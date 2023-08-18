@@ -33,8 +33,7 @@ for (var i = 0; i < apptsData.length; i++) {
     var apptsCard = `
         <div id = "card" class="card mt-4 rounded-5">
             <div class="card-body">
-                <h5 class="card-title ">${row.AppointmentName}</h5>
-                <p id="appt-location" class="card-text">${row.AppointmentLocation}</p>
+                <h5 class="card-title" id="appt-location">${row.AppointmentLocation}</h5>
                 <p id="doc-name" class="card-text">${row.DoctorName}</p>
                 <div id="dosage-amt" class="border border-success">
                 <p class="text-center">${row.AppointmentDate}</p>
