@@ -23,8 +23,10 @@ function displayData() {
   var firestore = firebase.firestore();
   var medsCollection = firestore.collection("Medicine");
 
-  //retrieving data from firebase
+  //retrieving data from firebase by timestamp
+  //orderBy("timestamp") ensures the data is retrieved in chronological order
   medsCollection
+    .orderBy("timestamp")
     .get()
     .then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {

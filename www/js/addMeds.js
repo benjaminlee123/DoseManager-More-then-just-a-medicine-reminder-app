@@ -32,7 +32,11 @@ function addMeds() {
     var medName = medNameInput.value;
     var medDesc = medDescInput.value;
 
-    var newMeds = { name: medName, description: medDesc };
+    var newMeds = {
+      name: medName,
+      description: medDesc,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    };
 
     // Add the profile to the Firestore collection
     medsCollection
@@ -40,11 +44,16 @@ function addMeds() {
       .then((docRef) => {
         console.log("Profile added with ID: ", docRef.id);
       })
+      .then(() => {
+        //navigate to home.html after submit button pressed
+        window.location.href = "home.html";
+      })
       .catch((error) => {
         console.error("Error adding profile: ", error);
       });
 
     //console.log("Medicine Name: " + medName);
     //console.log("Medicine Description: " + medDesc);
+    //console.log("TimeStamp: " + newMeds.timestamp);
   });
 }
