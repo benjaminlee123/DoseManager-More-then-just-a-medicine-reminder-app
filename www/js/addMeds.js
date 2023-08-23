@@ -1,32 +1,50 @@
-document.addEventListener("deviceready", function () {
-  console.log("this is from addMeds.js");
-  const submitButton = document.getElementById("submitBtn");
-
-  submitButton.addEventListener("click", addMeds);
-});
+document.addEventListener("deviceready", addMeds);
 
 function addMeds() {
-  const medicineName = document.getElementById("medName").value;
-  const description = document.getElementById("medDesc").value;
+  //firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyAt4SUmSwvkHdas68AYQdjOe7fkfL547gQ",
+    authDomain: "dosemanager-d0236.firebaseapp.com",
+    projectId: "dosemanager-d0236",
+    storageBucket: "dosemanager-d0236.appspot.com",
+    messagingSenderId: "373646054095",
+    appId: "1:373646054095:web:89660fa48e041a7d231dba",
+    measurementId: "G-XDL965JQ9H",
+  };
 
-  //connecting to db
-  var db = window.sqlitePlugin.openDatabase({
-    name: "dosemanager.db",
-    location: "default",
-  });
-  console.log("addMeds()");
-  // Query to add medication data
-  db.transaction(function (tx) {
-    tx.executeSql(
-      "INSERT INTO MedicationTable (MedicationName, Description) VALUES (?,?)",
-      [medicineName, description],
-      function (tx, result) {
-        console.log("Added medicine to database!");
-        //window.location.href = "home.html";
-      },
-      function (error) {
-        console.log("Unable to add Medicine!", error);
-      }
-    );
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var firestore = firebase.firestore();
+  var medsCollection = firestore.collection("Medicine");
+
+  //getting referenece for form DOM element
+  var form = document.getElementById("formData");
+
+  form.addEventListener("submit", function (event) {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+
+    // Get the values of the input fields by their IDs
+    var medNameInput = document.getElementById("medName");
+    var medDescInput = document.getElementById("medDesc");
+
+    // Retrieve the values from the input fields
+    var medName = medNameInput.value;
+    var medDesc = medDescInput.value;
+
+    var newMeds = { name: medName, description: medDesc };
+
+    // Add the profile to the Firestore collection
+    medsCollection
+      .add(newMeds)
+      .then((docRef) => {
+        console.log("Profile added with ID: ", docRef.id);
+      })
+      .catch((error) => {
+        console.error("Error adding profile: ", error);
+      });
+
+    //console.log("Medicine Name: " + medName);
+    //console.log("Medicine Description: " + medDesc);
   });
 }
