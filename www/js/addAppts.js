@@ -45,14 +45,14 @@ function addAppts() {
     apptsCollection
       .add(newAppts)
       .then((docRef) => {
-        console.log("Profile added with ID: ", docRef.id);
+        console.log("Appointment added with ID: ", docRef.id);
       })
       .then(() => {
         //navigate to home.html after submit button pressed
         window.location.href = "upcomingappt.html";
       })
       .catch((error) => {
-        console.error("Error adding profile: ", error);
+        console.error("Error adding appointment: ", error);
       });
   });
 }
