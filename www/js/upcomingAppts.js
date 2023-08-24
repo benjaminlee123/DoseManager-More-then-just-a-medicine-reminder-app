@@ -1,50 +1,51 @@
-document.addEventListener("deviceready", function () {
-    //connecting to the db
-    var db = window.sqlitePlugin.openDatabase({
-      name: "dosemanager.db",
-      location: "default",
-    });
-  
-    // Query to retrieve appointments data
-    db.transaction(function (tx) {
-      tx.executeSql(
-        "SELECT * FROM AppointmentTable;",
-        [],
-        function (tx, result) {
-          var apptsData = result.rows; // The retrieved data
-          displayApptsCard(apptsData);
-        },
-        function (error) {
-          console.log("Unable to retrieve data!");
-        }
-      );
-    });
-  });
+document.addEventListener("deviceready", displayData);
 
-function displayApptsCard(apptsData) {
-var apptsList = document.getElementById("appts-list");
+function displayData() {
+  //getting reference for div id
+  var apptList = document.getElementById("appt-list");
 
-// Clear previous content
-apptsList.innerHTML = "";
+  // Clear previous content
+  apptList.innerHTML = "";
 
-// Loop through the retrieved data and create appointment cards
-for (var i = 0; i < apptsData.length; i++) {
-    var row = apptsData.item(i); // Get the i-th row
-    var apptsCard = `
+  //firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyAt4SUmSwvkHdas68AYQdjOe7fkfL547gQ",
+    authDomain: "dosemanager-d0236.firebaseapp.com",
+    projectId: "dosemanager-d0236",
+    storageBucket: "dosemanager-d0236.appspot.com",
+    messagingSenderId: "373646054095",
+    appId: "1:373646054095:web:89660fa48e041a7d231dba",
+    measurementId: "G-XDL965JQ9H",
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var firestore = firebase.firestore();
+  var apptsCollection = firestore.collection("Appointments");
+
+  //retrieving data from firebase by timestamp
+  //orderBy("timestamp") ensures the data is retrieved in chronological order
+  apptsCollection
+    .orderBy("timestamp")
+    .get()
+    .then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+        var data = doc.data();
+
+        //populating html page with each appointment card details
+        var apptCard = `
         <div id = "card" class="card mt-4 rounded-5">
             <div class="card-body">
-                <h5 class="card-title" id="appt-location">${row.AppointmentLocation}</h5>
-                <p id="doc-name" class="card-text">${row.DoctorName}</p>
-                <div id="dosage-amt" class="border border-success">
-                <p class="text-center">${row.AppointmentDate}</p>
-                </div>
+                <h5 class="card-title ">${data.apptLocation}</h5>
+                <p id="apptDateTime" class="card-text">${data.apptDateTime}</p>
+                <p id="docName" class="card-text">${data.docName}</p>
             </div>
         </div>
     `;
-    apptsList.innerHTML += apptsCard;
-}
-}
-
-function addAppts() {
-    console.log("Add New Appointment!");
+        apptList.innerHTML += apptCard;
+      });
+    })
+    .catch(function (error) {
+      console.error("Error getting appointment documents: ", error);
+    });
 }

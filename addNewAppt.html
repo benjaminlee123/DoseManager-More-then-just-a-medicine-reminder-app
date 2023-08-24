@@ -1,109 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>DoseManager - Add New Appointments</title>
-        <link rel="stylesheet" href="www/css/upcomingAppts.css" />
-        <script src="cordova.js"></script>
-        <script src="www/js/index.js"></script>
-        <script src="www/js/upcomingAppts.js"></script>
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-            integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-            crossorigin="anonymous"
-        />
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-            crossorigin="anonymous"
-        ></script>
-    </head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add New Appointment</title>
+    <link rel="stylesheet" href="www/css/upcomingAppts.css" />
+
+    <!--firebase-->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <!--linking JS files-->
+    <script src="cordova.js"></script>
+    <script src="www/js/addAppts.js"></script>
+
+    <!--bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
     <div class="container">
-        <h1 class="text-center p-4">Create Appointment</h1>
+      <h1 class="text-center fw-bold p-4">Create An Appointment</h1>
+      <div class="container">
+        <form id="formData">
+          <label for="apptLocation">Appointment Location</label><br />
+          <input type="text" id="apptLocation" name="apptLocation" /><br />
+          <label for="apptDateTime">Appointment Date & Time</label><br />
+          <input type="datetime-local" id="apptDateTime" name="apptDateTime" /><br />
+          <label for="docName">Doctor Name</label><br />
+          <input type="text" id="docName" name="docName" /><br />
+
+          <button id="saveBtn" type="submit" class="btn btn-primary">
+            Save
+          </button>
+        </form>
+        <a href="upcomingappt.html" class="btn btn-danger">Back to Appointments</a>
+      </div>
     </div>
-
-    <div class="cs-form p-2">
-        <label for="clinicName">Clinic Name:</label>
-        <input type="text" class="form-control" id="clinicName"/>
-    </div>
-
-    <br>
-
-    <div class="cs-form p-2">
-        <label for="levelNumber">Level Number:</label>
-        <input type="text" class="form-control" id="levelNumber"/>
-    </div>
-
-    <br>
-
-    <div class="cs-form p-2">
-        <label for="department">Department:</label>
-        <input type="text" class="form-control" id="department"/>
-    </div>
-
-    <br>
-    
-    <div class="cs-form p-2">
-        <label for="docName">Doctor's Name:</label>
-        <input type="text" class="form-control" id="docName"/>
-    </div>
-
-    <br>
-
-    <div class="cs-form p-2">
-        <label for="apptTime">Choose Appointment Time</label>
-        <input type="time" class="form-control" id="apptTime" value="00:00 AM"/>
-    </div>
-
-    <br>
-
-    <div class="cs-form p-2">
-        <label for="apptDate">Choose Appointment Date</label>
-        <input type="date" class="form-control" id="apptDate" value="MM/DD/YYYY"/>
-    </div>
-
-    <br>
-
-    <div class="d-flex justify-content-center">
-        <a href='upcomingappt.html' class="btn btn-success" id="saveAppt">Save</a>
-    </div>
-
-    <footer class="footer">
-        <a href="home.html">
-        <div class="navBarLinks">
-            <img
-            src="www/img/medicineIcon.png"
-            alt="Medicine Icon"
-            class="navBarIcons"
-            />
-            <p class="text-white">Medications</p>
-        </div>
-        </a>
-
-        <a href="upcomingappt.html">
-        <div class="navBarLinks">
-            <img
-            src="www/img/calendarIcon.png"
-            alt="Calendar Icon"
-            class="navBarIcons"
-            />
-            <p class="text-white">Appointments</p>
-        </div>
-        </a>
-
-        <a href="profile.html">
-        <div class="navBarLinks">
-            <img
-            src="www/img/profileIcon.png"
-            alt="Profile Icon"
-            class="navBarIcons"
-            />
-            <p class="text-white">Profile</p>
-        </div>
-        </a>
-    </footer>
-</body>
+  </body>
 </html>
