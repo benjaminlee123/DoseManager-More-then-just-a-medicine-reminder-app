@@ -1,4 +1,4 @@
-document.addEventListener("deviceready", displayData);
+//document.addEventListener("deviceready", getAPI);
 
 function displayData() {
   //getting reference for div id
@@ -55,3 +55,26 @@ function displayData() {
       console.error("Error getting medicine documents: ", error);
     });
 }
+async function fetchAutocompleteResults(searchTerm) {
+  const apiUrl = `https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?terms=${encodeURIComponent(
+    searchTerm
+  )}`;
+
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching autocomplete results:", error);
+    return null;
+  }
+}
+
+// Call the function with a search term
+const searchTerm = "ibu"; // Your search term here
+fetchAutocompleteResults(searchTerm).then((data) => {
+  if (data) {
+    console.log("Autocomplete results:", data[1][1]);
+    // Process and display the autocomplete results as needed
+  }
+});
