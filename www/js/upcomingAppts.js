@@ -22,13 +22,15 @@ function displayData() {
   firebase.initializeApp(firebaseConfig);
   var firestore = firebase.firestore();
   var apptsCollection = firestore.collection("Appointments");
-
+  
   //retrieving data from firebase by timestamp
   //orderBy("timestamp") ensures the data is retrieved in chronological order
   apptsCollection
     .orderBy("timestamp")
     .get()
     .then(function (querySnapshot) {
+      var totalAppts = querySnapshot.size; //Gets the total number of documents
+      updateHtml(totalAppts);
       querySnapshot.forEach(function (doc) {
         var data = doc.data();
 
@@ -48,4 +50,9 @@ function displayData() {
     .catch(function (error) {
       console.error("Error getting appointment documents: ", error);
     });
+
+    function updateHtml(total) {
+      var totalAppts = document.getElementById("upcoming-appts");
+      totalAppts.textContent = total;
+    }
 }
