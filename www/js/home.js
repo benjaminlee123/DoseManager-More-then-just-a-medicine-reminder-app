@@ -1,3 +1,4 @@
+//checks for cordova's deviceready state before calling function
 document.addEventListener("deviceready", displayData);
 
 function displayData() {
@@ -44,37 +45,12 @@ function displayData() {
             </div>
         </div>
     `;
-        medicationList.innerHTML += medicationCard;
 
-        // doc.data() contains the document's data
-        //console.log("Medicine ID:", doc.id);
-        //console.log("Medicine Data:", doc.data());
+        //add html structure
+        medicationList.innerHTML += medicationCard;
       });
     })
     .catch(function (error) {
       console.error("Error getting medicine documents: ", error);
     });
 }
-async function fetchAutocompleteResults(searchTerm) {
-  const apiUrl = `https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?terms=${encodeURIComponent(
-    searchTerm
-  )}`;
-
-  try {
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching autocomplete results:", error);
-    return null;
-  }
-}
-
-// Call the function with a search term
-const searchTerm = "ibu"; // Your search term here
-fetchAutocompleteResults(searchTerm).then((data) => {
-  if (data) {
-    console.log("Autocomplete results:", data[1][1]);
-    // Process and display the autocomplete results as needed
-  }
-});

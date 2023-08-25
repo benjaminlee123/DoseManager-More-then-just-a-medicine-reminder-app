@@ -33,7 +33,15 @@
       <div class="container">
         <form id="formData">
           <label for="medName">Medicine Name:</label><br />
-          <input type="text" id="medName" name="medName" /><br />
+          <input
+            type="text"
+            list="medList"
+            id="medName"
+            name="medName"
+            onkeypress="keyPress()"
+          />
+          <datalist id="medList"> </datalist>
+          <br />
           <label for="medDesc">Medicine Description:</label><br />
           <input type="text" id="medDesc" name="medDesc" />
 
