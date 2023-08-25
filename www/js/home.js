@@ -1,4 +1,4 @@
-//document.addEventListener("deviceready", getAPI);
+document.addEventListener("deviceready", displayData);
 
 function displayData() {
   //getting reference for div id
