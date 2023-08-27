@@ -1,11 +1,7 @@
-/*const closeButton = document.querySelector(".close");
-closeButton.addEventListener("click", () => {
-  window.location.href = "home.html";
-});
 const profileButton = document.querySelector(".btn-danger");
 profileButton.addEventListener("click", () => {
   window.location.href = "personalinfo.html";
-});*/
+});
 
 document.addEventListener("deviceready", username);
 
