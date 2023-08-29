@@ -36,6 +36,7 @@ function displayData() {
         var apptDateTime = data.apptDateTime;
         var currentDateTime = new Date().toJSON();
         var id = doc.id;
+        formattedDate = formatDate(apptDateTime);
 
         console.log(id);  
         if(apptDateTime > currentDateTime){
@@ -44,13 +45,12 @@ function displayData() {
         <div id = "upcomingAppt" class="card mt-4 rounded-5">
             <div class="card-body">
                 <h5 class="card-title ">${data.apptLocation}</h5>
-                <p id="apptDateTime" class="card-text">${data.apptDateTime}</p>
+                <p id="apptDateTime" class="card-text">${formattedDate}</p>
                 <p id="docName" class="card-text">${data.docName}</p>
             </div>
             <button class="edit-button btn btn-primary" data-item-id="${doc.id}">Edit</button>
         </div>
         `;
-
         //Add to the upcoming appointment counter to be displayed at the top of the page  
         upcomingAppts ++;
 
@@ -104,5 +104,10 @@ function displayData() {
     function updateMissedApptsHtml(missedAppts) {
       var totalMissedAppts = document.getElementById("missed-appts");
       totalMissedAppts.textContent = missedAppts;
+    }
+
+    function formatDate(inputDate) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+      return new Date(inputDate).toLocaleDateString('en-US', options);
     }
 }
