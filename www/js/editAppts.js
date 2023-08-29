@@ -31,6 +31,7 @@ function editAppts() {
   var apptDateTimeInput = document.getElementById("editApptDateTime");
   var docNameInput = document.getElementById("editDocName");
   var updateButton = document.getElementById("update-button");
+  var deleteButton = document.getElementById("delete-button");
 
   itemDocRef.get().then(function(doc){
     if(doc.exists){
@@ -68,5 +69,17 @@ function editAppts() {
           console.log("Error updating item:", error);
       })
     })
+
+    deleteButton.addEventListener("click", function() {
+      if (confirm("Are you sure you want to delete this appointment?")) {
+          // Delete the document from Firestore
+          itemDocRef.delete().then(function() {
+              console.log("Item deleted successfully");
+              window.location.href = "upcomingappt.html";
+          }).catch(function(error) {
+              console.log("Error deleting item:", error);
+          });
+      }
+    });
   });
 };

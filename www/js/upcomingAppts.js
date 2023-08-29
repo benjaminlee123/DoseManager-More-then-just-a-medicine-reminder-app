@@ -63,6 +63,7 @@ function displayData() {
                 <p id="apptDateTime" class="card-text">${data.apptDateTime}</p>
                 <p id="docName" class="card-text">${data.docName}</p>
             </div>
+            <button class="edit-button btn btn-primary" data-item-id="${doc.id}">Edit</button>
         </div>
         `;
 
