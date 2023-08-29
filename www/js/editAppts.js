@@ -12,6 +12,7 @@ function editAppts() {
     measurementId: "G-XDL965JQ9H",
   };
 
+  firebase.initializeApp(firebaseConfig);
   var firestore = firebase.firestore();
   var apptsCollection = firestore.collection("Appointments");
 
@@ -21,44 +22,52 @@ function editAppts() {
     return urlParams.get("id");
   }
 
-  var editItemId = getEditItemIdFromURL();
+  var editForm = document.getElementById("editData");
 
-  var itemDocRef = apptsCollection.doc(editItemId);   
+  editForm.addEventListener("submit", function (event) {
+    // Prevent the default form submission behavior
+    event.preventDefault();
 
-  var apptLocationInput = document.getElementById("apptLocation");
-  var apptDateTimeInput = document.getElementById("apptDateTime");
-  var docNameInput = document.getElementById("docName");
-  var updateButton = document.getElementById("update-button");
+    var editItemId = getEditItemIdFromURL();
+
+    var itemDocRef = apptsCollection.doc(editItemId);   
+    console.log(itemDocRef);
   
-  itemDocRef.get().then(function(doc){
-    if(doc.exists){
-        var itemData = doc.data();
-        apptLocationInput.value = itemData.apptLocation;
-        apptDateTimeInput.value = itemData.apptDateTime;
-        docNameInput.value = itemData.docName;
-    } else {
-        console.log("Item not found");
-    }
-  }).catch(function(error){
-    console.log("Error retrieving item: ", error);
-  })
-
-  updateButton.addEventListener("click", function(){
-    var newApptLocation = apptLocationInput.value;
-    var newApptDateTime = apptDateTimeInput.value;
-    var newDocName = docNameInput.value;
-
-    itemDocRef.update({
-        apptLocation: newApptLocation,
-        apptDateTime: newApptDateTime,
-        docName: newDocName
-    }).then(function(){
-        console.log("Item Updated Successfully");
-        
-        window.location.href("upcomingappt.html");
-
+    var apptLocationInput = document.getElementById("editApptLocation");
+    var apptDateTimeInput = document.getElementById("editApptDateTime");
+    var docNameInput = document.getElementById("editDocName");
+    var updateButton = document.getElementById("update-button");
+    
+    itemDocRef.get().then(function(doc){
+      if(doc.exists){
+          var itemData = doc.data();
+          apptLocationInput.value = itemData.apptLocation;
+          apptDateTimeInput.value = itemData.apptDateTime;
+          docNameInput.value = itemData.docName;
+      } else {
+          console.log("Item not found");
+      }
     }).catch(function(error){
-        console.log("Error updating item:", error);
+      console.log("Error retrieving item: ", error);
     })
-  })
+  
+    updateButton.addEventListener("click", function(){
+      var newApptLocation = apptLocationInput.value;
+      var newApptDateTime = apptDateTimeInput.value;
+      var newDocName = docNameInput.value;
+  
+      itemDocRef.update({
+          apptLocation: newApptLocation,
+          apptDateTime: newApptDateTime,
+          docName: newDocName
+      }).then(function(){
+          console.log("Item Updated Successfully");
+          console.log("data is being updated");
+          window.location.href = "upcomingappt.html";
+  
+      }).catch(function(error){
+          console.log("Error updating item:", error);
+      })
+    })
+  });
 };

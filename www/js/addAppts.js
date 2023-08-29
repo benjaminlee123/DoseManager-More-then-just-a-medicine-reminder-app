@@ -38,7 +38,6 @@ function addAppts() {
       apptLocation: apptLocation,
       apptDateTime: apptDateTime,
       docName: docName,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     };
 
     // Add the profile to the Firestore collection

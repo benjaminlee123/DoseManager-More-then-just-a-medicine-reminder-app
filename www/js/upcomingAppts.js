@@ -35,11 +35,9 @@ function displayData() {
         var data = doc.data();
         var apptDateTime = data.apptDateTime;
         var currentDateTime = new Date().toJSON();
+        var id = doc.id;
 
-        function editItem(id){
-          window.location.href = `edit.html?id=${id}`;
-        }
-
+        console.log(id);  
         if(apptDateTime > currentDateTime){
         //populating html page with each appointment card details
         var apptCard = `
@@ -49,7 +47,7 @@ function displayData() {
                 <p id="apptDateTime" class="card-text">${data.apptDateTime}</p>
                 <p id="docName" class="card-text">${data.docName}</p>
             </div>
-            <button class="btn btn-primary" data-item-id="${data.id}">Edit</button>
+            <button class="edit-button btn btn-primary" data-item-id="${doc.id}">Edit</button>
         </div>
         `;
 
@@ -65,7 +63,6 @@ function displayData() {
                 <p id="apptDateTime" class="card-text">${data.apptDateTime}</p>
                 <p id="docName" class="card-text">${data.docName}</p>
             </div>
-            <button class="btn btn-primary" data-item-id="${data.id}" onclick="editItem('${doc.id}')">Edit</button>
         </div>
         `;
 
@@ -77,20 +74,21 @@ function displayData() {
         updateUpcomingApptsHtml(upcomingAppts);
         updateMissedApptsHtml(missedAppts);
 
-        // function handleEditButtonClick(event){
-        //   var itemId = event.target.getAttribute("data-item-id");
-        
-        //   if(itemId){
-        //     window.location.href = `editAppt.html?id=${itemId}`;
-        //   }else{
-        //     console.log("Item ID not found in the button");
-        //   }
-        // }
+        var editButtons = document.getElementsByClassName("edit-button");
+        Array.from(editButtons).forEach(function(button){
+          button.addEventListener("click", handleEditButtonClick);
+        })
 
-        // var editButtons = document.getElementsByClassName("edit-button");
-        // Array.from(editButtons).forEach(function(button){
-        //   button.addEventListener("click", handleEditButtonClick);
-        // })
+        
+        function handleEditButtonClick(event){
+          var itemId = event.target.getAttribute("data-item-id");
+        
+          if(itemId){
+            window.location.href = `editAppt.html?id=${itemId}`;
+          }else{
+            console.log("Item ID not found in the button");
+          }
+        }
       });
     })
     .catch(function (error) {
