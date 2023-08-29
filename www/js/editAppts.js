@@ -22,35 +22,35 @@ function editAppts() {
     return urlParams.get("id");
   }
 
+  var editItemId = getEditItemIdFromURL();
+
+  var itemDocRef = apptsCollection.doc(editItemId);   
+  console.log(itemDocRef);
+
+  var apptLocationInput = document.getElementById("editApptLocation");
+  var apptDateTimeInput = document.getElementById("editApptDateTime");
+  var docNameInput = document.getElementById("editDocName");
+  var updateButton = document.getElementById("update-button");
+
+  itemDocRef.get().then(function(doc){
+    if(doc.exists){
+        var itemData = doc.data();
+        apptLocationInput.value = itemData.apptLocation;
+        apptDateTimeInput.value = itemData.apptDateTime;
+        docNameInput.value = itemData.docName;
+    } else {
+        console.log("Item not found");
+    }
+  }).catch(function(error){
+    console.log("Error retrieving item: ", error);
+  })
+
   var editForm = document.getElementById("editData");
 
   editForm.addEventListener("submit", function (event) {
     // Prevent the default form submission behavior
     event.preventDefault();
 
-    var editItemId = getEditItemIdFromURL();
-
-    var itemDocRef = apptsCollection.doc(editItemId);   
-    console.log(itemDocRef);
-  
-    var apptLocationInput = document.getElementById("editApptLocation");
-    var apptDateTimeInput = document.getElementById("editApptDateTime");
-    var docNameInput = document.getElementById("editDocName");
-    var updateButton = document.getElementById("update-button");
-    
-    itemDocRef.get().then(function(doc){
-      if(doc.exists){
-          var itemData = doc.data();
-          apptLocationInput.value = itemData.apptLocation;
-          apptDateTimeInput.value = itemData.apptDateTime;
-          docNameInput.value = itemData.docName;
-      } else {
-          console.log("Item not found");
-      }
-    }).catch(function(error){
-      console.log("Error retrieving item: ", error);
-    })
-  
     updateButton.addEventListener("click", function(){
       var newApptLocation = apptLocationInput.value;
       var newApptDateTime = apptDateTimeInput.value;
@@ -62,7 +62,6 @@ function editAppts() {
           docName: newDocName
       }).then(function(){
           console.log("Item Updated Successfully");
-          console.log("data is being updated");
           window.location.href = "upcomingappt.html";
   
       }).catch(function(error){
