@@ -42,3 +42,11 @@ a {
 #totalApptCard {
   background-color: white!important;
 }
+
+#upcomingAppt {
+  background-color: rgb(255, 127, 80)!important;
+}
+
+#missedAppt {
+  background-color: rgb(255, 0, 0)!important;
+}
