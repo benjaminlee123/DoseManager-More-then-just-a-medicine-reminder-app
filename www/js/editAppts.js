@@ -51,35 +51,35 @@ function editAppts() {
   editForm.addEventListener("submit", function (event) {
     // Prevent the default form submission behavior
     event.preventDefault();
+  });
 
-    updateButton.addEventListener("click", function(){
-      var newApptLocation = apptLocationInput.value;
-      var newApptDateTime = apptDateTimeInput.value;
-      var newDocName = docNameInput.value;
-  
-      itemDocRef.update({
-          apptLocation: newApptLocation,
-          apptDateTime: newApptDateTime,
-          docName: newDocName
-      }).then(function(){
-          console.log("Item Updated Successfully");
-          window.location.href = "upcomingappt.html";
-  
-      }).catch(function(error){
-          console.log("Error updating item:", error);
-      })
+  updateButton.addEventListener("click", function(){
+    var newApptLocation = apptLocationInput.value;
+    var newApptDateTime = apptDateTimeInput.value;
+    var newDocName = docNameInput.value;
+
+    itemDocRef.update({
+        apptLocation: newApptLocation,
+        apptDateTime: newApptDateTime,
+        docName: newDocName
+    }).then(function(){
+        console.log("Item Updated Successfully");
+        window.location.href = "upcomingappt.html";
+
+    }).catch(function(error){
+        console.log("Error updating item:", error);
     })
+  })
 
-    deleteButton.addEventListener("click", function() {
-      if (confirm("Are you sure you want to delete this appointment?")) {
-          // Delete the document from Firestore
-          itemDocRef.delete().then(function() {
-              console.log("Item deleted successfully");
-              window.location.href = "upcomingappt.html";
-          }).catch(function(error) {
-              console.log("Error deleting item:", error);
-          });
-      }
-    });
+  deleteButton.addEventListener("click", function() {
+    if (confirm("Are you sure you want to delete this appointment?")) {
+      // Delete the document from Firestore
+      itemDocRef.delete().then(function() {
+          console.log("Item deleted successfully");
+          window.location.href = "upcomingappt.html";
+      }).catch(function(error) {
+          console.log("Error deleting item:", error);
+      });
+    }
   });
 };
