@@ -18,6 +18,16 @@ function addAppts() {
   //var apptsCollection = firestore.collection("Appointments");
   //var profilesCollectionReference = firestore.collection("Profiles");
 
+  // function getEditItemIdFromURL() {
+  //   var urlParams = new URLSearchParams(window.location.search);
+  //   return urlParams.get("id");
+  // }
+
+  // var editItemId = getEditItemIdFromURL();
+
+  // var itemDocRef = apptsCollection.doc(editItemId);   
+  // console.log(itemDocRef);
+
   const mainCollectionDocID = "wuay8qtS9bsUQqxwlPvT";
   const mainCollectionRef = firestore.collection("Profiles").doc(mainCollectionDocID);
   const subcollectionName = "Appointments";

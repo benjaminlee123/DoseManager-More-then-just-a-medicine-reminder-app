@@ -1,0 +1,207 @@
+/* overall styling for this page - same as index.css */
+body 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:white;
+    /* background-image:linear-gradient(to bottom, #A7A7A7 0%, #E4E4E4 51%); */
+    font-family: system-ui, -apple-system, -apple-system-font, 'Segoe UI', 'Roboto', sans-serif;
+    font-size:12px;
+    height:100vh;
+    margin:0px;
+    margin-top: 60px;
+    padding:0px;
+    padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+    text-transform:uppercase;
+    width:100%;
+}
+h1 
+{
+    font-size:24px;
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+}
+.container 
+{
+    text-align: center;
+}
+
+
+/* ----------------- to align the title of the textbox and the textbox on the same line ------------------ */
+.form-container 
+{
+    display: flex;
+    align-items: center;
+}
+
+
+/* --------------------------------------- styling buttons ----------------------------------------------- */
+.button 
+{
+    display: inline-block;
+    width: 65px; 
+    height: 65px;
+    border-radius: 50%; 
+    text-align: center;
+    line-height: 65px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    flex-shrink: 0; 
+    box-sizing: border-box; 
+}
+/* close button*/
+.button.close 
+{
+    background-color: #D69C94; 
+    border: 2px solid #E04A3A ; 
+    color: #EBF3F3; 
+}
+/* save button */
+.button.save 
+{
+    background-color: #75CD9B;
+    border: 2px solid #2BC872; 
+    color: #EBF3F3;
+}
+/* to position the buttons at the corners */
+.buttons
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* --------------------------------------- styling icon buttons ----------------------------------------------- */
+/* .buttons 
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+#cancelIcon
+{
+    width: 20%;
+    margin-top: 10px; 
+    margin-right: auto; 
+}
+#saveIcon
+{
+    width: 20%;
+    margin-top: 10px; 
+    margin-left: auto; 
+} */
+
+
+/* -------------------------------------- styling the textboxes ---------------------------------------- */
+input[type="text"] 
+{
+    width: 75%; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #0096FF; 
+    color: white; 
+    margin-left: 10px; 
+}
+/* is this really needed? */
+input[type="text"] + br 
+{
+    margin-bottom: 10px;
+}
+
+
+/* --------------------------------- styling the dropdown boxes ------------------------------------------- */
+input[name="medType"], input[name="beforeAfter"], input[name="medFrequency"] 
+{
+    width: 75%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #0096FF;
+    color: white;
+    position: relative;
+    appearance: none;
+}
+datalist
+{
+    display: none; 
+}
+/* styling the down pointing arrow */
+input[name="medType"]::after, input[name="beforeAfter"]::after, input[name="medFrequency"]::after 
+{
+    content: '\25BC'; /* Unicode character for down pointing arrow */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: white;
+    pointer-events: none;
+}
+/* show dropdown options */
+.datalistStyling + datalist
+{
+    display: block;
+}
+/* highlight option selected in dropdown box */
+datalist option:checked 
+{
+    background-color: lightblue;
+}
+
+
+/* --------------------------------- styling the date and time boxes ------------------------------------ */
+input[type="date"], input[type="time"] 
+{
+    width: 40%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #0096FF; 
+    color: white; 
+}
+form 
+{
+    display: flex;
+    flex-direction: column;
+}
+.dateInput 
+{
+    display: flex;
+    align-items: center;
+}
+.dateInput + .dateInput 
+{
+    margin-top: 10px;
+}
+
+/* --------------------------------------- styling footer ----------------------------------------------- */
+.footer 
+{
+    bottom: 0; 
+    margin: 0;
+    width: 100%; 
+    background-color: #0096FF; 
+    justify-content: space-between;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+}
+.navBarLinks
+{
+    text-align: center; 
+    flex: 1; 
+}
+.navBarIcons
+{
+    margin-top: 10px;
+    width: 20%; 
+}
+.h4
+{
+    color: black;
+}
