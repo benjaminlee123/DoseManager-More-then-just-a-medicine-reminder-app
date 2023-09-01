@@ -21,26 +21,29 @@
   background-color: brown;
 }
 
-.footer {
-  position: fixed;
-  bottom: 0;
-  margin: 0;
-  width: 100%;
-  background-color: #0096ff;
-  justify-content: space-between;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* --------------------------------------- styling footer ----------------------------------------------- */
+.footer 
+{
+    bottom: 0; 
+    margin: 0;
+    width: 100%; 
+    background-color: #0096FF; 
+    justify-content: space-between;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
 }
-a {
-  text-decoration: none;
+.navBarLinks
+{
+    text-align: center; 
+    flex: 1; 
 }
-
-.navBarLinks {
-  text-align: center;
-  flex: 1;
+.navBarIcons
+{
+    margin-top: 10px;
+    width: 20%; 
 }
-.navBarIcons {
-  margin-top: 10px;
-  width: 20%;
+.h4
+{
+    color: black;
 }
