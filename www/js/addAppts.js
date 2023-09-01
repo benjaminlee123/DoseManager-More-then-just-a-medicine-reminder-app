@@ -15,7 +15,12 @@ function addAppts() {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   var firestore = firebase.firestore();
-  var apptsCollection = firestore.collection("Appointments");
+  //var apptsCollection = firestore.collection("Appointments");
+  //var profilesCollectionReference = firestore.collection("Profiles");
+
+  const mainCollectionDocID = "wuay8qtS9bsUQqxwlPvT";
+  const mainCollectionRef = firestore.collection("Profiles").doc(mainCollectionDocID);
+  const subcollectionName = "Appointments";
 
   //getting referenece for form DOM element
   var form = document.getElementById("formData");
@@ -40,18 +45,68 @@ function addAppts() {
       docName: docName,
     };
 
-    // Add the profile to the Firestore collection
-    apptsCollection
-      .add(newAppts)
-      .then((docRef) => {
-        console.log("Appointment added with ID: ", docRef.id);
-      })
-      .then(() => {
-        //navigate to home.html after submit button pressed
-        window.location.href = "upcomingappt.html";
-      })
-      .catch((error) => {
-        console.error("Error adding appointment: ", error);
-      });
-  });
+    mainCollectionRef.collection(subcollectionName).add(newAppts)
+    .then((docRef) => {
+      console.log("Document added to subcollection with ID: ", docRef.id);
+    })
+    .then(() => {
+      //navigate to home.html after submit button pressed
+      window.location.href = "upcomingappt.html";
+    })
+    .catch((error) => {
+      console.error("Error adding appointment: ", error);
+    });
+  })
 }
+
+
+    // Add the profile to the Firestore collection
+  //   apptsCollection
+  //     .add(newAppts)
+  //     .then((docRef) => {
+  //       console.log("Appointment added with ID: ", docRef.id);
+  //     })
+  //     .then(() => {
+  //       //navigate to home.html after submit button pressed
+  //       window.location.href = "upcomingappt.html";
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error adding appointment: ", error);
+  //     });
+  // });
+
+  // form.addEventListener("submit", function (event) {
+  //   // Prevent the default form submission behavior
+  //   event.preventDefault();
+
+  //   // Get the values of the input fields by their IDs
+  //   var apptLocationInput = document.getElementById("apptLocation");
+  //   var apptDateTimeInput = document.getElementById("apptDateTime");
+  //   var docNameInput = document.getElementById("docName");
+
+  //   // Retrieve the values from the input fields
+  //   var apptLocation = apptLocationInput.value;
+  //   var apptDateTime = apptDateTimeInput.value;
+  //   var docName = docNameInput.value;
+
+  //   var newAppts = {
+  //     apptLocation: apptLocation,
+  //     apptDateTime: apptDateTime,
+  //     docName: docName,
+  //   };
+
+  //   // Add the profile to the Firestore collection
+  //   apptsCollection
+  //     .add(newAppts)
+  //     .then((docRef) => {
+  //       console.log("Appointment added with ID: ", docRef.id);
+  //     })
+  //     .then(() => {
+  //       //navigate to home.html after submit button pressed
+  //       window.location.href = "upcomingappt.html";
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error adding appointment: ", error);
+  //     });
+  // });
+  // }
