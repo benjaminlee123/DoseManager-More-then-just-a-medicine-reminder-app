@@ -35,33 +35,64 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 */
 // Wait for the deviceready event before using any of Cordova's device APIs.
-document.addEventListener('deviceready', onDeviceReady, false);
+var db;
+document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
-    /*logEvent(analytics, 'app_open');//log firebase*/
+  /*logEvent(analytics, 'app_open');//log firebase*/
 
-    console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
-    var db = window.sqlitePlugin.openDatabase({name: 'dosemanager.db', location: 'default'});
+  console.log("Running cordova-" + cordova.platformId + "@" + cordova.version);
+  db = window.sqlitePlugin.openDatabase({
+    name: "dosemanager.db",
+    location: "default",
+  });
 
-    db.transaction(function(transaction) {
-        transaction.executeSql('CREATE TABLE IF NOT EXISTS ProfileTable (Profile_id INTEGER PRIMARY KEY, Name TEXT, DateOfBirth DATE);', [], function(tx, results) {
-            console.log('ProfileTable created successfully');
-        }, function(error) {
-            console.log('Error occurred while creating the table.');
-        });
+  db.transaction(function (transaction) {
+    transaction.executeSql(
+      "CREATE TABLE IF NOT EXISTS ProfileTable (Profile_id INTEGER PRIMARY KEY, Name TEXT, DateOfBirth DATE);",
+      [],
+      function (tx, results) {
+        console.log("ProfileTable created successfully");
+      },
+      function (error) {
+        console.log("Error occurred while creating the table.");
+      }
+    );
 
-        transaction.executeSql('CREATE TABLE IF NOT EXISTS MedicationTable (Medication_id INTEGER PRIMARY KEY, Profile_id INTEGER, MedicationName TEXT, Description TEXT, Frequency TEXT, Dosage TEXT, FOREIGN KEY(Profile_id) REFERENCES ProfileTable(Profile_id));', [], function(tx, results) {
-            console.log('MedicationTable created successfully');
-        }, function(error) {
-            console.log('Error occurred while creating the table.');
-        });
+    transaction.executeSql(
+      "CREATE TABLE IF NOT EXISTS MedicationTable (Medication_id INTEGER PRIMARY KEY, Profile_id INTEGER, MedicationName TEXT, Description TEXT, Frequency TEXT, Dosage TEXT, FOREIGN KEY(Profile_id) REFERENCES ProfileTable(Profile_id));",
+      [],
+      function (tx, results) {
+        console.log("MedicationTable created successfully");
+      },
+      function (error) {
+        console.log("Error occurred while creating the table.");
+      }
+    );
 
-        transaction.executeSql('CREATE TABLE IF NOT EXISTS AppointmentTable (Appointment_id INTEGER PRIMARY KEY, Profile_id INTEGER, AppointmentDate DATE, DoctorName TEXT, AppointmentLocation TEXT, FOREIGN KEY(Profile_id) REFERENCES ProfileTable(Profile_id));', [], function(tx, results) {
-            console.log('AppointmentTable created successfully');
-        }, function(error) {
-            console.log('Error occurred while creating the table.');
-        });
-    });
+    transaction.executeSql(
+      "CREATE TABLE IF NOT EXISTS AppointmentTable (Appointment_id INTEGER PRIMARY KEY, Profile_id INTEGER, AppointmentDate DATE, DoctorName TEXT, AppointmentLocation TEXT, FOREIGN KEY(Profile_id) REFERENCES ProfileTable(Profile_id));",
+      [],
+      function (tx, results) {
+        console.log("AppointmentTable created successfully");
+      },
+      function (error) {
+        console.log("Error occurred while creating the table.");
+      }
+    );
 
-    document.getElementById('deviceready').classList.add('ready');
+    //inserting test data
+    transaction.executeSql(
+      "INSERT INTO MedicationTable (MedicationName, Description) VALUES ('Medication 1', 'Some medicine description goes here'),('Medication 2', 'ANOTHER LONG TEXT')",
+      [],
+      function (tx, results) {
+        console.log("Data added!");
+      },
+      function (error) {
+        console.log("Error occurred while adding data.");
+      }
+    );
+  });
+
+  //document.getElementById("deviceready").classList.add("ready");
 }
