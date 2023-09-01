@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,25 +15,24 @@
     <!-- CSS file -->
     <link rel="stylesheet" href="css/personalinfo.css">
 </head>
-
 <body>
     <div class="container">
         <h1>Create A New Profile</h1>
         <form id="profileForm">
             <label for="firstName">First Name:</label>
-            <input type="text" id="firstName">
+            <input type="text" id="firstName" placeholder="Enter your first name">
             <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName">
+            <input type="text" id="lastName" placeholder="Enter your last name">
             <label for="gender">Gender:</label>
             <select id="gender">
                 <option value="male">Male</option>
                 <option value="female">Female</option>
             </select>
             <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob">
-            <button type="button" id="saveButton">Save</button>
+            <input type="date" id="dob" placeholder="Enter your date of birth">
+            <a href="profilelogin.html" class="btn btn-danger">
+                <button type="button" class="btn btn-danger" id="saveButton">Save</button>
         </form>
     </div>
 </body>
-
 </html>

@@ -1,18 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dose Manager</title>
-    <!-- Remember to reference your CSS here -->
-    <link rel="stylesheet" href="#">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <title>Select Profile</title>
+
+ 
+    <!--js file-->
+    <script src="cordova.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/profile.js"></script>
+    <!--css file-->
+    <link rel="stylesheet" href="css/index.css">
+  
+     
+    
 </head>
+
 <body>
-    <header>
-        <!-- This is where you might add your logo -->
-        <img src="img/DoseManager.png" alt="Dose Manager Logo">
-    </header>
-    <!-- Rest of your page's content comes here -->
+    <div class="container">
+        <img src="img/DoseManager.png" alt="Your Logo" class="logo">
+        <h1>Welcome</h1>
+        <h2>Select Your Profile</h2>
+        <div id="profiles" class="profiles">
+            <!-- Profiles will be populated here dynamically -->
+        </div>
+        <button onclick="location.href='personalinfo.html'">Add New Profile</button>
+    </div>
+ 
 </body>
+
 </html>
