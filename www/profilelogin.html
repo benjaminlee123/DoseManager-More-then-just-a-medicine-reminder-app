@@ -6,7 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select Profile</title>
+    <!--firebase-->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <!--js file-->
+    <script src="cordova.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/retrieveprofile.js"></script>
+    <!--css file-->
     <link rel="stylesheet" href="css/index.css">
+  
+     
+    
 </head>
 
 <body>
@@ -14,15 +25,12 @@
         <img src="img/DoseManager.png" alt="Your Logo" class="logo">
         <h1>Welcome</h1>
         <h2>Select Your Profile</h2>
-        <div id="profiles" class="profiles">
+        <div id="retrieveprofile" class="retrieveprofile">
             <!-- Profiles will be populated here dynamically -->
         </div>
         <button onclick="location.href='personalinfo.html'">Add New Profile</button>
     </div>
-    <script src="cordova.js"></script>
-<script type="text/javascript" src="js/init.js"></script>
-<script type="text/javascript" src="js/profile.js"></script>
-
+ 
 </body>
 
 </html>

@@ -140,6 +140,16 @@ button:hover {
 .blink {
     animation: fade 3s infinite;
 }
+.profile-button {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+  }
+  
 /*
 @media screen and (prefers-color-scheme: dark) {
     body {

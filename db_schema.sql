@@ -25,5 +25,6 @@ CREATE TABLE IF NOT EXISTS AppointmentTable (
   AppointmentDate DATE,
   DoctorName TEXT,
   AppointmentLocation TEXT,
+  
   FOREIGN KEY (Profile_id) REFERENCES ProfileTable (Profile_id)
 );

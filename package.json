@@ -19,12 +19,10 @@
     "cordova-plugin-browsersync": "^1.1.0",
     "cordova-plugin-firebase-analytics": "^7.0.5",
     "cordova-plugin-firebase-messaging": "^7.0.4",
-    "cordova-sqlite-storage": "^6.1.0",
     "cordova-support-android-plugin": "~2.0.4"
   },
   "cordova": {
     "plugins": {
-      "cordova-sqlite-storage": {},
       "cordova-plugin-firebase-messaging": {
         "ANDROID_FIREBASE_BOM_VERSION": "30.3.1",
         "IOS_FIREBASE_POD_VERSION": "9.3.0"
@@ -44,6 +42,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.1",
-    "firebase": "^8.6.8"
+    "firebase": "^8.10.1",
+    "google-translate": "^3.0.0"
   }
 }
