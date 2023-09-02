@@ -14,18 +14,24 @@ function editAppts() {
 
   firebase.initializeApp(firebaseConfig);
   var firestore = firebase.firestore();
-  var apptsCollection = firestore.collection("Appointments");
 
-
-  function getEditItemIdFromURL() {
+  function getParametersFromURL() {
     var urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get("id");
+    var profileId = urlParams.get("id");
+    var apptId = urlParams.get("apptId");
+    
+    return { profileId, apptId };
   }
+  
+  var { profileId, apptId } = getParametersFromURL();
+  
+  console.log("profId:", profileId);
+  console.log("apptId:", apptId);
 
-  var editItemId = getEditItemIdFromURL();
-
-  var itemDocRef = apptsCollection.doc(editItemId);   
-  console.log(itemDocRef);
+  const mainCollectionDocID = profileId;
+  const mainCollectionRef = firestore.collection("ProfilesTesting").doc(mainCollectionDocID);
+  const subcollectionName = "Appointments";
+  const subcollectionRef = mainCollectionRef.collection(subcollectionName).doc(apptId);
 
   var apptLocationInput = document.getElementById("editApptLocation");
   var apptDateTimeInput = document.getElementById("editApptDateTime");
@@ -33,7 +39,7 @@ function editAppts() {
   var updateButton = document.getElementById("update-button");
   var deleteButton = document.getElementById("delete-button");
 
-  itemDocRef.get().then(function(doc){
+  subcollectionRef.get().then(function(doc){
     if(doc.exists){
         var itemData = doc.data();
         apptLocationInput.value = itemData.apptLocation;
@@ -58,13 +64,13 @@ function editAppts() {
     var newApptDateTime = apptDateTimeInput.value;
     var newDocName = docNameInput.value;
 
-    itemDocRef.update({
+    subcollectionRef.update({
         apptLocation: newApptLocation,
         apptDateTime: newApptDateTime,
         docName: newDocName
     }).then(function(){
         console.log("Item Updated Successfully");
-        window.location.href = "upcomingappt.html";
+        window.location.href = `upcomingappt.html?id=${profileId}`;
 
     }).catch(function(error){
         console.log("Error updating item:", error);
@@ -74,9 +80,9 @@ function editAppts() {
   deleteButton.addEventListener("click", function() {
     if (confirm("Are you sure you want to delete this appointment?")) {
       // Delete the document from Firestore
-      itemDocRef.delete().then(function() {
+      subcollectionRef.delete().then(function() {
           console.log("Item deleted successfully");
-          window.location.href = "upcomingappt.html";
+          window.location.href = `upcomingappt.html?id=${profileId}`;
       }).catch(function(error) {
           console.log("Error deleting item:", error);
       });
