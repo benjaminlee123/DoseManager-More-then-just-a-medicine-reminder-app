@@ -17,8 +17,6 @@ function addMeds() {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   var firestore = firebase.firestore();
-  // var medsCollection = firestore.collection("Medicine");
-  var profilesCollection = firestore.collection("ProfilesTesting");
 
   function getProfileIdFromURL(){
     var urlParams = new URLSearchParams(window.location.search);
@@ -26,13 +24,20 @@ function addMeds() {
   };
 
   var profileId = getProfileIdFromURL();
-  var profilesIdRef = profilesCollection.doc(profileId);
   console.log(profileId);
   const profilesCollectionDocID = profileId;
   const profilesCollectionRef = firestore.collection("ProfilesTesting").doc(profilesCollectionDocID);
   const subcollectionName = "Medicine"
   
+  var backHomeButton = document.getElementById("backHomeButton");
 
+  backHomeButton.addEventListener("click", handleBackHomeButtonClick);
+  function handleBackHomeButtonClick(){
+    var profileId = getProfileIdFromURL();
+    console.log(profileId);
+    window.location.href = `home.html?id=${profileId}`;
+  }
+  
   //getting reference for form element
   var form = document.getElementById("formData");
 

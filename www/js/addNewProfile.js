@@ -1,6 +1,6 @@
-document.addEventListener("deviceready", addAppts);
+document.addEventListener("deviceready", editProfile);
 
-function addAppts() {
+function editProfile() {
   //firebase config
   const firebaseConfig = {
     apiKey: "AIzaSyAt4SUmSwvkHdas68AYQdjOe7fkfL547gQ",
@@ -15,7 +15,6 @@ function addAppts() {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   var firestore = firebase.firestore();
-  var profilesCollection = firestore.collection("ProfilesTesting");
 
   function getProfileItemIdFromURL() {
     var urlParams = new URLSearchParams(window.location.search);
@@ -28,14 +27,17 @@ function addAppts() {
   const mainCollectionDocID = profileId;
   const mainCollectionRef = firestore.collection("ProfilesTesting").doc(mainCollectionDocID);
 
-  var nameInput = document.getElementById("name");
-  var dateOfBirthInput = document.getElementById("birthDate");
+  var firstNameInput = document.getElementById("firstName");
+  var lastNameInput = document.getElementById("lastName");
   var genderInput = document.getElementById("gender");
-
+  var dateOfBirthInput = document.getElementById("dob");
+  var saveButton = document.getElementById("saveBtn");
+  
   mainCollectionRef.get().then(function(doc){
     if(doc.exists){
         var itemData = doc.data();
-        nameInput.value = itemData.name;
+        firstNameInput.value = itemData.firstName;
+        lastNameInput.value = itemData.lastName;
         dateOfBirthInput.value = itemData.dateOfBirth;
         genderInput.value = itemData.gender;
     } else {
@@ -46,40 +48,31 @@ function addAppts() {
   })
 
 
-  var form = document.getElementById("formData");
+  var form = document.getElementById("profileForm");
 
   form.addEventListener("submit", function (event) {
     // Prevent the default form submission behavior
     event.preventDefault();
-
-    // Get the values of the input fields by their IDs
-    var nameInput = document.getElementById("name");
-    var dateOfBirthInput = document.getElementById("birthDate");
-    var genderInput = document.getElementById("gender");
-
-    // Retrieve the values from the input fields
-    var name = nameInput.value;
-    var dateOfBirth = dateOfBirthInput.value;
-    var gender = genderInput.value;
-
-    var newProfile = {
-        name: name,
-        dateOfBirth: dateOfBirth,
-        gender: gender,
-    };
-
-    // Add the profile to the Firestore collection
-    profilesCollection
-      .add(newProfile)
-      .then((docRef) => {
-        console.log("Profile added with ID: ", docRef.id);
-      })
-      .then(() => {
-        //navigate to home.html after submit button pressed
-        window.location.href = "profilelogin.html";
-      })
-      .catch((error) => {
-        console.error("Error adding appointment: ", error);
-      });
   });
-  }
+
+  saveButton.addEventListener("click", function(){
+    var newFirstNameInput = firstNameInput.value
+    var newLastNameInput = lastNameInput.value
+    var newGenderInput = genderInput.value
+    var newDobInput = dateOfBirthInput.value
+
+    mainCollectionRef.update({
+      name: newFirstNameInput + " " + newLastNameInput,
+      dateOfBirth: newDobInput,
+      gender: newGenderInput,
+      firstName: newFirstNameInput,
+      lastName: newLastNameInput,
+    }).then(function(){
+      console.log("Profile Updated Successfully");
+      window.location.href = `profile.html?id=${profileId}`;
+    }).catch(function(error){
+      console.log("Error updating profile:", error);
+    })
+
+  })
+}
