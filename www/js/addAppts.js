@@ -29,6 +29,8 @@ function addAppts() {
   const mainCollectionRef = firestore.collection("ProfilesTesting").doc(mainCollectionDocID);
   const subcollectionName = "Appointments";
 
+  var backButton = document.getElementById("back-button");
+
   //getting referenece for form DOM element
   var form = document.getElementById("formData");
 
@@ -64,56 +66,8 @@ function addAppts() {
       console.error("Error adding appointment: ", error);
     });
   })
+
+  backButton.addEventListener("click", function(){
+    window.location.href = `upcomingappt.html?id=${profileId}`;
+  })
 }
-
-
-    // Add the profile to the Firestore collection
-  //   apptsCollection
-  //     .add(newAppts)
-  //     .then((docRef) => {
-  //       console.log("Appointment added with ID: ", docRef.id);
-  //     })
-  //     .then(() => {
-  //       //navigate to home.html after submit button pressed
-  //       window.location.href = "upcomingappt.html";
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error adding appointment: ", error);
-  //     });
-  // });
-
-  // form.addEventListener("submit", function (event) {
-  //   // Prevent the default form submission behavior
-  //   event.preventDefault();
-
-  //   // Get the values of the input fields by their IDs
-  //   var apptLocationInput = document.getElementById("apptLocation");
-  //   var apptDateTimeInput = document.getElementById("apptDateTime");
-  //   var docNameInput = document.getElementById("docName");
-
-  //   // Retrieve the values from the input fields
-  //   var apptLocation = apptLocationInput.value;
-  //   var apptDateTime = apptDateTimeInput.value;
-  //   var docName = docNameInput.value;
-
-  //   var newAppts = {
-  //     apptLocation: apptLocation,
-  //     apptDateTime: apptDateTime,
-  //     docName: docName,
-  //   };
-
-  //   // Add the profile to the Firestore collection
-  //   apptsCollection
-  //     .add(newAppts)
-  //     .then((docRef) => {
-  //       console.log("Appointment added with ID: ", docRef.id);
-  //     })
-  //     .then(() => {
-  //       //navigate to home.html after submit button pressed
-  //       window.location.href = "upcomingappt.html";
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error adding appointment: ", error);
-  //     });
-  // });
-  // }
