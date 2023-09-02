@@ -24,23 +24,23 @@ function username() {
   profileId = getProfileIdFromURL();
   console.log(profileId);
 
+  var cancelIconButton = document.getElementById("cancelIcon");
   var personalInfoButton = document.getElementById("profile-personalInfo");
   var notifButton = document.getElementById("profile-notifications");
   var profApptButton = document.getElementById("profile-appointments");
   var languageButton = document.getElementById("profile-language");
 
-  var medicationFooterButton = document.getElementById("medication-footer");
-  var appointmentFooterButton = document.getElementById("appointment-footer");
-  var profileFooterButton = document.getElementById("profile-footer");
-
+  cancelIconButton.addEventListener("click", handleCancelIconButtonClick);
   personalInfoButton.addEventListener("click", handlePersonalInfoButtonClick);
   notifButton.addEventListener("click", handleNotifButtonButtonClick);
   profApptButton.addEventListener("click", handleProfApptButtonButtonClick);
   languageButton.addEventListener("click", handlelanguageButtonButtonClick);
 
-  medicationFooterButton.addEventListener("click", handleMedFooterButtonClick);
-  appointmentFooterButton.addEventListener("click", handleApptFooterButtonClick);
-  profileFooterButton.addEventListener("click", handleProfileFooterButtonClick);
+  function handleCancelIconButtonClick(){
+    var profileId = getProfileIdFromURL();
+    console.log(profileId);
+    window.location.href = `home.html?id=${profileId}`;
+  }
 
   function handlePersonalInfoButtonClick(){
     var profileId = getProfileIdFromURL();
@@ -64,24 +64,6 @@ function username() {
     var profileId = getProfileIdFromURL();
     console.log(profileId);
     window.location.href = `languagesetting.html?id=${profileId}`;
-  }
-
-  function handleMedFooterButtonClick(){
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `home.html?id=${profileId}`;
-  }
-
-  function handleApptFooterButtonClick(){
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `upcomingappt.html?id=${profileId}`;
-  }
-
-  function handleProfileFooterButtonClick(){
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `profile.html?id=${profileId}`;
   }
 
   var mainProfileId = profileId;
