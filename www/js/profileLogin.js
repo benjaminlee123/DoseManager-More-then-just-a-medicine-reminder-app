@@ -3,11 +3,11 @@ document.addEventListener("deviceready", displayData);
 function displayData() {
   //getting reference for div id
   var profileList = document.getElementById("profile-list");
-  var displayedProfiles = document.getElementById("profiles");
+  //var displayedProfiles = document.getElementById("profiles");
 
   // Clear previous content
   profileList.innerHTML = "";
-  displayedProfiles.innerHTML = "";
+  //displayedProfiles.innerHTML = "";
 
   //firebase config
   const firebaseConfig = {
