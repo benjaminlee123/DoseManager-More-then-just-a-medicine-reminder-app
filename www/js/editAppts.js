@@ -38,6 +38,7 @@ function editAppts() {
   var docNameInput = document.getElementById("editDocName");
   var updateButton = document.getElementById("update-button");
   var deleteButton = document.getElementById("delete-button");
+  var backButton = document.getElementById("back-button");
 
   subcollectionRef.get().then(function(doc){
     if(doc.exists){
@@ -88,4 +89,8 @@ function editAppts() {
       });
     }
   });
+
+  backButton.addEventListener("click", function(){
+    window.location.href = `upcomingappt.html?id=${profileId}`;
+  })
 };
