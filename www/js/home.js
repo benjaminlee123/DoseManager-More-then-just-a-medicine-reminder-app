@@ -31,13 +31,37 @@ function displayData() {
   console.log(profileId);
 
   var addMedsButton = document.getElementById("addMedBtn");
-
+  var medicationFooterButton = document.getElementById("medication-footer");
+  var appointmentFooterButton = document.getElementById("appointment-footer");
+  var profileFooterButton = document.getElementById("profile-footer");
+  
   addMedsButton.addEventListener("click", handleAddMedsButtonClick);
+  medicationFooterButton.addEventListener("click", handleMedFooterButtonClick);
+  appointmentFooterButton.addEventListener("click", handleApptFooterButtonClick);
+  profileFooterButton.addEventListener("click", handleProfileFooterButtonClick);
 
-  function handleAddMedsButtonClick(event){
+  function handleAddMedsButtonClick(){
     var profileId = getProfileIdFromURL();
     console.log(profileId);
     window.location.href = `addmeds.html?id=${profileId}`;
+  }
+
+  function handleMedFooterButtonClick(){
+    var profileId = getProfileIdFromURL();
+    console.log(profileId);
+    window.location.href = `home.html?id=${profileId}`;
+  }
+
+  function handleApptFooterButtonClick(){
+    var profileId = getProfileIdFromURL();
+    console.log(profileId);
+    window.location.href = `upcomingappt.html?id=${profileId}`;
+  }
+
+  function handleProfileFooterButtonClick(){
+    var profileId = getProfileIdFromURL();
+    console.log(profileId);
+    window.location.href = `profile.html?id=${profileId}`;
   }
  
   var mainProfileId = profileId;

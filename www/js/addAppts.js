@@ -16,20 +16,18 @@ function addAppts() {
   firebase.initializeApp(firebaseConfig);
   var firestore = firebase.firestore();
   //var apptsCollection = firestore.collection("Appointments");
-  //var profilesCollectionReference = firestore.collection("Profiles");
+  var profilesCollection = firestore.collection("ProfilesTesting");
 
-  // function getEditItemIdFromURL() {
-  //   var urlParams = new URLSearchParams(window.location.search);
-  //   return urlParams.get("id");
-  // }
+  function getProfileItemIdFromURL() {
+    var urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get("id");
+  }
 
-  // var editItemId = getEditItemIdFromURL();
+  var profileId = getProfileItemIdFromURL();
+  console.log(profileId);
 
-  // var itemDocRef = apptsCollection.doc(editItemId);   
-  // console.log(itemDocRef);
-
-  const mainCollectionDocID = "wuay8qtS9bsUQqxwlPvT";
-  const mainCollectionRef = firestore.collection("Profiles").doc(mainCollectionDocID);
+  const mainCollectionDocID = profileId;
+  const mainCollectionRef = firestore.collection("ProfilesTesting").doc(mainCollectionDocID);
   const subcollectionName = "Appointments";
 
   //getting referenece for form DOM element
@@ -61,7 +59,7 @@ function addAppts() {
     })
     .then(() => {
       //navigate to home.html after submit button pressed
-      window.location.href = "upcomingappt.html";
+      window.location.href = `upcomingappt.html?id=${profileId}`;
     })
     .catch((error) => {
       console.error("Error adding appointment: ", error);
