@@ -16,7 +16,6 @@ function addAppts() {
   firebase.initializeApp(firebaseConfig);
   var firestore = firebase.firestore();
   //var apptsCollection = firestore.collection("Appointments");
-  var profilesCollection = firestore.collection("ProfilesTesting");
 
   function getProfileItemIdFromURL() {
     var urlParams = new URLSearchParams(window.location.search);

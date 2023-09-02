@@ -1,0 +1,50 @@
+.card {
+    margin-top: 3rem;
+  }
+  .card-header h2 {
+    position: relative;
+  }
+  
+  .card-header img {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+    margin-right: 10px;
+  
+    @media (max-width: 768px) {
+      width: 20px;
+      height: auto;
+    }
+  }
+  .btn-danger:hover {
+    background-color: #e08a8c;
+  }
+  .close {
+    border: none;
+    background-color: transparent;
+  }
+  .footer {
+    position: fixed;
+    bottom: 0;
+    margin: 0;
+    width: 100%;
+    background-color: #0096ff;
+    justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  a {
+    text-decoration: none;
+  }
+  
+  .navBarLinks {
+    text-align: center;
+    flex: 1;
+  }
+  .navBarIcons {
+    margin-top: 10px;
+    width: 20%;
+  }
+
+  

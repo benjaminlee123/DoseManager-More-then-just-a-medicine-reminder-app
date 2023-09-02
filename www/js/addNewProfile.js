@@ -17,6 +17,35 @@ function addAppts() {
   var firestore = firebase.firestore();
   var profilesCollection = firestore.collection("ProfilesTesting");
 
+  function getProfileItemIdFromURL() {
+    var urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get("id");
+  }
+
+  var profileId = getProfileItemIdFromURL();
+  console.log(profileId);
+
+  const mainCollectionDocID = profileId;
+  const mainCollectionRef = firestore.collection("ProfilesTesting").doc(mainCollectionDocID);
+
+  var nameInput = document.getElementById("name");
+  var dateOfBirthInput = document.getElementById("birthDate");
+  var genderInput = document.getElementById("gender");
+
+  mainCollectionRef.get().then(function(doc){
+    if(doc.exists){
+        var itemData = doc.data();
+        nameInput.value = itemData.name;
+        dateOfBirthInput.value = itemData.dateOfBirth;
+        genderInput.value = itemData.gender;
+    } else {
+        console.log("Profile not found");
+    }
+  }).catch(function(error){
+    console.log("Error retrieving item: ", error);
+  })
+
+
   var form = document.getElementById("formData");
 
   form.addEventListener("submit", function (event) {
