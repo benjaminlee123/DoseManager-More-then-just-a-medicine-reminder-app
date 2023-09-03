@@ -12,7 +12,7 @@
 
     <!--linking JS files-->
     <script src="cordova.js"></script>
-    <script src="www/js/addMeds.js"></script>
+    <script src="www/js/addmeds.js"></script>
 
     <!--bootstrap-->
     <link
@@ -38,8 +38,9 @@
             list="medList"
             id="medName"
             name="medName"
-            onkeypress="keyPress()"
+            oninput="keyPress()"
           />
+
           <datalist id="medList"> </datalist>
           <br />
           <label for="medDesc">Medicine Description:</label><br />
@@ -49,7 +50,7 @@
             Submit
           </button>
         </form>
-        <a href="home.html" class="btn btn-danger">Back to home</a>
+        <button id="homeBtn" class="btn btn-danger">Back to home</button>
       </div>
     </div>
   </body>

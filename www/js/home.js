@@ -1,4 +1,3 @@
-//checks for cordova's deviceready state before calling function
 document.addEventListener("deviceready", displayData);
 
 function displayData() {
@@ -7,7 +6,6 @@ function displayData() {
 
   // Clear previous content
   medicationList.innerHTML = "";
-
   //firebase config
   const firebaseConfig = {
     apiKey: "AIzaSyAt4SUmSwvkHdas68AYQdjOe7fkfL547gQ",
@@ -22,42 +20,72 @@ function displayData() {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   var firestore = firebase.firestore();
-  var medsCollection = firestore.collection("Medicine");
+  //var medsCollection = firestore.collection("Medicine");
 
-  //retrieving data from firebase by timestamp
-  //orderBy("timestamp") ensures the data is retrieved in chronological order
-  medsCollection
-    .orderBy("timestamp")
+  function getProfileIdFromURL() {
+    var urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get("id");
+  }
+
+  profileId = getProfileIdFromURL();
+  console.log(profileId);
+
+  var addMedsButton = document.getElementById("addMedBtn");
+
+  addMedsButton.addEventListener("click", handleAddMedsButtonClick);
+
+  function handleAddMedsButtonClick(event) {
+    var profileId = getProfileIdFromURL();
+    console.log(profileId);
+    window.location.href = `addmeds.html?id=${profileId}`;
+  }
+
+  var mainProfileId = profileId;
+  var mainProfileRef = firestore
+    .collection("ProfilesTesting")
+    .doc(mainProfileId);
+  var subCollectionRef = mainProfileRef.collection("Medicine");
+
+  mainProfileRef
+    .get()
+    .then(function (doc) {
+      if (doc.exists) {
+        var userData = doc.data();
+        var userName = userData.name;
+
+        var userProfileName = document.getElementById("userProfileName");
+        userProfileName.textContent = "Welcome, " + userName;
+      } else {
+        console.log("User document not found");
+      }
+    })
+    .catch(function (error) {
+      console.error("Error getting user document: ", error);
+    });
+
+  //retrieving data from firebase
+  subCollectionRef
     .get()
     .then(function (querySnapshot) {
-      querySnapshot.forEach(function (doc) {
-        var data = doc.data();
+      querySnapshot.forEach(function (subDoc) {
+        var subDocData = subDoc.data();
 
         //populating html page with each medicine card details
         var medicationCard = `
-        <div id = "card" class="card mt-4 rounded-5">
-            <div class="card-body">
-                <h5 class="card-title ">${data.name}</h5>
-                <p id="med-desc" class="card-text">${data.description}</p>
-                <div id="dosage-amt" class="border border-success rounded-circle">
-                  <p class="text-center">1 pill twice a day</p>
-                </div>
+        <div id="card" class="card mt-4 rounded-5">
+          <div class="card-body">
+            <h5 class="card-title">${subDocData.name}</h5>
+            <p id="med-desc" class="card-text">${subDocData.description}</p>
+            <div id="dosage-amt" class="border border-success rounded-circle">
+              <p class="text-center">1 pill twice a day</p>
             </div>
+          </div>
         </div>
-    `;
-
-        //add html structure
+      `;
         medicationList.innerHTML += medicationCard;
       });
     })
     .catch(function (error) {
       console.error("Error getting medicine documents: ", error);
     });
-}
-
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement(
-    { pageLanguage: "en" },
-    "google_translate_element"
-  );
 }

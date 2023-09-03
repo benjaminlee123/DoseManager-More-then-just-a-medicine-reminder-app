@@ -1,0 +1,52 @@
+body {
+  margin-bottom: 100px !important;
+}
+
+.card {
+  background-color: rgb(255, 127, 80) !important;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  margin: 0;
+  width: 100%;
+  background-color: #0096ff;
+  justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.navBarLinks {
+  text-align: center;
+  flex: 1;
+}
+.navBarIcons {
+  margin-top: 10px;
+  width: 20%;
+}
+
+#upcomingApptBox {
+  background-color: rgb(255, 127, 80) !important;
+}
+
+#missedApptBox {
+  background-color: rgb(255, 0, 0) !important;
+}
+
+#totalApptCard {
+  background-color: white !important;
+}
+
+#upcomingAppt {
+  background-color: rgb(255, 127, 80) !important;
+}
+
+#missedAppt {
+  background-color: rgb(255, 0, 0) !important;
+}

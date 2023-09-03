@@ -17,10 +17,30 @@ function addMeds() {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   var firestore = firebase.firestore();
-  var medsCollection = firestore.collection("Medicine");
+
+  var profilesCollection = firestore.collection("ProfilesTesting");
+
+  function getProfileIdFromURL() {
+    var urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get("id");
+  }
+
+  var profileId = getProfileIdFromURL();
+  console.log(profileId);
+  const profilesCollectionDocID = profileId;
+  const profilesCollectionRef = profilesCollection.doc(profilesCollectionDocID);
+  const subcollectionName = "Medicine";
 
   //getting reference for form element
   var form = document.getElementById("formData");
+
+  //getting reference to back to home button
+  var homeBtn = document.getElementById("homeBtn");
+
+  //passing profileID into html to display correct home page
+  homeBtn.addEventListener("click", function () {
+    window.location.href = `home.html?id=${profileId}`;
+  });
 
   form.addEventListener("submit", function (event) {
     // Prevent the default form submission behavior
@@ -42,14 +62,15 @@ function addMeds() {
     };
 
     // Add medicine to Firestore collection
-    medsCollection
+    profilesCollectionRef
+      .collection(subcollectionName)
       .add(newMeds)
       .then((docRef) => {
-        console.log("Profile added with ID: ", docRef.id);
+        console.log("Medicine added to profile with ID: ", docRef.id);
       })
       .then(() => {
         //navigate to home.html after submit button pressed
-        window.location.href = "home.html";
+        window.location.href = `home.html?id=${profileId}`;
       })
       .catch((error) => {
         console.error("Error adding profile: ", error);
