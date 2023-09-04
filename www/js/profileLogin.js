@@ -65,3 +65,10 @@ function displayData() {
       console.error("Error getting appointment documents: ", error);
     });
 }
+
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement(
+    { pageLanguage: "en" },
+    "google_translate_element"
+  );
+}

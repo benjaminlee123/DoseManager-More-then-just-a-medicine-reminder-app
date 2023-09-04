@@ -1,26 +1,28 @@
-#card {
-  background-color: rgb(179, 236, 236);
+.card {
+  margin-top: 3rem;
 }
-#addMedBtn {
-  width: 80%;
-  position: fixed;
-  bottom: 100px;
-  z-index: 1;
+.card-header h2 {
+  position: relative;
 }
 
-#med-desc {
-  width: 50%;
-}
+.card-header img {
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+  margin-right: 10px;
 
-#dosage-amt {
-  width: 25%;
-  position: absolute;
-  top: 10%;
-  padding: 2%;
-  right: 10%;
-  background-color: brown;
+  @media (max-width: 768px) {
+    width: 20px;
+    height: auto;
+  }
 }
-
+.btn-danger:hover {
+  background-color: #e08a8c;
+}
+.close {
+  border: none;
+  background-color: transparent;
+}
 .footer {
   position: fixed;
   bottom: 0;
@@ -44,7 +46,6 @@ a {
   margin-top: 10px;
   width: 20%;
 }
-
 /*google banner*/
 .VIpgJd-ZVi9od-ORHb-OEVmcd {
   display: none !important;

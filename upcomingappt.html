@@ -10,6 +10,9 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
+    <!--google translate-->
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <!--linking JS files-->
     <script src="cordova.js"></script>
     <script src="www/js/index.js"></script>
@@ -75,7 +78,7 @@
       </div>
     </div>
     <footer class="footer">
-      <a href="home.html">
+      <a id="medication-footer">
         <div class="navBarLinks">
           <img
             src="www/img/medicineIcon.png"
@@ -86,7 +89,7 @@
         </div>
       </a>
 
-      <a href="upcomingappt.html">
+      <a id="appointment-footer">
         <div class="navBarLinks">
           <img
             src="www/img/calendarIcon.png"
@@ -97,7 +100,7 @@
         </div>
       </a>
 
-      <a href="profile.html">
+      <a id="profile-footer">
         <div class="navBarLinks">
           <img
             src="www/img/profileIcon.png"

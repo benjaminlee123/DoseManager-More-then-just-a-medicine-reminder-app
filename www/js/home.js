@@ -30,14 +30,46 @@ function displayData() {
   profileId = getProfileIdFromURL();
   console.log(profileId);
 
+  //eventlisteners for each button with profile id passed in
   var addMedsButton = document.getElementById("addMedBtn");
 
+  var medicationFooterButton = document.getElementById("medication-footer");
+
+  var appointmentFooterButton = document.getElementById("appointment-footer");
+
+  var profileFooterButton = document.getElementById("profile-footer");
+
   addMedsButton.addEventListener("click", handleAddMedsButtonClick);
+
+  medicationFooterButton.addEventListener("click", handleMedFooterButtonClick);
+  appointmentFooterButton.addEventListener(
+    "click",
+    handleApptFooterButtonClick
+  );
+  profileFooterButton.addEventListener("click", handleProfileFooterButtonClick);
 
   function handleAddMedsButtonClick(event) {
     var profileId = getProfileIdFromURL();
     console.log(profileId);
     window.location.href = `addmeds.html?id=${profileId}`;
+  }
+
+  function handleMedFooterButtonClick() {
+    var profileId = getProfileIdFromURL();
+    console.log(profileId);
+    window.location.href = `home.html?id=${profileId}`;
+  }
+
+  function handleApptFooterButtonClick() {
+    var profileId = getProfileIdFromURL();
+    console.log(profileId);
+    window.location.href = `upcomingappt.html?id=${profileId}`;
+  }
+
+  function handleProfileFooterButtonClick() {
+    var profileId = getProfileIdFromURL();
+    console.log(profileId);
+    window.location.href = `profile.html?id=${profileId}`;
   }
 
   var mainProfileId = profileId;
@@ -65,6 +97,7 @@ function displayData() {
 
   //retrieving data from firebase
   subCollectionRef
+    .orderBy("timestamp")
     .get()
     .then(function (querySnapshot) {
       querySnapshot.forEach(function (subDoc) {
@@ -88,4 +121,11 @@ function displayData() {
     .catch(function (error) {
       console.error("Error getting medicine documents: ", error);
     });
+}
+
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement(
+    { pageLanguage: "en" },
+    "google_translate_element"
+  );
 }

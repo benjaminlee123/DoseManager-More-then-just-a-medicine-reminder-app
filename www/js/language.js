@@ -6,7 +6,23 @@ function languagePage() {
     "google_translate_element"
   );
 
-  // referencing buttons from html
+  //returns profile id
+  function getProfileIdFromURL() {
+    var urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get("id");
+  }
+
+  //home button
+  var homeBtn = document.getElementById("backToHomeBtn");
+  homeBtn.addEventListener("click", handlebackToHomeBtnClick);
+
+  function handlebackToHomeBtnClick(event) {
+    var profileId = getProfileIdFromURL();
+    console.log(profileId);
+    window.location.href = `home.html?id=${profileId}`;
+  }
+
+  // referencing language buttons from html
   const englishBtn = document.getElementById("engButton");
   const chineseBtn = document.getElementById("chiButton");
   const malayBtn = document.getElementById("malayButton");

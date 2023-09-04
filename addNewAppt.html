@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add medication</title>
-    <link rel="stylesheet" href="www/css/home.css" />
+    <title>Add New Appointment</title>
+    <link rel="stylesheet" href="www/css/upcomingAppts.css" />
 
     <!--firebase-->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
@@ -15,7 +15,7 @@
 
     <!--linking JS files-->
     <script src="cordova.js"></script>
-    <script src="www/js/addmeds.js"></script>
+    <script src="www/js/addAppts.js"></script>
 
     <!--bootstrap-->
     <link
@@ -32,28 +32,25 @@
   </head>
   <body>
     <div class="container">
-      <h1 class="text-center fw-bold p-4">Add Medication</h1>
+      <h1 class="text-center fw-bold p-4">Create An Appointment</h1>
       <div class="container">
         <form id="formData">
-          <label for="medName">Medicine Name:</label><br />
+          <label for="apptLocation">Appointment Location</label><br />
+          <input type="text" id="apptLocation" name="apptLocation" /><br />
+          <label for="apptDateTime">Appointment Date & Time</label><br />
           <input
-            type="text"
-            list="medList"
-            id="medName"
-            name="medName"
-            oninput="keyPress()"
-          />
+            type="datetime-local"
+            id="apptDateTime"
+            name="apptDateTime"
+          /><br />
+          <label for="docName">Doctor Name</label><br />
+          <input type="text" id="docName" name="docName" /><br />
 
-          <datalist id="medList"> </datalist>
-          <br />
-          <label for="medDesc">Medicine Description:</label><br />
-          <input type="text" id="medDesc" name="medDesc" />
-
-          <button id="submitBtn" type="submit" class="btn btn-primary">
-            Submit
+          <button id="saveBtn" type="submit" class="btn btn-primary">
+            Save
           </button>
         </form>
-        <button id="homeBtn" class="btn btn-danger">Back to home</button>
+        <a id="back-button" class="btn btn-danger">Back to Appointments</a>
       </div>
     </div>
   </body>

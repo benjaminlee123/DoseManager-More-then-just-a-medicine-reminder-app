@@ -6,7 +6,7 @@
         Apache Cordova Team
     </author>
     <dependency id="google-translate" />
-    <content src="home.html" />
+    <content src="profilelogin.html" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
 </widget>
