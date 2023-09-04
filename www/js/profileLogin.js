@@ -30,6 +30,9 @@ function displayData() {
   profilesCollection
     .get()
     .then(function (querySnapshot) {
+      //to cycle between the different profile images
+      var i = 1;
+      //firebase query
       querySnapshot.forEach(function (doc) {
         var data = doc.data();
         var id = doc.id;
@@ -37,13 +40,27 @@ function displayData() {
 
         console.log(id);
         console.log(profName);
-        var profCard = `
-        <div id = "profiles">
-            <button class="profile-button btn btn-primary" data-item-id="${doc.id}">${data.name}</button>
+
+        var profileCard = `
+        <div class="row">
+            <div class="col-md-6">
+              <a class="profileIcon" href="home.html?id=${id}">
+                <img id="profileImg" src="www/img/profile-${i}.jpg" alt="profile image">
+              </a>
+              <p class="text-center">${profName}</p>
+            </div>
         </div>
         `;
+        i++;
+        profileList.innerHTML += profileCard;
 
-        profileList.innerHTML += profCard;
+        // Get all elements with the class "profileIcon"
+        var profileIcons = document.querySelectorAll(".profileIcon");
+
+        // Add a click event listener to each profileIcon
+        profileIcons.forEach(function (icon) {
+          icon.addEventListener("click", handleProfileButtonClick);
+        });
 
         var profileButtons = document.getElementsByClassName("profile-button");
         Array.from(profileButtons).forEach(function (button) {
