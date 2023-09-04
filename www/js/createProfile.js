@@ -17,7 +17,8 @@ document.addEventListener("deviceready", addProfile);
   var firestore = firebase.firestore();
 
   // Reference to the "ProfileTable" collection
-  var profilesCollection = firestore.collection("ProfileTable");
+  var profilesCollection = firestore.collection("ProfilesTesting");
+
 
   // Get reference to the form DOM element
   var form = document.getElementById("profileForm");
@@ -40,22 +41,25 @@ document.addEventListener("deviceready", addProfile);
 
     // Create a new profile object
     var newProfile = {
-      Name: firstName + " " + lastName,
-      DateOfBirth: dob,
-      Gender: gender,
+      name: firstName + " " + lastName,
+      dateOfBirth: dob,
+      gender: gender,
+      firstName: firstName,
+      lastName: lastName,
       // You can add other fields like gender here if needed
     };
 
     // Add the profile to the Firestore collection
-    profilesCollection.add(newProfile)
+    profilesCollection
+      .add(newProfile)
       .then((docRef) => {
         console.log("Profile added with Profile_id: ", docRef.id);
-        // Update the profile with Profile_id
-        docRef.update({ Profile_id: docRef.id });
+      })
+      .then(() => {
+        window.location.href = "profilelogin.html";
       })
       .catch((error) => {
         console.error("Error adding profile: ", error);
       });
   });
   }
-// Compare this snippet 

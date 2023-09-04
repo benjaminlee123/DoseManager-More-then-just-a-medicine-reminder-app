@@ -15,7 +15,21 @@ function addAppts() {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   var firestore = firebase.firestore();
-  var apptsCollection = firestore.collection("Appointments");
+  //var apptsCollection = firestore.collection("Appointments");
+
+  function getProfileItemIdFromURL() {
+    var urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get("id");
+  }
+
+  var profileId = getProfileItemIdFromURL();
+  console.log(profileId);
+
+  const mainCollectionDocID = profileId;
+  const mainCollectionRef = firestore.collection("ProfilesTesting").doc(mainCollectionDocID);
+  const subcollectionName = "Appointments";
+
+  var backButton = document.getElementById("back-button");
 
   //getting referenece for form DOM element
   var form = document.getElementById("formData");
@@ -40,18 +54,20 @@ function addAppts() {
       docName: docName,
     };
 
-    // Add the profile to the Firestore collection
-    apptsCollection
-      .add(newAppts)
-      .then((docRef) => {
-        console.log("Appointment added with ID: ", docRef.id);
-      })
-      .then(() => {
-        //navigate to home.html after submit button pressed
-        window.location.href = "upcomingappt.html";
-      })
-      .catch((error) => {
-        console.error("Error adding appointment: ", error);
-      });
-  });
+    mainCollectionRef.collection(subcollectionName).add(newAppts)
+    .then((docRef) => {
+      console.log("Document added to subcollection with ID: ", docRef.id);
+    })
+    .then(() => {
+      //navigate to home.html after submit button pressed
+      window.location.href = `upcomingappt.html?id=${profileId}`;
+    })
+    .catch((error) => {
+      console.error("Error adding appointment: ", error);
+    });
+  })
+
+  backButton.addEventListener("click", function(){
+    window.location.href = `upcomingappt.html?id=${profileId}`;
+  })
 }
