@@ -51,7 +51,11 @@ function displayData() {
             </div>
         </div>
         `;
+
         i++;
+        if (i == 6) {
+          i = 1;
+        }
         profileList.innerHTML += profileCard;
 
         // Get all elements with the class "profileIcon"
