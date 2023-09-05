@@ -29,8 +29,8 @@
     ></script>
   </head>
   <body>
-     <div class="container" id="google_translate_element">
-      <h1 class="text-center p-4">Welcome, [user]</h1>
+     <div class="container">
+      <h1 class="text-center p-4" id="userProfileName"></h1>
       <h5 class="text-center">Medication overview</h5>
       <div id="medication-list" class="container p-2">
         <div class="card">
@@ -41,13 +41,13 @@
         </div>
       </div>
       <div class="d-flex justify-content-center">
-        <a id="addMedBtn" href="addmeds.html" class="btn btn-success"
+        <a id="addMedBtn" class="btn btn-success"
           >Add new medication</a
         >
       </div>
     </div>
     <footer class="footer">
-      <a href="home.html">
+      <a id="medication-footer">
         <div class="navBarLinks">
           <img
             src="img/medicineIcon.png"
@@ -58,7 +58,7 @@
         </div>
       </a>
 
-      <a href="upcomingappt.html">
+      <a id="appointment-footer">
         <div class="navBarLinks">
           <img
             src="img/calendarIcon.png"
@@ -69,7 +69,7 @@
         </div>
       </a>
 
-      <a href="profile.html">
+      <a id="profile-footer">
         <div class="navBarLinks">
           <img
             src="img/profileIcon.png"

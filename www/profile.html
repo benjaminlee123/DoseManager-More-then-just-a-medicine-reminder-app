@@ -17,6 +17,8 @@
     <script src="cordova.js"></script>
     <script src="js/profile.js"></script>
 
+     <!--google translate-->
+     <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <!--css files-->
     <link rel="stylesheet" href="css/profiles.css" />
 
@@ -24,7 +26,7 @@
   </head>
   <body>
     <button type="button" class="close">
-      <!--img src="www/img/cancelIcon.png" alt="cancelIcon" width="20px" /-->
+      <img id="cancelIcon" src="img/cancelIcon.png" alt="cancelIcon" width="50px">
     </button>
 
     <div class="display-5 text-center">
@@ -44,7 +46,7 @@
                 src="img/profileIcon.png"
                 alt=""
                 class="profile-icons"
-              /><a href="personalinfo.html">Personal Information</a>
+              /><a id="profile-personalInfo">Edit Your Particulars</a>
             </h2>
           </div>
         </div>
@@ -55,7 +57,7 @@
                 src="img/notificationicon.png"
                 alt=""
                 class="profile-icons"
-              /><a href="notifications.html">Notifications</a>
+              /><a id="profile-notifications">Notifications</a>
             </h2>
           </div>
         </div>
@@ -66,7 +68,7 @@
                 src="img/calendarIcon.png"
                 alt=""
                 class="profile-icons"
-              /><a href="upcomingappt.html">Upcoming Appointments</a>
+              /><a id="profile-appointments">Upcoming Appointments</a>
             </h2>
           </div>
         </div>
@@ -77,47 +79,15 @@
                 src="img/settingsicon.png"
                 alt=""
                 class="profile-icons"
-              /><a href="languagesetting.html">Settings (Language)</a>
+              /><a id="profile-language">Settings (Language)</a>
             </h2>
           </div>
         </div>
       </div>
       <div class="col-12 mt-3 text-center">
-        <a href="profilelogin.html" class="btn btn-danger">Change Profile</a>      </div>
+        <a href="profilelogin.html" class="btn btn-success">Change Profile</a>
+        <button id="delete-profile" class="btn btn-danger">Delete Profile</button>
+      </div>
     </div>
-    <footer class="footer">
-      <a href="home.html">
-        <div class="navBarLinks">
-          <img
-            src="img/medicineIcon.png"
-            alt="Medicine Icon"
-            class="navBarIcons"
-          />
-          <p class="text-white">Medications</p>
-        </div>
-      </a>
-
-      <a href="upcomingappt.html">
-        <div class="navBarLinks">
-          <img
-            src="img/calendarIcon.png"
-            alt="Calendar Icon"
-            class="navBarIcons"
-          />
-          <p class="text-white">Appointments</p>
-        </div>
-      </a>
-
-      <a href="profile.html">
-        <div class="navBarLinks">
-          <img
-            src="img/profileIcon.png"
-            alt="Profile Icon"
-            class="navBarIcons"
-          />
-          <p class="text-white">Profile</p>
-        </div>
-      </a>
-    </footer>
   </body>
 </html>

@@ -17,8 +17,27 @@ function addMeds() {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   var firestore = firebase.firestore();
-  var medsCollection = firestore.collection("Medicine");
 
+  function getProfileIdFromURL(){
+    var urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get("id");
+  };
+
+  var profileId = getProfileIdFromURL();
+  console.log(profileId);
+  const profilesCollectionDocID = profileId;
+  const profilesCollectionRef = firestore.collection("ProfilesTesting").doc(profilesCollectionDocID);
+  const subcollectionName = "Medicine"
+  
+  var backHomeButton = document.getElementById("backHomeButton");
+
+  backHomeButton.addEventListener("click", handleBackHomeButtonClick);
+  function handleBackHomeButtonClick(){
+    var profileId = getProfileIdFromURL();
+    console.log(profileId);
+    window.location.href = `home.html?id=${profileId}`;
+  }
+  
   //getting reference for form element
   var form = document.getElementById("formData");
 
@@ -42,14 +61,13 @@ function addMeds() {
     };
 
     // Add medicine to Firestore collection
-    medsCollection
-      .add(newMeds)
+    profilesCollectionRef.collection(subcollectionName).add(newMeds)
       .then((docRef) => {
-        console.log("Profile added with ID: ", docRef.id);
+        console.log("Medicine added to profile with ID: ", docRef.id);
       })
       .then(() => {
         //navigate to home.html after submit button pressed
-        window.location.href = "home.html";
+        window.location.href = `home.html?id=${profileId}`;
       })
       .catch((error) => {
         console.error("Error adding profile: ", error);
@@ -186,3 +204,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement(
+    { pageLanguage: "en" },
+    "google_translate_element"
+  );
+}
