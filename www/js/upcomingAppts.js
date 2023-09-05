@@ -27,11 +27,14 @@ function displayData() {
 
   function getProfileIdFromURL() {
     var urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get("id");
+    var params = {};
+    params.id = urlParams.get("id");
+    params.pic = urlParams.get("pic");
+    return params;
   }
 
-  profileId = getProfileIdFromURL();
-  console.log(profileId);
+  profile = getProfileIdFromURL();
+  console.log(profile);
 
   var addApptsButton = document.getElementById("addApptBtn");
   var medicationFooterButton = document.getElementById("medication-footer");
@@ -47,30 +50,30 @@ function displayData() {
   profileFooterButton.addEventListener("click", handleProfileFooterButtonClick);
 
   function handleAddApptsButtonClick() {
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `addNewAppt.html?id=${profileId}`;
+    var profile = getProfileIdFromURL();
+    console.log(profile);
+    window.location.href = `addNewAppt.html?id=${profile.id}&pic=${profile.pic}`;
   }
 
   function handleMedFooterButtonClick() {
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `home.html?id=${profileId}`;
+    var profile = getProfileIdFromURL();
+    console.log(profile);
+    window.location.href = `home.html?id=${profile.id}&pic=${profile.pic}`;
   }
 
   function handleApptFooterButtonClick() {
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `upcomingappt.html?id=${profileId}`;
+    var profile = getProfileIdFromURL();
+    console.log(profile);
+    window.location.href = `upcomingappt.html?id=${profile.id}&pic=${profile.pic}`;
   }
 
   function handleProfileFooterButtonClick() {
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `profile.html?id=${profileId}`;
+    var profile = getProfileIdFromURL();
+    console.log(profile);
+    window.location.href = `profile.html?id=${profile.id}&pic=${profile.pic}`;
   }
 
-  var mainProfileId = profileId;
+  var mainProfileId = profile.id;
   var mainProfileRef = firestore
     .collection("ProfilesTesting")
     .doc(mainProfileId);
@@ -84,12 +87,14 @@ function displayData() {
     .then(function (querySnapshot) {
       querySnapshot.forEach(function (subDoc) {
         var subDocData = subDoc.data();
+        var profile = getProfileIdFromURL();
         var apptDateTime = subDocData.apptDateTime;
         var currentDateTime = new Date().toJSON();
         var id = subDoc.id;
         var formattedDate = formatDate(apptDateTime);
 
         console.log(id);
+        console.log(profile);
         if (apptDateTime > currentDateTime) {
           //populating html page with each appointment card details
           var apptCard = `
@@ -99,7 +104,7 @@ function displayData() {
                 <p id="apptDateTime" class="card-text">${formattedDate}</p>
                 <p id="docName" class="card-text">${subDocData.docName}</p>
             </div>
-            <button class="edit-button btn btn-primary" data-item-id="${subDoc.id}">Edit</button>
+            <button class="edit-button btn btn-primary" data-item-id="${subDoc.id}" data-item-pic="${profile.pic}">Edit</button>
         </div>
         `;
           //Add to the upcoming appointment counter to be displayed at the top of the page
@@ -132,9 +137,10 @@ function displayData() {
 
         function handleEditButtonClick(event) {
           var itemId = event.target.getAttribute("data-item-id");
+          var picID = event.target.getAttribute("data-item-pic");
 
-          if (itemId) {
-            window.location.href = `editAppt.html?id=${profileId}&apptId=${itemId}`;
+          if (itemId && picID) {
+            window.location.href = `editAppt.html?id=${profile.id}&apptId=${itemId}&pic=${picID}`;
           } else {
             console.log("Item ID not found in the button");
           }

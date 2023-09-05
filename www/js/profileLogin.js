@@ -44,7 +44,7 @@ function displayData() {
         var profileCard = `
         <div class="row">
             <div class="col-md-6">
-              <a class="profileIcon" href="home.html?id=${id}">
+              <a class="profileIcon" href="home.html?id=${id}&pic=${i}">
                 <img id="profileImg" src="www/img/profile-${i}.jpg" alt="profile image">
               </a>
               <p class="text-center fw-bold">${profName}</p>

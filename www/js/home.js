@@ -24,11 +24,14 @@ function displayData() {
 
   function getProfileIdFromURL() {
     var urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get("id");
+    var params = {};
+    params.id = urlParams.get("id");
+    params.pic = urlParams.get("pic");
+    return params;
   }
 
-  profileId = getProfileIdFromURL();
-  console.log(profileId);
+  profile = getProfileIdFromURL();
+  console.log(profile);
 
   //eventlisteners for each button with profile id passed in
   var addMedsButton = document.getElementById("addMedBtn");
@@ -49,30 +52,26 @@ function displayData() {
   profileFooterButton.addEventListener("click", handleProfileFooterButtonClick);
 
   function handleAddMedsButtonClick(event) {
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `addmeds.html?id=${profileId}`;
+    var profile = getProfileIdFromURL();
+    window.location.href = `addmeds.html?id=${profile.id}&pic=${profile.pic}`;
   }
 
   function handleMedFooterButtonClick() {
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `home.html?id=${profileId}`;
+    var profile = getProfileIdFromURL();
+    window.location.href = `home.html?id=${profile.id}&pic=${profile.pic}`;
   }
 
   function handleApptFooterButtonClick() {
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `upcomingappt.html?id=${profileId}`;
+    var profile = getProfileIdFromURL();
+    window.location.href = `upcomingappt.html?id=${profile.id}&pic=${profile.pic}`;
   }
 
   function handleProfileFooterButtonClick() {
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `profile.html?id=${profileId}`;
+    var profile = getProfileIdFromURL();
+    window.location.href = `profile.html?id=${profile.id}&pic=${profile.pic}`;
   }
 
-  var mainProfileId = profileId;
+  var mainProfileId = profile.id;
   var mainProfileRef = firestore
     .collection("ProfilesTesting")
     .doc(mainProfileId);

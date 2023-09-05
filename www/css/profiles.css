@@ -1,21 +1,26 @@
+#cancelIcon {
+  font-size: 30px;
+  padding: 20px;
+}
+
+#profileImg {
+  width: 40px;
+}
+
 .card {
   margin-top: 3rem;
+  background-color: #0096ff;
+  width: 330px;
 }
+
 .card-header h2 {
   position: relative;
+  color: white;
+}
+i {
+  padding: 10px;
 }
 
-.card-header img {
-  width: 20px;
-  height: 20px;
-  object-fit: cover;
-  margin-right: 10px;
-
-  @media (max-width: 768px) {
-    width: 20px;
-    height: auto;
-  }
-}
 .btn-danger:hover {
   background-color: #e08a8c;
 }

@@ -22,12 +22,15 @@ function addMeds() {
 
   function getProfileIdFromURL() {
     var urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get("id");
+    var params = {};
+    params.id = urlParams.get("id");
+    params.pic = urlParams.get("pic");
+    return params;
   }
 
-  var profileId = getProfileIdFromURL();
-  console.log(profileId);
-  const profilesCollectionDocID = profileId;
+  var profile = getProfileIdFromURL();
+  console.log(profile);
+  const profilesCollectionDocID = profile.id;
   const profilesCollectionRef = profilesCollection.doc(profilesCollectionDocID);
   const subcollectionName = "Medicine";
 
@@ -39,7 +42,7 @@ function addMeds() {
 
   //passing profileID into html to display correct home page
   homeBtn.addEventListener("click", function () {
-    window.location.href = `home.html?id=${profileId}`;
+    window.location.href = `home.html?id=${profile.id}&pic=${profile.pic}`;
   });
 
   form.addEventListener("submit", function (event) {
@@ -70,7 +73,7 @@ function addMeds() {
       })
       .then(() => {
         //navigate to home.html after submit button pressed
-        window.location.href = `home.html?id=${profileId}`;
+        window.location.href = `home.html?id=${profile.id}&pic=${profile.pic}`;
       })
       .catch((error) => {
         console.error("Error adding profile: ", error);
