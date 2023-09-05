@@ -37,6 +37,9 @@ function addAppts() {
   form.addEventListener("submit", function (event) {
     // Prevent the default form submission behavior
     event.preventDefault();
+    
+    // Debugging: Check if NewNotificationLib is defined
+    console.log("Is NewNotificationLib defined?", typeof NewNotificationLib !== 'undefined');
 
     // Get the values of the input fields by their IDs
     var apptLocationInput = document.getElementById("apptLocation");
@@ -53,10 +56,17 @@ function addAppts() {
       apptDateTime: apptDateTime,
       docName: docName,
     };
+    
+    // Retrieve the values from the reminder time input field
+    var reminderTimeInput = document.getElementById("reminderTime");
+    var reminderTime = parseInt(reminderTimeInput.value, 10);
 
     mainCollectionRef.collection(subcollectionName).add(newAppts)
     .then((docRef) => {
       console.log("Document added to subcollection with ID: ", docRef.id);
+
+        // Schedule the local notification using the new library function
+      scheduleNewNotification(apptLocation, apptDateTime, reminderTime);
     })
     .then(() => {
       //navigate to home.html after submit button pressed
@@ -70,4 +80,10 @@ function addAppts() {
   backButton.addEventListener("click", function(){
     window.location.href = `upcomingappt.html?id=${profileId}`;
   })
+}
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement(
+    { pageLanguage: "en" },
+    "google_translate_element"
+  );
 }

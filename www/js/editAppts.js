@@ -95,3 +95,9 @@ function editAppts() {
     window.location.href = `upcomingappt.html?id=${profileId}`;
   })
 };
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement(
+    { pageLanguage: "en" },
+    "google_translate_element"
+  );
+}

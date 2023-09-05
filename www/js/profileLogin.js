@@ -3,7 +3,7 @@ document.addEventListener("deviceready", displayData);
 function displayData() {
   //getting reference for div id
   var profileList = document.getElementById("profile-list");
- // var displayedProfiles = document.getElementById("profiles");
+  //var displayedProfiles = document.getElementById("profiles");
 
   // Clear previous content
   profileList.innerHTML = "";
@@ -30,33 +30,53 @@ function displayData() {
   profilesCollection
     .get()
     .then(function (querySnapshot) {
+      //to cycle between the different profile images
+      var i = 1;
+      //firebase query
       querySnapshot.forEach(function (doc) {
         var data = doc.data();
         var id = doc.id;
         var profName = data.name;
 
-        console.log(id);  
+        console.log(id);
         console.log(profName);
-        var profCard = `
-        <div id = "profiles">
-            <button class="p-5 profile-button btn btn-primary btn-lg" data-item-id="${doc.id}">${data.name}</button>
+
+        var profileCard = `
+        <div class="row">
+            <div class="col-md-6">
+              <a class="profileIcon" href="home.html?id=${id}">
+                <img id="profileImg" src="img/profile-${i}.jpg" alt="profile image">
+              </a>
+              <p class="text-center fw-bold">${profName}</p>
+            </div>
         </div>
         `;
 
-        profileList.innerHTML += profCard;
+        i++;
+        if (i == 6) {
+          i = 1;
+        }
+        profileList.innerHTML += profileCard;
+
+        // Get all elements with the class "profileIcon"
+        var profileIcons = document.querySelectorAll(".profileIcon");
+
+        // Add a click event listener to each profileIcon
+        profileIcons.forEach(function (icon) {
+          icon.addEventListener("click", handleProfileButtonClick);
+        });
 
         var profileButtons = document.getElementsByClassName("profile-button");
-        Array.from(profileButtons).forEach(function(button){
+        Array.from(profileButtons).forEach(function (button) {
           button.addEventListener("click", handleProfileButtonClick);
-        })
+        });
 
-        
-        function handleProfileButtonClick(event){
+        function handleProfileButtonClick(event) {
           var itemId = event.target.getAttribute("data-item-id");
-        
-          if(itemId){
+
+          if (itemId) {
             window.location.href = `home.html?id=${itemId}`;
-          }else{
+          } else {
             console.log("Item ID not found in the button");
           }
         }

@@ -1,6 +1,5 @@
 document.addEventListener("deviceready", displayData);
 
-const serverKey="AIzaSyB0LH3iO28cD0Aefv8kkbHHrWE1wNcIMEE"// experimental
 
 function displayData() {
   //getting reference for div id
@@ -101,18 +100,7 @@ function displayData() {
         `;
         //Add to the upcoming appointment counter to be displayed at the top of the page  
         upcomingAppts ++;
-    
-         // Send notification
-         const token = ""; //wait
-         const notificationBody = {
-           'notification': {
-             'title': 'Upcoming Appointment',
-             'body': `You have an appointment at ${subDocData.apptLocation} on ${formattedDate}.`,
-             'click_action': 'http://localhost:8000/'
-           },
-           'to': token
-         };
-         sendNotification(notificationBody);
+
         } else if (apptDateTime < currentDateTime) {
         //populating html page with each appointment card details
         var apptCard = `
@@ -176,24 +164,4 @@ function googleTranslateElementInit() {
     { pageLanguage: "en" },
     "google_translate_element"
   );
-}
-
-function sendNotification(notificationBody) {
-  const url = "https://fcm.googleapis.com/fcm/send";
-  const otherHeaders = new Headers({
-    'Content-Type': 'application/json',
-    'Authorization': `key=${serverKey}`
-  });
-
-  fetch(url, {
-    method: 'post',
-    headers: otherHeaders,
-    body: JSON.stringify(notificationBody)
-  }).then(response => {
-    return response.json();
-  }).then(data => {
-    console.log("Notification sent:", data);
-  }).catch(error => {
-    console.log("Notification not sent:", error);
-  });
 }

@@ -113,3 +113,9 @@ async function fetchAutocompleteResults(searchTerm) {
     return null;
   }
 }
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement(
+    { pageLanguage: "en" },
+    "google_translate_element"
+  );
+}
