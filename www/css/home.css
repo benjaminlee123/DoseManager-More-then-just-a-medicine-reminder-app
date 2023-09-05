@@ -1,27 +1,42 @@
-#card {
-  background-color: rgb(179, 236, 236);
+/* -------------------- med cards styling -------------------- */
+#card 
+{
+  background-color: #00FFE8;
 }
-#addMedBtn {
-  width: 80%;
-  position: fixed;
-  bottom: 100px;
-  z-index: 1;
-}
-
-#med-desc {
+#med-desc 
+{
   width: 50%;
 }
-
-#dosage-amt {
+#dosage-amt 
+{
   width: 25%;
   position: absolute;
   top: 10%;
   padding: 2%;
   right: 10%;
-  background-color: brown;
+  background-color: #FF6900;
+  color: #000000;
 }
 
-.footer {
+/* -------------------- addMed button styling -------------------- */
+#addMedBtn 
+{
+  width: 80%;
+  height: 5%;
+  position: fixed;
+  bottom: 100px;
+  z-index: 1;
+  background-color: black;
+  display: flex; /* Enable flexbox layout */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  color: white; /* Set text color to white for visibility */
+}
+
+
+/* -------------------- footer styling -------------------- */
+.footer 
+{
   position: fixed;
   bottom: 0;
   margin: 0;
@@ -32,19 +47,24 @@
   justify-content: space-between;
   align-items: center;
 }
-a {
+a 
+{
   text-decoration: none;
 }
-
-.navBarLinks {
+.navBarLinks 
+{
   text-align: center;
   flex: 1;
 }
-.navBarIcons {
+.navBarIcons 
+{
   margin-top: 10px;
   width: 20%;
 }
-.VIpgJd-ZVi9od-ORHb-OEVmcd {
+
+/* -------------------- google translate banner styling -------------------- */
+.VIpgJd-ZVi9od-ORHb-OEVmcd 
+{
   display: none !important;
 }
 
