@@ -47,7 +47,7 @@ function displayData() {
               <a class="profileIcon" href="home.html?id=${id}">
                 <img id="profileImg" src="www/img/profile-${i}.jpg" alt="profile image">
               </a>
-              <p class="text-center">${profName}</p>
+              <p class="text-center fw-bold">${profName}</p>
             </div>
         </div>
         `;
