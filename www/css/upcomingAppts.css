@@ -3,6 +3,12 @@ body
   margin-bottom: 100px!important;
 }
 
+/* ------------------- total appointments styling ------------------- */
+#totalApptCard 
+{
+  background-color: white!important;
+}
+
 /* ------------------- upcoming&missed appointments styling ------------------- */
 #upcomingApptBox 
 {
@@ -29,30 +35,46 @@ body
   font-weight: bold; 
 }
 
-/* ------------------- appointments card styling ------------------- */
-.card 
+/* ------------------- appointment cards styling ------------------- */
+.card-body
 {
-  background-color: rgb(255, 127, 80)!important;
+  width: 75%;
 }
-#totalApptCard 
-{
-  background-color: white!important;
-}
-
 #upcomingAppt 
 {
   background-color: rgb(255, 127, 80)!important;
 }
-
 #missedAppt 
 {
   background-color: rgb(255, 0, 0)!important;
 }
+.card-title
+{
+  font-weight: bold;
+}
 
+/* ------------------- edit button styling ------------------- */
 #editButton
 {
-  background-color: rgb(255, 0, 0)!important;
+  background-color: #0096ff!important;
+  width: 20%;
 }
+
+/* ------------------- createNewAppt styling ------------------- */
+.btn-success 
+{
+  width: 80%;
+  height: 5%;
+  position: fixed;
+  bottom: 100px;
+  z-index: 1;
+  background-color: black;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  color: white; 
+}
+
 /* ------------------- footer styling ------------------- */
 .footer 
 {

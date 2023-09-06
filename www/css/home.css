@@ -27,10 +27,10 @@
   bottom: 100px;
   z-index: 1;
   background-color: black;
-  display: flex; /* Enable flexbox layout */
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
-  color: white; /* Set text color to white for visibility */
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  color: white; 
 }
 
 
