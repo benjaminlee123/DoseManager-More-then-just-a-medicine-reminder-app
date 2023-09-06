@@ -11,7 +11,7 @@ body
   display: flex;
   justify-content: center; 
   align-items: center;
-  height: 200px;
+  height: 100px;
   text-align: center; 
   color: white; 
   font-weight: bold; 
@@ -23,7 +23,7 @@ body
   display: flex;
   justify-content: center; 
   align-items: center;
-  height: 200px;
+  height: 100px;
   text-align: center; 
   color: white; 
   font-weight: bold; 
