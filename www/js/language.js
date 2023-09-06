@@ -9,7 +9,10 @@ function languagePage() {
   //returns profile id
   function getProfileIdFromURL() {
     var urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get("id");
+    var params = {};
+    params.id = urlParams.get("id");
+    params.pic = urlParams.get("pic");
+    return params;
   }
 
   //home button
@@ -17,9 +20,9 @@ function languagePage() {
   homeBtn.addEventListener("click", handlebackToHomeBtnClick);
 
   function handlebackToHomeBtnClick(event) {
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `home.html?id=${profileId}`;
+    var profile = getProfileIdFromURL();
+    console.log(profile);
+    window.location.href = `home.html?id=${profile.id}&pic=${profile.pic}`;
   }
 
   // referencing language buttons from html

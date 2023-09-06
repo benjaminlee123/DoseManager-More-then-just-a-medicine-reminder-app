@@ -53,25 +53,25 @@ function username() {
   function handlePersonalInfoButtonClick() {
     var profile = getProfileIdFromURL();
     console.log(profile);
-    window.location.href = `personalinfo.html?id=${profile.id}`;
+    window.location.href = `personalinfo.html?id=${profile.id}&pic=${profile.pic}`;
   }
 
   function handleNotifButtonButtonClick() {
     var profile = getProfileIdFromURL();
     console.log(profile);
-    window.location.href = `notifications.html?id=${profile.id}`;
+    window.location.href = `notifications.html?id=${profile.id}&pic=${profile.pic}`;
   }
 
   function handleProfApptButtonButtonClick() {
     var profile = getProfileIdFromURL();
     console.log(profile);
-    window.location.href = `upcomingappt.html?id=${profile.id}`;
+    window.location.href = `upcomingappt.html?id=${profile.id}&pic=${profile.pic}`;
   }
 
   function handlelanguageButtonButtonClick() {
     var profile = getProfileIdFromURL();
     console.log(profile);
-    window.location.href = `languagesetting.html?id=${profile.id}`;
+    window.location.href = `languagesetting.html?id=${profile.id}&pic=${profile.pic}`;
   }
 
   function handleDeleteProfileButtonClick() {
