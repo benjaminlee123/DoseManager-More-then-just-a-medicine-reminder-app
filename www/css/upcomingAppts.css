@@ -1,12 +1,67 @@
-body{
+body
+{
   margin-bottom: 100px!important;
 }
 
-.card {
-    background-color: rgb(255, 127, 80)!important;
-  }
-  
-.footer {
+/* ------------------- upcoming&missed appointments styling ------------------- */
+#upcomingApptBox 
+{
+  background-color: rgb(255, 127, 80) !important;
+  border-radius: 10px; 
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  height: 200px;
+  text-align: center; 
+  color: white; 
+  font-weight: bold; 
+}
+#missedApptBox 
+{
+  background-color: rgb(255, 0, 0)!important;
+  border-radius: 10px; 
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  height: 200px;
+  text-align: center; 
+  color: white; 
+  font-weight: bold; 
+}
+
+
+.card 
+{
+  background-color: rgb(255, 127, 80)!important;
+}
+#totalApptCard 
+{
+  background-color: white!important;
+}
+
+#upcomingAppt 
+{
+  background-color: rgb(255, 127, 80)!important;
+}
+
+#missedAppt 
+{
+  background-color: rgb(255, 0, 0)!important;
+}
+
+.VIpgJd-ZVi9od-ORHb-OEVmcd 
+{
+  display: none !important;
+}
+#goog-gt-tt 
+{
+  display: none !important;
+}
+
+
+/* ------------------- footer styling ------------------- */
+.footer 
+{
   position: fixed;
   bottom: 0;
   margin: 0;
@@ -16,43 +71,18 @@ body{
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-a {
+}=
+a 
+{
   text-decoration: none;
 }
-
-.navBarLinks {
+.navBarLinks 
+{
   text-align: center;
   flex: 1;
 }
-.navBarIcons {
+.navBarIcons 
+{
   margin-top: 10px;
   width: 20%;
-}
-
-#upcomingApptBox {
-  background-color: rgb(255, 127, 80)!important;
-}
-
-#missedApptBox {
-  background-color: rgb(255, 0, 0)!important;
-}
-
-#totalApptCard {
-  background-color: white!important;
-}
-
-#upcomingAppt {
-  background-color: rgb(255, 127, 80)!important;
-}
-
-#missedAppt {
-  background-color: rgb(255, 0, 0)!important;
-}
-.VIpgJd-ZVi9od-ORHb-OEVmcd {
-  display: none !important;
-}
-#goog-gt-tt {
-  display: none !important;
 }
