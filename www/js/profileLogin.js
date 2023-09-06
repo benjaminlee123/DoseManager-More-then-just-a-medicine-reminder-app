@@ -3,11 +3,12 @@ document.addEventListener("deviceready", displayData);
 function displayData() {
   //getting reference for div id
   var profileList = document.getElementById("profile-list");
-  //var displayedProfiles = document.getElementById("profiles");
 
   // Clear previous content
   profileList.innerHTML = "";
-  //displayedProfiles.innerHTML = "";
+
+  //create a new div row
+  var currentRow = createNewRow(profileList);
 
   //firebase config
   const firebaseConfig = {
@@ -32,6 +33,7 @@ function displayData() {
     .then(function (querySnapshot) {
       //to cycle between the different profile images
       var i = 1;
+
       //firebase query
       querySnapshot.forEach(function (doc) {
         var data = doc.data();
@@ -41,22 +43,29 @@ function displayData() {
         console.log(id);
         console.log(profName);
 
-        var profileCard = `
-        <div class="row">
-            <div class="col-md-6">
+        var profileCard = `     
+            <div class="col">
               <a class="profileIcon" href="home.html?id=${id}&pic=${i}">
                 <img id="profileImg" src="www/img/profile-${i}.jpg" alt="profile image">
               </a>
               <p class="text-center fw-bold">${profName}</p>
-            </div>
-        </div>
+            </div>           
         `;
 
         i++;
+
+        //reset profile pic counter if more than 5
         if (i == 6) {
           i = 1;
         }
-        profileList.innerHTML += profileCard;
+
+        //add profile to row
+        currentRow.innerHTML += profileCard;
+
+        //checks if there is 2 profiles in a row
+        if (currentRow.childElementCount == 2) {
+          currentRow = createNewRow(profileList);
+        }
 
         // Get all elements with the class "profileIcon"
         var profileIcons = document.querySelectorAll(".profileIcon");
@@ -92,4 +101,14 @@ function googleTranslateElementInit() {
     { pageLanguage: "en" },
     "google_translate_element"
   );
+}
+
+function createNewRow(profileList) {
+  // Create a new row div
+  var currentRow = document.createElement("div");
+  //give it classname "row"
+  currentRow.className = "row";
+
+  var result = profileList.appendChild(currentRow);
+  return result;
 }

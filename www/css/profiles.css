@@ -11,6 +11,9 @@
   margin-top: 3rem;
   background-color: #0096ff;
   width: 330px;
+  /*width: 75%;
+  height: 5%;
+  border-radius: 10px;*/
 }
 
 .card-header h2 {
