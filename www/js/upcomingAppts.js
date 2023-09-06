@@ -95,7 +95,7 @@ function displayData() {
                 <p id="apptDateTime" class="card-text">${formattedDate}</p>
                 <p id="docName" class="card-text">${subDocData.docName}</p>
             </div>
-            <button class="edit-button btn btn-primary" data-item-id="${subDoc.id}">Edit</button>
+            <button class="edit-button btn btn-primary" id="editButton" data-item-id="${subDoc.id}">Edit</button>
         </div>
         `;
         //Add to the upcoming appointment counter to be displayed at the top of the page  
@@ -110,7 +110,7 @@ function displayData() {
                 <p id="apptDateTime" class="card-text">${formattedDate}</p>
                 <p id="docName" class="card-text">${subDocData.docName}</p>
             </div>
-            <button class="edit-button btn btn-primary" data-item-id="${subDoc.id}">Edit</button>
+            <button class="edit-button btn btn-primary" id="editButton" data-item-id="${subDoc.id}">Edit</button>
         </div>
         `;
 

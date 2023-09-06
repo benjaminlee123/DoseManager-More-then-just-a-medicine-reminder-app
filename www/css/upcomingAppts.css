@@ -29,7 +29,7 @@ body
   font-weight: bold; 
 }
 
-
+/* ------------------- appointments card styling ------------------- */
 .card 
 {
   background-color: rgb(255, 127, 80)!important;
@@ -49,16 +49,10 @@ body
   background-color: rgb(255, 0, 0)!important;
 }
 
-.VIpgJd-ZVi9od-ORHb-OEVmcd 
+#editButton
 {
-  display: none !important;
+  background-color: rgb(255, 0, 0)!important;
 }
-#goog-gt-tt 
-{
-  display: none !important;
-}
-
-
 /* ------------------- footer styling ------------------- */
 .footer 
 {
@@ -85,4 +79,14 @@ a
 {
   margin-top: 10px;
   width: 20%;
+}
+
+/* ------------------- google translate styling ------------------- */
+.VIpgJd-ZVi9od-ORHb-OEVmcd 
+{
+  display: none !important;
+}
+#goog-gt-tt 
+{
+  display: none !important;
 }
