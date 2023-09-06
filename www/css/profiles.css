@@ -34,9 +34,13 @@ i
 }
 
 /* ------------------- change & delete buttons styling ------------------- */
-.btn-danger:hover 
+.btn-danger:hover  
 {
   background-color: #e08a8c;
+}
+.btn-succes:hover
+{
+  background-color: pink;
 }
 .close 
 {
