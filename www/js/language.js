@@ -63,4 +63,8 @@ function languagePage() {
       .querySelector(".goog-te-combo")
       .dispatchEvent(new Event("change"));
   });
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

@@ -35,7 +35,11 @@ function username() {
   var languageButton = document.getElementById("profile-language");
   var deleteProfileButton = document.getElementById("delete-profile");
 
+<<<<<<< HEAD
   profileImg.innerHTML += `<img id="profileImg" src="www/img/profile-${profile.pic}.jpg" alt="profile image">`;
+=======
+  profileImg.innerHTML += `<img id="profileImg" src="img/profile-${profile.pic}.jpg" alt="profile image">`;
+>>>>>>> main
 
   cancelIconButton.addEventListener("click", handleCancelIconButtonClick);
   personalInfoButton.addEventListener("click", handlePersonalInfoButtonClick);
@@ -119,4 +123,8 @@ function googleTranslateElementInit() {
     { pageLanguage: "en" },
     "google_translate_element"
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

@@ -3,12 +3,18 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
     <meta name="color-scheme" content="light dark">
     <link rel="stylesheet" href="css/index.css">
+
+
+    <!--google translate-->
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
     <!-- Added Bootstrap CSS -->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -17,14 +23,15 @@
 
 <body>
     <div class="app">
-        <img src="img/DoseManager.png" alt="Dose Manager Logo" class="mx-auto d-block">
         <h1>Dose Manager</h1>
         <div>
-            <a href="profilelogin.html" class="btn btn-primary">Go to Login</a>
+            <a href="profilelogin.html" class="btn btn-primary">Go to Profile Selection</a>
         </div>
     </div>
     <script src="cordova.js"></script>
-    <script src="js/index.js"></script>
+
+
+
 </body>
 
 </html>

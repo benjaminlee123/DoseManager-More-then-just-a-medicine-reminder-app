@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Profile</title>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <!-- JavaScript files -->
+    <script src="cordova.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/createProfile.js"></script>
+
+    <!--google translate-->
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- CSS file -->
+    <link rel="stylesheet" href="css/createProfile.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Create A New Profile</h1>
+      <form id="profileForm">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" placeholder="Enter your first name" />
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" placeholder="Enter your last name" />
+        <label for="gender">Gender:</label>
+        <select id="gender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" placeholder="Enter your date of birth" />
+        <button id="saveBtn" type="submit" class="btn btn-primary">Save</button>
+      </form>
+    </div>
+  </body>
+</html>

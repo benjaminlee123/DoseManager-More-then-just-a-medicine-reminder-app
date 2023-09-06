@@ -113,4 +113,8 @@ function googleTranslateElementInit() {
     { pageLanguage: "en" },
     "google_translate_element"
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

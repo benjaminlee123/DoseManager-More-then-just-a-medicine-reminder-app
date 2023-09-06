@@ -1,179 +1,179 @@
 /* License Information... */
 
 :root {
-  /* Adding custom properties (variables) for reuse */
-  --font-default: system-ui, -apple-system, -apple-system-font, "Segoe UI",
-    "Roboto", sans-serif;
-  --font-size-default: 12px;
-  --main-bg-light: linear-gradient(to bottom, #ffffff 0%, #e4e4e4 51%);
-  --main-bg-dark: linear-gradient(to bottom, #3c3939 0%, #454849 51%);
-}
-
-* {
-  box-sizing: border-box; /* Ensure padding doesn't increase box sizes */
-  -webkit-tap-highlight-color: rgba(200, 65, 65, 0);
-}
-
-body {
-  -webkit-touch-callout: none;
-  -webkit-text-size-adjust: none;
-  -webkit-user-select: none;
-  background-color: var(--main-bg-light); /* Using the light bg as default */
-  font-family: var(--font-default);
-  font-size: var(--font-size-default);
-  height: 100vh;
-  margin: 0;
-  padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0)
-    env(safe-area-inset-bottom, 0) env(safe-area-inset-left, 0);
-  text-transform: uppercase;
-  width: 100%;
-}
-
-.app {
-  background: url(../img/DoseManager.png) no-repeat center top;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  height: 50px;
-  width: 225px;
-  text-align: center;
-  padding: 180px 0 0;
-  transform: translate(-50%, -50%); /* Better centering technique */
-}
-
-@media screen and (min-aspect-ratio: 1/1) and (min-width: 400px) {
+    /* Adding custom properties (variables) for reuse */
+    --font-default: system-ui, -apple-system, -apple-system-font, "Segoe UI",
+      "Roboto", sans-serif;
+    --font-size-default: 12px;
+    --main-bg-light: linear-gradient(to bottom, #ffffff 0%, #e4e4e4 51%);
+    --main-bg-dark: linear-gradient(to bottom, #3c3939 0%, #454849 51%);
+  }
+  
+  * {
+    box-sizing: border-box; /* Ensure padding doesn't increase box sizes */
+    -webkit-tap-highlight-color: rgba(200, 65, 65, 0);
+  }
+  
+  body {
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -webkit-user-select: none;
+    background-color: var(--main-bg-light); /* Using the light bg as default */
+    font-family: var(--font-default);
+    font-size: var(--font-size-default);
+    height: 100vh;
+    margin: 0;
+    padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0)
+      env(safe-area-inset-bottom, 0) env(safe-area-inset-left, 0);
+    text-transform: uppercase;
+    width: 100%;
+  }
+  
   .app {
-    background-position: left center;
-    padding: 75px 0 75px 170px;
+    background: url(../img/DoseManager.png) no-repeat center top;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 50px;
+    width: 225px;
+    text-align: center;
+    padding: 180px 0 0;
+    transform: translate(-50%, -50%); /* Better centering technique */
   }
-}
-
-h1 {
-  font-size: 24px;
-  font-weight: normal;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
-
-.event {
-  border-radius: 4px;
-  color: #fff;
-  font-size: var(--font-size-default);
-  margin: 0 30px;
-  padding: 2px 0;
-}
-
-.event.listening {
-  background-color: #333;
-}
-
-.event.received {
-  background-color: #4b946a;
-  display: none;
-}
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  gap: 20px; /* space between elements */
-}
-
-.logo {
-  max-width: 200px;
-  width: 100%;
-}
-
-h1 {
-  color: #000;
-  font-size: 2rem;
-}
-
-h2 {
-  color: #000;
-  font-size: 1.5rem;
-}
-
-.profiles {
-  display: flex;
-  flex-direction: column;
-  gap: 15px; /* space between profile buttons */
-}
-
-.profile {
-  display: block;
-  background: #4b946a;
-  padding: 10px 20px;
-  color: #fff;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: 0.3s;
-
-  &:hover {
-    background: #388a58; /* slightly darker shade on hover */
-  }
-}
-
-#profileImg {
-  width: 80px;
-  height: 80px;
-}
-
-button {
-  padding: 10px 20px;
-  background-color: #4b946a;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: 0.3s;
-}
-
-button:hover {
-  background-color: #388a58; /* slightly darker shade on hover */
-}
-
-#deviceready.ready .event.listening {
-  display: none;
-}
-#deviceready.ready .event.received {
-  display: block;
-}
-
-@keyframes fade {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.4;
-  }
-}
-
-.blink {
-  animation: fade 3s infinite;
-}
-.profile-button {
-  background-color: green;
-  color: white;
-  padding: 10px;
-  margin: 5px;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-}
-
-/*
-@media screen and (prefers-color-scheme: dark) {
-    body {
-        background-image: var(--main-bg-dark);
+  
+  @media screen and (min-aspect-ratio: 1/1) and (min-width: 400px) {
+    .app {
+      background-position: left center;
+      padding: 75px 0 75px 170px;
     }
-}
-*/
-/*google banner*/
-.VIpgJd-ZVi9od-ORHb-OEVmcd {
-  display: none !important;
-}
+  }
+  
+  h1 {
+    font-size: 24px;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .event {
+    border-radius: 4px;
+    color: #fff;
+    font-size: var(--font-size-default);
+    margin: 0 30px;
+    padding: 2px 0;
+  }
+  
+  .event.listening {
+    background-color: #333;
+  }
+  
+  .event.received {
+    background-color: #4b946a;
+    display: none;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 20px; /* space between elements */
+  }
+  
+  .logo {
+    max-width: 200px;
+    width: 100%;
+  }
+  
+  h1 {
+    color: #000;
+    font-size: 2rem;
+  }
+  
+  h2 {
+    color: #000;
+    font-size: 1.5rem;
+  }
+  
+  .profiles {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* space between profile buttons */
+  }
+  
+  .profile {
+    display: block;
+    background: #4b946a;
+    padding: 10px 20px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+  
+    &:hover {
+      background: #388a58; /* slightly darker shade on hover */
+    }
+  }
+  
+  #profileImg {
+    width: 80px;
+    height: 80px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #4b946a;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+  
+  button:hover {
+    background-color: #388a58; /* slightly darker shade on hover */
+  }
+  
+  #deviceready.ready .event.listening {
+    display: none;
+  }
+  #deviceready.ready .event.received {
+    display: block;
+  }
+  
+  @keyframes fade {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+  
+  .blink {
+    animation: fade 3s infinite;
+  }
+  .profile-button {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  /*
+  @media screen and (prefers-color-scheme: dark) {
+      body {
+          background-image: var(--main-bg-dark);
+      }
+  }
+  */
+  /*google banner*/
+  .VIpgJd-ZVi9od-ORHb-OEVmcd {
+    display: none !important;
+  }

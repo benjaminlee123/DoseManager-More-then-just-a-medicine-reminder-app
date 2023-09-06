@@ -61,4 +61,8 @@ function addProfile() {
         console.error("Error adding profile: ", error);
       });
   });
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main
