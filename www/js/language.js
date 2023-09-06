@@ -6,19 +6,30 @@ function languagePage() {
     "google_translate_element"
   );
 
-  // referencing buttons from html
+  //returns profile id
+  function getProfileIdFromURL() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var params = {};
+    params.id = urlParams.get("id");
+    params.pic = urlParams.get("pic");
+    return params;
+  }
+
+  //home button
+  var homeBtn = document.getElementById("backToHomeBtn");
+  homeBtn.addEventListener("click", handlebackToHomeBtnClick);
+
+  function handlebackToHomeBtnClick(event) {
+    var profile = getProfileIdFromURL();
+    console.log(profile);
+    window.location.href = `home.html?id=${profile.id}&pic=${profile.pic}`;
+  }
+
+  // referencing language buttons from html
   const englishBtn = document.getElementById("engButton");
   const chineseBtn = document.getElementById("chiButton");
   const malayBtn = document.getElementById("malayButton");
   const tamilBtn = document.getElementById("tamilButton");
-  var saveLanguageBtn = document.getElementById("saveLanguageBtn");
-  
-function getProfileIdFromURL(){
-    var urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get("id");
-  };
-
-  profileId = getProfileIdFromURL();
 
   //referencing google widget
   var languageSelect = document.getElementById("google_translate_element");
@@ -52,8 +63,4 @@ function getProfileIdFromURL(){
       .querySelector(".goog-te-combo")
       .dispatchEvent(new Event("change"));
   });
-  saveLanguageBtn.addEventListener("click", function(){
-    window.location.href = `profile.html?id=${profileId}`;
-  })
-};
-
+}

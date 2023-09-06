@@ -1,6 +1,6 @@
 document.addEventListener("deviceready", addProfile);
-  
-  function addProfile(){
+
+function addProfile() {
   // Firebase config
   const firebaseConfig = {
     apiKey: "AIzaSyAt4SUmSwvkHdas68AYQdjOe7fkfL547gQ",
@@ -18,7 +18,6 @@ document.addEventListener("deviceready", addProfile);
 
   // Reference to the "ProfileTable" collection
   var profilesCollection = firestore.collection("ProfilesTesting");
-
 
   // Get reference to the form DOM element
   var form = document.getElementById("profileForm");
@@ -62,4 +61,4 @@ document.addEventListener("deviceready", addProfile);
         console.error("Error adding profile: ", error);
       });
   });
-  }
+}

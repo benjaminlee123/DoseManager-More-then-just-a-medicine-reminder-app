@@ -17,21 +17,27 @@ function editAppts() {
 
   function getParametersFromURL() {
     var urlParams = new URLSearchParams(window.location.search);
-    var profileId = urlParams.get("id");
+    var profile = {};
+    profile.id = urlParams.get("id");
+    profile.pic = urlParams.get("pic");
+
     var apptId = urlParams.get("apptId");
-    
-    return { profileId, apptId };
+    return { profile, apptId };
   }
-  
-  var { profileId, apptId } = getParametersFromURL();
-  
-  console.log("profId:", profileId);
+
+  var { profile, apptId } = getParametersFromURL();
+
+  console.log("profId:", profile.id);
   console.log("apptId:", apptId);
 
-  const mainCollectionDocID = profileId;
-  const mainCollectionRef = firestore.collection("ProfilesTesting").doc(mainCollectionDocID);
+  const mainCollectionDocID = profile.id;
+  const mainCollectionRef = firestore
+    .collection("ProfilesTesting")
+    .doc(mainCollectionDocID);
   const subcollectionName = "Appointments";
-  const subcollectionRef = mainCollectionRef.collection(subcollectionName).doc(apptId);
+  const subcollectionRef = mainCollectionRef
+    .collection(subcollectionName)
+    .doc(apptId);
 
   var apptLocationInput = document.getElementById("editApptLocation");
   var apptDateTimeInput = document.getElementById("editApptDateTime");
@@ -39,20 +45,22 @@ function editAppts() {
   var updateButton = document.getElementById("update-button");
   var deleteButton = document.getElementById("delete-button");
   var backButton = document.getElementById("back-button");
-  
 
-  subcollectionRef.get().then(function(doc){
-    if(doc.exists){
+  subcollectionRef
+    .get()
+    .then(function (doc) {
+      if (doc.exists) {
         var itemData = doc.data();
         apptLocationInput.value = itemData.apptLocation;
         apptDateTimeInput.value = itemData.apptDateTime;
         docNameInput.value = itemData.docName;
-    } else {
+      } else {
         console.log("Item not found");
-    }
-  }).catch(function(error){
-    console.log("Error retrieving item: ", error);
-  })
+      }
+    })
+    .catch(function (error) {
+      console.log("Error retrieving item: ", error);
+    });
 
   var editForm = document.getElementById("editData");
 
@@ -61,40 +69,45 @@ function editAppts() {
     event.preventDefault();
   });
 
-  updateButton.addEventListener("click", function(){
+  updateButton.addEventListener("click", function () {
     var newApptLocation = apptLocationInput.value;
     var newApptDateTime = apptDateTimeInput.value;
     var newDocName = docNameInput.value;
 
-    subcollectionRef.update({
+    subcollectionRef
+      .update({
         apptLocation: newApptLocation,
         apptDateTime: newApptDateTime,
-        docName: newDocName
-    }).then(function(){
+        docName: newDocName,
+      })
+      .then(function () {
         console.log("Item Updated Successfully");
-        window.location.href = `upcomingappt.html?id=${profileId}`;
-
-    }).catch(function(error){
+        window.location.href = `upcomingappt.html?id=${profile.id}&pic=${profile.pic}`;
+      })
+      .catch(function (error) {
         console.log("Error updating item:", error);
-    })
-  })
+      });
+  });
 
-  deleteButton.addEventListener("click", function() {
+  deleteButton.addEventListener("click", function () {
     if (confirm("Are you sure you want to delete this appointment?")) {
       // Delete the document from Firestore
-      subcollectionRef.delete().then(function() {
+      subcollectionRef
+        .delete()
+        .then(function () {
           console.log("Item deleted successfully");
-          window.location.href = `upcomingappt.html?id=${profileId}`;
-      }).catch(function(error) {
+          window.location.href = `upcomingappt.html?id=${profile.id}&pic=${profile.pic}`;
+        })
+        .catch(function (error) {
           console.log("Error deleting item:", error);
-      });
+        });
     }
   });
 
-  backButton.addEventListener("click", function(){
-    window.location.href = `upcomingappt.html?id=${profileId}`;
-  })
-};
+  backButton.addEventListener("click", function () {
+    window.location.href = `upcomingappt.html?id=${profile.id}&pic=${profile.pic}`;
+  });
+}
 function googleTranslateElementInit() {
   new google.translate.TranslateElement(
     { pageLanguage: "en" },
