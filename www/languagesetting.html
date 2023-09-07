@@ -26,33 +26,28 @@
     <script src="cordova.js"></script>
     <script src="js/language.js"></script>
   </head>
+
   <body>
-    <h1 class="text-center mt-4">Language settings</h1>
-    <div class="container">
-      <div
-        class="d-flex justify-content-center flex-column align-items-center mt-4"
-      >
-        <button id="engButton" class="btn btn-info w-50 mt-2">
-          English language
-        </button>
-        <button id="chiButton" class="btn btn-info w-50 mt-2">
-          Chinese language
-        </button>
-        <button id="malayButton" class="btn btn-info w-50 mt-2">
-          Malay language
-        </button>
-        <button id="tamilButton" class="btn btn-info w-50 mt-2">
-          Tamil language
-        </button>
-        <button
-          id="saveLanguageBtn"
-          type="button"
-          class="btn btn-success btn-lg btn-block"
-        >
-          Save
-        </button>
-      </div>
+    <h1>Language Settings</h1>
+
+    <div class="button-container">
+      <button id="engButton">English language</button>
+      <br>
+
+      <button id="chiButton">Chinese language</button>
+      <br>
+
+      <button id="malayButton">Malay language</button>
+      <br>
+
+      <button id="tamilButton">Tamil language</button>
+      <br>
+
+      <button id="saveLanguageBtn"type="button" class="btn btn-success btn-lg btn-block">
+        Save
+      </button>
     </div>
+
     <div id="google_translate_element"></div>
   </body>
 </html>

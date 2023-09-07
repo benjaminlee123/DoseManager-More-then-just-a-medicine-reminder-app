@@ -12,7 +12,8 @@
 }
 
 /* ------------------- blue buttons styling ------------------- */
-.card {
+.card 
+{
   margin-top: 3rem;
   background-color: #0096ff;
   width: 75%;  
