@@ -89,6 +89,9 @@ function displayData() {
         if(apptDateTime > currentDateTime){
         //populating html page with each appointment card details
         var apptCard = `
+        <div id="helloHi">
+        <h3>Upcoming Appointments: </h3>
+        </div>
         <div id = "upcomingAppt" class="card mt-4 rounded-5">
             <div class="card-body">
                 <h5 class="card-title">${subDocData.apptLocation}</h5>
@@ -98,6 +101,7 @@ function displayData() {
         </div>
         <div>
           <button class="edit-button btn btn-primary" id="editButton" data-item-id="${subDoc.id}">Edit</button>
+          <button class="delete-button btn btn-primary" id="deleteButton" data-item-id="#">Delete</button>
         </div>
 
         `;
@@ -107,12 +111,19 @@ function displayData() {
         } else if (apptDateTime < currentDateTime) {
         //populating html page with each appointment card details
         var apptCard = `
+        <div id="helloHi">
+        <h3>Missed Appointments: </h3>
+        </div>
         <div id = "missedAppt" class="card mt-4 rounded-5">
             <div class="card-body">
                 <h5 class="card-title" id="apptLocation">${subDocData.apptLocation}</h5>
                 <p id="apptDateTime" class="card-text">${formattedDate}</p>
                 <p id="docName" class="card-text">${subDocData.docName}</p>
             </div>
+        </div>
+        <div>
+          <button class="delete-button btn btn-primary" id="deleteButton" data-item-id="#">Delete</button>
+          <button class="reschedule-button btn btn-primary" id="rescheduleButton" data-item-id="#">Reschedule</button>
         </div>
         `;
 

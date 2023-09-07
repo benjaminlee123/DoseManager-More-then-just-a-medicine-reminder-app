@@ -35,23 +35,25 @@
   <body>
     <div class="container-fluid overflow-auto">
 
-    <h1 class="text-center p-4">Upcoming Appointments</h1>
+      <h1 class="text-center p-4">Upcoming Appointments</h1>
 
+      <!-- total appointments card -->
       <div class="card p-2" id="totalApptCard">
         <div class="card-body">
-          <p class="card-text">You have <span id="upcoming-appts">Loading...</span> Upcoming Appointments</p>
-          <br>
-          <p class="card-text">and <span id="missed-appts">Loading...</span> Missed Appointments</p>
+          <p class="card-text">You have <span id="upcoming-appts">0</span> upcoming appointment(s) and <span id="missed-appts">0</span> missed appointment(s).</p>
         </div>
       </div>
+      <br>
 
+      <!-- appointment legend card -->
       <div id="apptLegend" class="container p-2">
         <div class="row">
-          <div class="col-4 col-md-4 rounded text-center" id="upcomingApptBox">
-            <p>Upcoming Appointment</p>
+          <div class="col-4 col-md-4 rounded text-center" id="legend">
+            <p>Legend: </p>
           </div>
 
-          <div class="col-4 col-md-4">
+          <div class="col-4 col-md-4 rounded text-center" id="upcomingApptBox">
+            <p>Upcoming Appointment</p>
           </div>
 
           <div class="col-4 col-md-4 rounded text-center" id="missedApptBox">
@@ -60,6 +62,7 @@
         </div>
       </div>
 
+      <!-- appointment cards -->
       <div id="appt-list" class="container p-2">
         <div class="card">
           <div class="card-body">
@@ -69,7 +72,9 @@
           </div>
         </div>
       </div>
+      <br>
 
+      <!-- create new appointment -->
       <div class="d-flex justify-content-center">
         <a id="addApptBtn" class="btn btn-success">
           Create New Appointment
@@ -78,6 +83,7 @@
 
     </div>
 
+    <!-- footer -->
     <footer class="footer">
       <a id="medication-footer">
         <div class="navBarLinks">
