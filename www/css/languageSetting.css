@@ -5,6 +5,26 @@
   z-index: 1;
 }
 
+#engButton {
+  background-color: #0096ff;
+  color: white;
+}
+
+#chiButton {
+  background-color: #0096ff;
+  color: white;
+}
+
+#malayButton {
+  background-color: #0096ff;
+  color: white;
+}
+
+#tamilButton {
+  background-color: #0096ff;
+  color: white;
+}
+
 /*for google translate banner*/
 #goog-gt-tt {
   display: none !important;
