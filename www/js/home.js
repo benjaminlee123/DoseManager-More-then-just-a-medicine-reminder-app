@@ -106,7 +106,6 @@ function displayData() {
         <div>
           <button id="editButton">Edit</button>
           <button id="deleteButton">Delete</button>
-          
         </div>
       `;
         medicationList.innerHTML += medicationCard;

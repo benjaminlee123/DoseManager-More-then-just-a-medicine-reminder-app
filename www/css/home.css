@@ -2,6 +2,7 @@
 #card 
 {
   background-color: rgb(255, 127, 80);
+  border: 1px solid transparent; /* This sets the border color to transparent */
 }
 #med-desc 
 {
@@ -16,19 +17,18 @@
   right: 10%;
   background-color: white;
   color: black;
+  border: 1px solid transparent; /* This sets the border color to transparent */
 }
-#editButton
+#editButton, #deleteButton 
 {
   background-color: #0096ff!important;
+  color: white;
   width: 20%;
   margin-left: 10px;
+  border-radius: 5px; 
+  border: 1px solid transparent; /* This sets the border color to transparent */
 }
-#deleteButton
-{
-  background-color: #0096ff!important;
-  width: 20%;
-  margin-left: 10px; 
-}
+
 /* -------------------- addMed button styling -------------------- */
 #addMedBtn 
 {
