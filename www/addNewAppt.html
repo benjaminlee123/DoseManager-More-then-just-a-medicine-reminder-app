@@ -17,7 +17,7 @@
 
     <!--google translate-->
     <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    
+
     <!--bootstrap-->
     <link
       rel="stylesheet"
@@ -39,16 +39,21 @@
           <label for="apptLocation">Appointment Location</label><br />
           <input type="text" id="apptLocation" name="apptLocation" /><br />
           <label for="apptDateTime">Appointment Date & Time</label><br />
-          <input type="datetime-local" id="apptDateTime" name="apptDateTime" /><br />
+          <input
+            type="datetime-local"
+            id="apptDateTime"
+            name="apptDateTime"
+          /><br />
           <label for="docName">Doctor Name</label><br />
-          <input type="text" id="docName" name="docName" /><br />   <!-- ... -->
-            <label for="reminderTime">Set Reminder</label><br />
-            <select id="reminderTime">
-              <option value="5">5 minutes before</option>
-              <option value="15">15 minutes before</option>
-              <option value="30">30 minutes before</option>
-              <option value="60">1 hour before</option>
-            </select>
+          <input type="text" id="docName" name="docName" /><br />
+          <!-- ... -->
+          <label for="reminderTime">Set Reminder</label><br />
+          <select id="reminderTime">
+            <option value="5">5 minutes before</option>
+            <option value="15">15 minutes before</option>
+            <option value="30">30 minutes before</option>
+            <option value="60">1 hour before</option>
+          </select>
           <button id="saveBtn" type="submit" class="btn btn-primary">
             Save
           </button>
