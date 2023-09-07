@@ -118,7 +118,7 @@ function displayData() {
                 <p id="apptDateTime" class="card-text">${formattedDate}</p>
                 <p id="docName" class="card-text">${subDocData.docName}</p>
             </div>
-            <button class="edit-button btn btn-primary" data-item-id="${subDoc.id}">Edit</button>
+            <button class="edit-button btn btn-primary" data-item-id="${subDoc.id}" data-item-pic="${profile.pic}">Edit</button>
         </div>
         `;
 
@@ -138,7 +138,6 @@ function displayData() {
         function handleEditButtonClick(event) {
           var itemId = event.target.getAttribute("data-item-id");
           var picID = event.target.getAttribute("data-item-pic");
-
           if (itemId && picID) {
             window.location.href = `editAppt.html?id=${profile.id}&apptId=${itemId}&pic=${picID}`;
           } else {
