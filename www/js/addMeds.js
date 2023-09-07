@@ -18,7 +18,7 @@ function addMeds() {
   firebase.initializeApp(firebaseConfig);
   var firestore = firebase.firestore();
 
-  var profilesCollection = firestore.collection("ProfilesTesting");
+  var profilesCollection = firestore.collection("Profiles");
 
   function getProfileIdFromURL() {
     var urlParams = new URLSearchParams(window.location.search);

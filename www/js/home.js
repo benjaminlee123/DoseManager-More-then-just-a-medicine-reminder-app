@@ -71,10 +71,9 @@ function displayData() {
     window.location.href = `profile.html?id=${profile.id}&pic=${profile.pic}`;
   }
 
+  //getting the profile id of the document
   var mainProfileId = profile.id;
-  var mainProfileRef = firestore
-    .collection("ProfilesTesting")
-    .doc(mainProfileId);
+  var mainProfileRef = firestore.collection("Profiles").doc(mainProfileId);
   var subCollectionRef = mainProfileRef.collection("Medicine");
 
   mainProfileRef

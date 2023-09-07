@@ -30,7 +30,7 @@ function addAppts() {
 
   const mainCollectionDocID = profile.id;
   const mainCollectionRef = firestore
-    .collection("ProfilesTesting")
+    .collection("Profiles")
     .doc(mainCollectionDocID);
   const subcollectionName = "Appointments";
 

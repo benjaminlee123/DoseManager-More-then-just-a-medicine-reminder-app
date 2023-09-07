@@ -74,9 +74,7 @@ function displayData() {
   }
 
   var mainProfileId = profile.id;
-  var mainProfileRef = firestore
-    .collection("ProfilesTesting")
-    .doc(mainProfileId);
+  var mainProfileRef = firestore.collection("Profiles").doc(mainProfileId);
   var subCollectionRef = mainProfileRef.collection("Appointments");
 
   //retrieving data from firebase by timestamp

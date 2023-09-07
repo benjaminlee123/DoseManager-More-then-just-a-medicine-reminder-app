@@ -17,7 +17,7 @@ function addProfile() {
   var firestore = firebase.firestore();
 
   // Reference to the "ProfileTable" collection
-  var profilesCollection = firestore.collection("ProfilesTesting");
+  var profilesCollection = firestore.collection("Profiles");
 
   // Get reference to the form DOM element
   var form = document.getElementById("profileForm");

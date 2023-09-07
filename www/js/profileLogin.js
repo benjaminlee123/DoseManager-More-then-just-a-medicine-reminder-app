@@ -24,7 +24,7 @@ function displayData() {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   var firestore = firebase.firestore();
-  var profilesCollection = firestore.collection("ProfilesTesting");
+  var profilesCollection = firestore.collection("Profiles");
 
   //retrieving data from firebase by timestamp
   //orderBy("apptDateTime") ensures the data is displaying the earliest appt first

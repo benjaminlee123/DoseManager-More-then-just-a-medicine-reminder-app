@@ -32,7 +32,7 @@ function editAppts() {
 
   const mainCollectionDocID = profile.id;
   const mainCollectionRef = firestore
-    .collection("ProfilesTesting")
+    .collection("Profiles")
     .doc(mainCollectionDocID);
   const subcollectionName = "Appointments";
   const subcollectionRef = mainCollectionRef
