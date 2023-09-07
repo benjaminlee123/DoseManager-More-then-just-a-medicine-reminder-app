@@ -9,13 +9,8 @@
 
 .card {
   margin-top: 3rem;
-<<<<<<< HEAD
-  background-color: #0096ff;
+  background-color: rgba(0, 150, 255, 0.5);
   width: 330px;
-=======
- background-color: rgba(0, 150, 255, 0.5);  
- width: 330px;
->>>>>>> main
   /*width: 75%;
   height: 5%;
   border-radius: 10px;*/
@@ -62,8 +57,4 @@ a {
 /*google banner*/
 .VIpgJd-ZVi9od-ORHb-OEVmcd {
   display: none !important;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> main

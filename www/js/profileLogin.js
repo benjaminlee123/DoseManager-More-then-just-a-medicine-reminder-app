@@ -3,11 +3,12 @@ document.addEventListener("deviceready", displayData);
 function displayData() {
   //getting reference for div id
   var profileList = document.getElementById("profile-list");
-  //var displayedProfiles = document.getElementById("profiles");
 
   // Clear previous content
   profileList.innerHTML = "";
-  //displayedProfiles.innerHTML = "";
+
+  //create a new div row
+  var currentRow = createNewRow(profileList);
 
   //firebase config
   const firebaseConfig = {
@@ -26,36 +27,65 @@ function displayData() {
   var profilesCollection = firestore.collection("ProfilesTesting");
 
   //retrieving data from firebase by timestamp
+  //orderBy("apptDateTime") ensures the data is displaying the earliest appt first
   profilesCollection
     .get()
     .then(function (querySnapshot) {
+      //to cycle between the different profile images
+      var i = 1;
+
+      //firebase query
       querySnapshot.forEach(function (doc) {
         var data = doc.data();
         var id = doc.id;
         var profName = data.name;
 
-        console.log(id);  
+        console.log(id);
         console.log(profName);
-        var profCard = `
-        <div id = "profiles">
-            <button class="profile-button btn btn-primary" data-item-id="${doc.id}">${data.name}</button>
-        </div>
+
+        var profileCard = `     
+            <div class="col">
+              <a class="profileIcon" href="home.html?id=${id}&pic=${i}">
+                <img id="profileImg" src="img/profile-${i}.jpg" alt="profile image">
+              </a>
+              <p class="text-center fw-bold">${profName}</p>
+            </div>           
         `;
 
-        profileList.innerHTML += profCard;
+        i++;
+
+        //reset profile pic counter if more than 5
+        if (i == 6) {
+          i = 1;
+        }
+
+        //add profile to row
+        currentRow.innerHTML += profileCard;
+
+        //checks if there is 2 profiles in a row
+        if (currentRow.childElementCount == 2) {
+          currentRow = createNewRow(profileList);
+        }
+
+        // Get all elements with the class "profileIcon"
+        var profileIcons = document.querySelectorAll(".profileIcon");
+
+        // Add a click event listener to each profileIcon
+        profileIcons.forEach(function (icon) {
+          icon.addEventListener("click", handleProfileButtonClick);
+        });
 
         var profileButtons = document.getElementsByClassName("profile-button");
-        Array.from(profileButtons).forEach(function(button){
+        Array.from(profileButtons).forEach(function (button) {
           button.addEventListener("click", handleProfileButtonClick);
-        })
+        });
 
-        
-        function handleProfileButtonClick(event){
+        function handleProfileButtonClick(event) {
           var itemId = event.target.getAttribute("data-item-id");
-        
-          if(itemId){
+
+          if (itemId) {
             window.location.href = `home.html?id=${itemId}`;
-          }else{
+          } else {
             console.log("Item ID not found in the button");
           }
         }
@@ -64,4 +94,21 @@ function displayData() {
     .catch(function (error) {
       console.error("Error getting appointment documents: ", error);
     });
+}
+
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement(
+    { pageLanguage: "en" },
+    "google_translate_element"
+  );
+}
+
+function createNewRow(profileList) {
+  // Create a new row div
+  var currentRow = document.createElement("div");
+  //give it classname "row"
+  currentRow.className = "row";
+
+  var result = profileList.appendChild(currentRow);
+  return result;
 }

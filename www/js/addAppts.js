@@ -15,23 +15,28 @@ function addAppts() {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   var firestore = firebase.firestore();
-  //var apptsCollection = firestore.collection("Appointments");
+  var apptsCollection = firestore.collection("Appointments");
 
   function getProfileItemIdFromURL() {
     var urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get("id");
+    var params = {};
+    params.id = urlParams.get("id");
+    params.pic = urlParams.get("pic");
+    return params;
   }
 
-  var profileId = getProfileItemIdFromURL();
-  console.log(profileId);
+  var profile = getProfileItemIdFromURL();
+  console.log(profile);
 
-  const mainCollectionDocID = profileId;
-  const mainCollectionRef = firestore.collection("ProfilesTesting").doc(mainCollectionDocID);
+  const mainCollectionDocID = profile.id;
+  const mainCollectionRef = firestore
+    .collection("ProfilesTesting")
+    .doc(mainCollectionDocID);
   const subcollectionName = "Appointments";
 
   var backButton = document.getElementById("back-button");
 
-  //getting referenece for form DOM element
+  //getting reference for form DOM element
   var form = document.getElementById("formData");
 
   form.addEventListener("submit", function (event) {
@@ -54,20 +59,36 @@ function addAppts() {
       docName: docName,
     };
 
-    mainCollectionRef.collection(subcollectionName).add(newAppts)
-    .then((docRef) => {
-      console.log("Document added to subcollection with ID: ", docRef.id);
-    })
-    .then(() => {
-      //navigate to home.html after submit button pressed
-      window.location.href = `upcomingappt.html?id=${profileId}`;
-    })
-    .catch((error) => {
-      console.error("Error adding appointment: ", error);
-    });
-  })
+    // Retrieve the values from the reminder time input field
+    /*var reminderTimeInput = document.getElementById("reminderTime");
+    var reminderTime = parseInt(reminderTimeInput.value, 10);*/
 
-  backButton.addEventListener("click", function(){
-    window.location.href = `upcomingappt.html?id=${profileId}`;
-  })
+    mainCollectionRef
+      .collection(subcollectionName)
+      .add(newAppts)
+      .then((docRef) => {
+        console.log("Document added to subcollection with ID: ", docRef.id);
+
+        // Schedule the local notification using the new library function
+        //scheduleNewNotification(apptLocation, apptDateTime, reminderTime);
+      })
+      .then(() => {
+        //navigate to home.html after submit button pressed
+        window.location.href = `upcomingappt.html?id=${profile.id}&pic=${profile.pic}`;
+      })
+      .catch((error) => {
+        console.error("Error adding appointment: ", error);
+      });
+  });
+
+  backButton.addEventListener("click", function () {
+    window.location.href = `upcomingappt.html?id=${profile.id}&pic=${profile.pic}`;
+  });
+}
+
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement(
+    { pageLanguage: "en" },
+    "google_translate_element"
+  );
 }

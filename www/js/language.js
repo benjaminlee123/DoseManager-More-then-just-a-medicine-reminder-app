@@ -64,4 +64,3 @@ function languagePage() {
       .dispatchEvent(new Event("change"));
   });
 }
-

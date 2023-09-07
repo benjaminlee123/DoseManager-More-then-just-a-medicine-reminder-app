@@ -1,5 +1,4 @@
 #saveLanguageBtn {
-<<<<<<< HEAD
   width: 80%;
   position: fixed;
   bottom: 100px;
@@ -16,21 +15,3 @@
 #google_translate_element {
   display: none !important;
 }
-=======
-    width: 80%;
-    position: fixed;
-    bottom: 100px;
-    z-index: 1;
-  }
-  
-  /*for google translate banner*/
-  #goog-gt-tt {
-    display: none !important;
-  }
-  .VIpgJd-ZVi9od-ORHb-OEVmcd {
-    display: none !important;
-  }
-  #google_translate_element {
-    display: none !important;
-  }
->>>>>>> main

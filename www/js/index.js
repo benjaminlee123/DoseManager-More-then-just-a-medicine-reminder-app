@@ -1,30 +1,12 @@
 // Wait for the deviceready event before using any of Cordova's device APIs.
 // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
-/*
-//  DoseMAanager's Firebase configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyAt4SUmSwvkHdas68AYQdjOe7fkfL547gQ",
-    authDomain: "dosemanager-d0236.firebaseapp.com",
-    projectId: "dosemanager-d0236",
-    storageBucket: "dosemanager-d0236.appspot.com",
-    messagingSenderId: "373646054095",
-    appId: "1:373646054095:web:89660fa48e041a7d231dba",
-    measurementId: "G-XDL965JQ9H"
-  };
-  // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-*/
-// Wait for the deviceready event before using any of Cordova's device APIs.
 
 document.addEventListener("deviceready", onDeviceReady, false);
-
 function onDeviceReady() {
   console.log("Cordova device is ready!");
 }
-
 function loadDB() {
-  //  DoseMAanager's Firebase configuration
+  //  DoseManager's Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyAt4SUmSwvkHdas68AYQdjOe7fkfL547gQ",
     authDomain: "dosemanager-d0236.firebaseapp.com",
