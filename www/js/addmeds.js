@@ -18,28 +18,32 @@ function addMeds() {
   firebase.initializeApp(firebaseConfig);
   var firestore = firebase.firestore();
 
-  function getProfileIdFromURL(){
+  var profilesCollection = firestore.collection("ProfilesTesting");
+
+  function getProfileIdFromURL() {
     var urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get("id");
-  };
-
-  var profileId = getProfileIdFromURL();
-  console.log(profileId);
-  const profilesCollectionDocID = profileId;
-  const profilesCollectionRef = firestore.collection("ProfilesTesting").doc(profilesCollectionDocID);
-  const subcollectionName = "Medicine"
-  
-  var backHomeButton = document.getElementById("backHomeButton");
-
-  backHomeButton.addEventListener("click", handleBackHomeButtonClick);
-  function handleBackHomeButtonClick(){
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `home.html?id=${profileId}`;
+    var params = {};
+    params.id = urlParams.get("id");
+    params.pic = urlParams.get("pic");
+    return params;
   }
-  
+
+  var profile = getProfileIdFromURL();
+  console.log(profile);
+  const profilesCollectionDocID = profile.id;
+  const profilesCollectionRef = profilesCollection.doc(profilesCollectionDocID);
+  const subcollectionName = "Medicine";
+
   //getting reference for form element
   var form = document.getElementById("formData");
+
+  //getting reference to back to home button
+  var homeBtn = document.getElementById("homeBtn");
+
+  //passing profileID into html to display correct home page
+  homeBtn.addEventListener("click", function () {
+    window.location.href = `home.html?id=${profile.id}&pic=${profile.pic}`;
+  });
 
   form.addEventListener("submit", function (event) {
     // Prevent the default form submission behavior
@@ -61,13 +65,15 @@ function addMeds() {
     };
 
     // Add medicine to Firestore collection
-    profilesCollectionRef.collection(subcollectionName).add(newMeds)
+    profilesCollectionRef
+      .collection(subcollectionName)
+      .add(newMeds)
       .then((docRef) => {
         console.log("Medicine added to profile with ID: ", docRef.id);
       })
       .then(() => {
         //navigate to home.html after submit button pressed
-        window.location.href = `home.html?id=${profileId}`;
+        window.location.href = `home.html?id=${profile.id}&pic=${profile.pic}`;
       })
       .catch((error) => {
         console.error("Error adding profile: ", error);
@@ -114,96 +120,6 @@ async function fetchAutocompleteResults(searchTerm) {
   }
 }
 
-
-
-// document.addEventListener('DOMContentLoaded', function() {
-//     const cameraButton = document.getElementById('cameraButton');
-//     const cameraContainer = document.getElementById('cameraContainer');
-
-//     // Function to handle camera button click
-//     cameraButton.addEventListener('click', function() {
-//         openCamera();
-//     });
-
-//     // Function to open the camera
-//     function openCamera() {
-//         // Check if getUserMedia is supported by the browser
-//         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-//             navigator.mediaDevices.getUserMedia({ video: true })
-//             .then(function(stream) {
-//                 // Create a video element to display the camera feed
-//                 const video = document.createElement('video');
-//                 video.srcObject = stream;
-//                 video.play();
-//                 // Append the video element to the cameraContainer
-//                 cameraContainer.innerHTML = ''; // Clear any previous content
-//                 cameraContainer.appendChild(video);
-//             })
-//             .catch(function(error) {
-//                 console.error('Error accessing camera:', error);
-//             });
-//         } else {
-//             console.error('getUserMedia is not supported by this browser.');
-//         }
-//     }
-// });
-
-
-
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    const cameraButton = document.getElementById('cameraButton');
-    const uploadButton = document.querySelector('button[type="button"]');
-    const cameraContainer = document.getElementById('cameraContainer');
-    const imageUpload = document.getElementById('imageUpload');
-
-    let stream; // To store the camera stream
-
-    // Function to handle camera button click
-    cameraButton.addEventListener('click', function() {
-        openCamera();
-    });
-
-    // Function to handle upload button click
-    uploadButton.addEventListener('click', function() {
-        captureAndUpload();
-    });
-
-    // Function to open the camera
-    function openCamera() {
-        // Check if getUserMedia is supported by the browser
-        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices.getUserMedia({ video: true })
-            .then(function(mediaStream) {
-                stream = mediaStream; // Store the camera stream
-                // Create a video element to display the camera feed
-                const video = document.createElement('video');
-                video.srcObject = stream;
-                video.play();
-                // Append the video element to the cameraContainer
-                cameraContainer.innerHTML = ''; // Clear any previous content
-                cameraContainer.appendChild(video);
-            })
-            .catch(function(error) {
-                console.error('Error accessing camera:', error);
-            });
-        } else {
-            console.error('getUserMedia is not supported by this browser.');
-        }
-    }
-
-    // Function to capture and upload the photo
-    function captureAndUpload() {
-        if (stream && imageUpload && imageUpload.files && imageUpload.files.length > 0) {
-            const photoBlob = new Blob([imageUpload.files[0]], { type: 'image/jpeg' });
-            // You can use the 'photoBlob' for further processing (e.g., upload to server)
-            console.log('Photo captured:', photoBlob);
-        } else {
-            console.error('No photo captured or camera stream not available.');
-        }
-    }
-});
 function googleTranslateElementInit() {
   new google.translate.TranslateElement(
     { pageLanguage: "en" },

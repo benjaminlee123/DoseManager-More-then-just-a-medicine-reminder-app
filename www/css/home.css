@@ -1,7 +1,7 @@
 /* -------------------- med cards styling -------------------- */
 #card 
 {
-  background-color: #00FFE8;
+  background-color: rgb(255, 127, 80);
 }
 #med-desc 
 {
@@ -14,10 +14,21 @@
   top: 10%;
   padding: 2%;
   right: 10%;
-  background-color: #FF6900;
-  color: #000000;
+  background-color: white;
+  color: black;
 }
-
+#editButton
+{
+  background-color: #0096ff!important;
+  width: 20%;
+  margin-left: 10px;
+}
+#deleteButton
+{
+  background-color: #0096ff!important;
+  width: 20%;
+  margin-left: 10px; 
+}
 /* -------------------- addMed button styling -------------------- */
 #addMedBtn 
 {
