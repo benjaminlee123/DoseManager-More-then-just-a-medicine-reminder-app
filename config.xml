@@ -6,30 +6,10 @@
     </author>
     <dependency id="google-translate" />
     <content src="profilelogin.html" />
-<<<<<<< HEAD
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
-</widget>
-=======
-<allow-navigation href="*" />
+
 <!-- Allow links to web pages to open in a browser -->
-<allow-intent href="http://*/*" />
-<allow-intent href="https://*/*" />
-
-<!-- Allow SMS links to open messaging app -->
-<allow-intent href="sms:*" />
-
-<!-- Allow tel: links to open the dialer -->
-<allow-intent href="tel:*" />
-
-<!-- Allow geo: links to open maps -->
-<allow-intent href="geo:*" />
+<!--<allow-intent href="http://*/*" />
+<allow-intent href="https://*/*" />-->
 
 
-    <!--allow-navigation href="https://10.0.2.2/*" /-->
-     <preference name="hostname" value="localhost" />
-     <preference name="android-targetSdkVersion" value="33" />
-    <preference name="AndroidInsecureFileModeEnabled" value="true" />
-    <preference name="AndroidLaunchMode" value="singleInstance"/>
 </widget>
->>>>>>> main
