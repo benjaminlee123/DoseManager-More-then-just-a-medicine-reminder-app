@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Profile</title>
+    <!--firebase-->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <!--js file-->
+    <script src="cordova.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/profileLogin.js"></script>
+    <!--css file-->
+    <link rel="stylesheet" href="css/index.css">
+  
+     
+    
+</head>
+
+<body>
+    <div class="container">
+        <img src="img/DoseManager.png" alt="Your Logo" class="logo">
+        <h1>Welcome</h1>
+        <h2>Select Your Profile</h2>
+        <div id="profile-list" class="container p-2">
+            <!-- Profiles will be populated here dynamically -->
+            <p>Profile Name</p>
+        </div>
+       <div class="d-flex justify-content-center">
+        <a id="addProfBtn" href="createProfile.html" class="btn btn-success">
+            Create New Profile
+        </a>
+       </div>
+    </div>
+ 
+</body>
+
+</html>

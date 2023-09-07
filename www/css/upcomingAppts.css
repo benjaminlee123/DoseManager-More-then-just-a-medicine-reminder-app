@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-body {
-  margin-bottom: 100px !important;
-}
-
-.card {
-  background-color: rgb(255, 127, 80) !important;
-}
-
-=======
 body{
   margin-bottom: 100px!important;
 }
@@ -16,7 +6,6 @@ body{
     background-color: rgb(255, 127, 80)!important;
   }
   
->>>>>>> main
 .footer {
   position: fixed;
   bottom: 0;
@@ -43,30 +32,6 @@ a {
 }
 
 #upcomingApptBox {
-<<<<<<< HEAD
-  background-color: rgb(255, 127, 80) !important;
-}
-
-#missedApptBox {
-  background-color: rgb(255, 0, 0) !important;
-}
-
-#totalApptCard {
-  background-color: white !important;
-}
-
-#upcomingAppt {
-  background-color: rgb(255, 127, 80) !important;
-}
-
-#missedAppt {
-  background-color: rgb(255, 0, 0) !important;
-}
-/*google banner*/
-.VIpgJd-ZVi9od-ORHb-OEVmcd {
-  display: none !important;
-}
-=======
   background-color: rgb(255, 127, 80)!important;
 }
 
@@ -85,10 +50,3 @@ a {
 #missedAppt {
   background-color: rgb(255, 0, 0)!important;
 }
-.VIpgJd-ZVi9od-ORHb-OEVmcd {
-  display: none !important;
-}
-#goog-gt-tt {
-  display: none !important;
-}
->>>>>>> main

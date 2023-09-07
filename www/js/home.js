@@ -1,4 +1,4 @@
-document.addEventListener("deviceready", displayData);
+document.addEventListener('deviceready',displayData);
 
 function displayData() {
   //getting reference for div id
@@ -22,81 +22,70 @@ function displayData() {
   var firestore = firebase.firestore();
   //var medsCollection = firestore.collection("Medicine");
 
-  function getProfileIdFromURL() {
+  function getProfileIdFromURL(){
     var urlParams = new URLSearchParams(window.location.search);
-    var params = {};
-    params.id = urlParams.get("id");
-    params.pic = urlParams.get("pic");
-    return params;
-  }
+    return urlParams.get("id");
+  };
 
-  profile = getProfileIdFromURL();
-  console.log(profile);
+  profileId = getProfileIdFromURL();
+  console.log(profileId);
 
-  //eventlisteners for each button with profile id passed in
   var addMedsButton = document.getElementById("addMedBtn");
-
   var medicationFooterButton = document.getElementById("medication-footer");
-
   var appointmentFooterButton = document.getElementById("appointment-footer");
-
   var profileFooterButton = document.getElementById("profile-footer");
-
+  
   addMedsButton.addEventListener("click", handleAddMedsButtonClick);
-
   medicationFooterButton.addEventListener("click", handleMedFooterButtonClick);
-  appointmentFooterButton.addEventListener(
-    "click",
-    handleApptFooterButtonClick
-  );
+  appointmentFooterButton.addEventListener("click", handleApptFooterButtonClick);
   profileFooterButton.addEventListener("click", handleProfileFooterButtonClick);
 
-  function handleAddMedsButtonClick(event) {
-    var profile = getProfileIdFromURL();
-    window.location.href = `addmeds.html?id=${profile.id}&pic=${profile.pic}`;
+  function handleAddMedsButtonClick(){
+    var profileId = getProfileIdFromURL();
+    console.log(profileId);
+    window.location.href = `addmeds.html?id=${profileId}`;
   }
 
-  function handleMedFooterButtonClick() {
-    var profile = getProfileIdFromURL();
-    window.location.href = `home.html?id=${profile.id}&pic=${profile.pic}`;
+  function handleMedFooterButtonClick(){
+    var profileId = getProfileIdFromURL();
+    console.log(profileId);
+    window.location.href = `home.html?id=${profileId}`;
   }
 
-  function handleApptFooterButtonClick() {
-    var profile = getProfileIdFromURL();
-    window.location.href = `upcomingappt.html?id=${profile.id}&pic=${profile.pic}`;
+  function handleApptFooterButtonClick(){
+    var profileId = getProfileIdFromURL();
+    console.log(profileId);
+    window.location.href = `upcomingappt.html?id=${profileId}`;
   }
 
-  function handleProfileFooterButtonClick() {
-    var profile = getProfileIdFromURL();
-    window.location.href = `profile.html?id=${profile.id}&pic=${profile.pic}`;
+  function handleProfileFooterButtonClick(){
+    var profileId = getProfileIdFromURL();
+    console.log(profileId);
+    window.location.href = `profile.html?id=${profileId}`;
   }
-
-  var mainProfileId = profile.id;
-  var mainProfileRef = firestore
-    .collection("ProfilesTesting")
-    .doc(mainProfileId);
+ 
+  var mainProfileId = profileId;
+  var mainProfileRef = firestore.collection("ProfilesTesting").doc(mainProfileId);
   var subCollectionRef = mainProfileRef.collection("Medicine");
 
   mainProfileRef
     .get()
-    .then(function (doc) {
-      if (doc.exists) {
-        var userData = doc.data();
-        var userName = userData.name;
+    .then(function(doc){
+        if(doc.exists){
+            var userData = doc.data();
+            var userName = userData.name;
 
-        var userProfileName = document.getElementById("userProfileName");
-        userProfileName.textContent = "Welcome, " + userName;
-      } else {
-        console.log("User document not found");
-      }
+            var userProfileName = document.getElementById("userProfileName");
+            userProfileName.textContent = "Welcome, " + userName;
+        } else {
+            console.log("User document not found");
+        }
+    }).catch(function(error){
+        console.error("Error getting user document: ", error);
     })
-    .catch(function (error) {
-      console.error("Error getting user document: ", error);
-    });
 
   //retrieving data from firebase
   subCollectionRef
-    .orderBy("timestamp")
     .get()
     .then(function (querySnapshot) {
       querySnapshot.forEach(function (subDoc) {
@@ -115,20 +104,22 @@ function displayData() {
         </div>
       `;
         medicationList.innerHTML += medicationCard;
+
+        // doc.data() contains the document's data
+        //console.log("Medicine ID:", doc.id);
+        //console.log("Medicine Data:", doc.data());
       });
     })
     .catch(function (error) {
       console.error("Error getting medicine documents: ", error);
     });
 }
-
 function googleTranslateElementInit() {
   new google.translate.TranslateElement(
     { pageLanguage: "en" },
     "google_translate_element"
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> main
+
+
+
