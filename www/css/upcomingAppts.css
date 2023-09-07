@@ -68,6 +68,11 @@ body
   background-color: rgb(255, 127, 80) !important;
   color: white; 
 }
+#apptStatus
+{
+  color: black;
+  font-weight: bold;
+}
 
 /* ------------------- appointment info styling ------------------- */
 .apptInfo 

@@ -94,7 +94,7 @@ function displayData() {
                 <h5 class="card-title">${subDocData.apptLocation}</h5>
                 <p id="apptDateTime" class="card-text">${formattedDate}</p>
                 <p id="docName" class="card-text">${subDocData.docName}</p>
-                <p>Appointment Status: Upcoming</p>  
+                <p id="apptStatus">Appointment Status: Upcoming</p>  
             </div>
         </div>
         <br>
@@ -114,13 +114,13 @@ function displayData() {
                 <h5 class="card-title" id="apptLocation">${subDocData.apptLocation}</h5>
                 <p id="apptDateTime" class="card-text">${formattedDate}</p>
                 <p id="docName" class="card-text">${subDocData.docName}</p>
-                <p>Appointment Status: Missed</p>  
+                <p id="apptStatus">Appointment Status: Missed</p>  
             </div>
         </div>
         <br>
         <div>
           <button class="delete-button btn btn-primary" id="deleteButton" data-item-id="#">Delete</button>
-          <button class="reschedule-button btn btn-primary" id="rescheduleButton" data-item-id="#">Reschedule</button>
+          <button class="reschedule-button btn btn-primary" id="rescheduleButton" data-item-id="${subDoc.id}">Reschedule</button>
         </div>
         `;
 
