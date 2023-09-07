@@ -68,19 +68,6 @@ body
   background-color: rgb(255, 127, 80) !important;
   color: white; 
 }
-.apptStatus
-{
-  background-color: white !important;
-  border: 2px solid black;
-  border-radius: 10px;
-  width: 75%;
-  text-align: center;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 
 /* ------------------- appointment info styling ------------------- */
 .apptInfo 

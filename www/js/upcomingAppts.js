@@ -94,14 +94,9 @@ function displayData() {
                 <h5 class="card-title">${subDocData.apptLocation}</h5>
                 <p id="apptDateTime" class="card-text">${formattedDate}</p>
                 <p id="docName" class="card-text">${subDocData.docName}</p>
+                <p>Appointment Status: Upcoming</p>  
             </div>
         </div>
-        <br>
-        <div class="card p-2" id="apptStatus">
-          <div class="card-body">
-            <p>Appointment Status: Upcoming</p>  
-          </div>
-        </div>  
         <br>
         <div>
           <button class="edit-button btn btn-primary" id="editButton" data-item-id="${subDoc.id}">Edit</button>
@@ -119,13 +114,8 @@ function displayData() {
                 <h5 class="card-title" id="apptLocation">${subDocData.apptLocation}</h5>
                 <p id="apptDateTime" class="card-text">${formattedDate}</p>
                 <p id="docName" class="card-text">${subDocData.docName}</p>
+                <p>Appointment Status: Missed</p>  
             </div>
-        </div>
-        <br>
-        <div class="card p-2" id="apptStatus">
-          <div class="card-body">
-            <p>Appointment Status: Missed</p>  
-          </div>
         </div>
         <br>
         <div>
