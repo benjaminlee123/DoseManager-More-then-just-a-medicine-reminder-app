@@ -89,9 +89,6 @@ function displayData() {
         if(apptDateTime > currentDateTime){
         //populating html page with each appointment card details
         var apptCard = `
-        <div id="helloHi">
-        <h3>Upcoming Appointments: </h3>
-        </div>
         <div id = "upcomingAppt" class="card mt-4 rounded-5">
             <div class="card-body">
                 <h5 class="card-title">${subDocData.apptLocation}</h5>
@@ -99,11 +96,17 @@ function displayData() {
                 <p id="docName" class="card-text">${subDocData.docName}</p>
             </div>
         </div>
+        <br>
+        <div class="card p-2" id="apptStatus">
+          <div class="card-body">
+            <p>Appointment Status: Upcoming</p>  
+          </div>
+        </div>  
+        <br>
         <div>
           <button class="edit-button btn btn-primary" id="editButton" data-item-id="${subDoc.id}">Edit</button>
           <button class="delete-button btn btn-primary" id="deleteButton" data-item-id="#">Delete</button>
         </div>
-
         `;
         //Add to the upcoming appointment counter to be displayed at the top of the page  
         upcomingAppts ++;
@@ -111,9 +114,6 @@ function displayData() {
         } else if (apptDateTime < currentDateTime) {
         //populating html page with each appointment card details
         var apptCard = `
-        <div id="helloHi">
-        <h3>Missed Appointments: </h3>
-        </div>
         <div id = "missedAppt" class="card mt-4 rounded-5">
             <div class="card-body">
                 <h5 class="card-title" id="apptLocation">${subDocData.apptLocation}</h5>
@@ -121,6 +121,13 @@ function displayData() {
                 <p id="docName" class="card-text">${subDocData.docName}</p>
             </div>
         </div>
+        <br>
+        <div class="card p-2" id="apptStatus">
+          <div class="card-body">
+            <p>Appointment Status: Missed</p>  
+          </div>
+        </div>
+        <br>
         <div>
           <button class="delete-button btn btn-primary" id="deleteButton" data-item-id="#">Delete</button>
           <button class="reschedule-button btn btn-primary" id="rescheduleButton" data-item-id="#">Reschedule</button>

@@ -16,10 +16,8 @@ body
   align-items: center;
 }
 
-
-
 /* ------------------- legend styling ------------------- */
-#legend
+/* #legend
 {
   background-color: white !important;
   border-radius: 10px; 
@@ -45,7 +43,7 @@ body
 }
 #missedApptBox 
 {
-  background-color: rgb(255, 0, 0)!important;
+  background-color: rgb(255, 127, 80) !important;
   border-radius: 10px; 
   display: flex;
   justify-content: center; 
@@ -54,48 +52,64 @@ body
   text-align: center; 
   color: white; 
   font-weight: bold; 
-}
+} */
 
 /* ------------------- appointment cards styling ------------------- */
 .card-body
 {
   width: 75%;
 }
-#helloHi
-{
-  background-color: white!important;
-  color: black; 
-}
-#upcomingAppt 
-{
-  background-color: rgb(255, 127, 80)!important;
-  color: white; 
-}
-#missedAppt 
-{
-  background-color: rgb(255, 0, 0)!important;
-  color: white; 
-}
 .card-title
 {
   font-weight: bold;
 }
+#upcomingAppt, #missedAppt 
+{
+  background-color: rgb(255, 127, 80) !important;
+  color: white; 
+}
+.apptStatus
+{
+  background-color: white !important;
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 75%;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-/* ------------------- other buttons styling ------------------- */
+
+/* ------------------- appointment info styling ------------------- */
+.apptInfo 
+{
+  display: flex;
+  align-items: center; 
+}
+#apptStatus 
+{
+  flex: 1; 
+  margin: 0;
+}
 #editButton
 {
   background-color: #0096ff!important;
   width: 20%;
+  margin-left: 10px;
 }
 #deleteButton
 {
   background-color: #0096ff!important;
   width: 20%;
+  margin-left: 10px; 
 }
 #rescheduleButton
 {
   background-color: #0096ff!important;
   width: 20%;
+  margin-left: 10px; 
 }
 
 /* ------------------- createNewAppt styling ------------------- */
@@ -125,7 +139,7 @@ body
   display: flex;
   justify-content: space-between;
   align-items: center;
-}=
+}
 a 
 {
   text-decoration: none;
