@@ -79,7 +79,7 @@ function username() {
     if (confirmation) {
       var profile = getProfileIdFromURL();
       firestore
-        .collection("ProfilesTesting")
+        .collection("Profiles")
         .doc(profile.id)
         .delete()
         .then(() => {
@@ -94,7 +94,7 @@ function username() {
 
   var mainProfileId = profile.id;
   var mainProfileRef = firestore
-    .collection("ProfilesTesting")
+    .collection("Profiles")
     .doc(mainProfileId);
 
   mainProfileRef

@@ -1,6 +1,15 @@
 document.addEventListener("deviceready", addAppts);
 
 function addAppts() {
+
+    // Request notification permission when the addAppts function is called
+    requestNotificationPermission(function(granted) {
+      if (granted) {
+          console.log("Notification permission granted.");
+      } else {
+          console.log("User did not grant permission for notifications.");
+      }
+  });
   //firebase config
   const firebaseConfig = {
     apiKey: "AIzaSyAt4SUmSwvkHdas68AYQdjOe7fkfL547gQ",
@@ -30,7 +39,7 @@ function addAppts() {
 
   const mainCollectionDocID = profile.id;
   const mainCollectionRef = firestore
-    .collection("ProfilesTesting")
+    .collection("Profiles")
     .doc(mainCollectionDocID);
   const subcollectionName = "Appointments";
 
@@ -59,9 +68,8 @@ function addAppts() {
       docName: docName,
     };
 
-    // Retrieve the values from the reminder time input field
-    /*var reminderTimeInput = document.getElementById("reminderTime");
-    var reminderTime = parseInt(reminderTimeInput.value, 10);*/
+     // Retrieve the values from the reminder time input field
+     var reminderTime = parseInt(document.getElementById("reminderTime").value, 10);
 
     mainCollectionRef
       .collection(subcollectionName)
@@ -70,7 +78,7 @@ function addAppts() {
         console.log("Document added to subcollection with ID: ", docRef.id);
 
         // Schedule the local notification using the new library function
-        //scheduleNewNotification(apptLocation, apptDateTime, reminderTime);
+        scheduleNewNotification(apptLocation, apptDateTime, reminderTime);
       })
       .then(() => {
         //navigate to home.html after submit button pressed

@@ -29,7 +29,7 @@ function editProfile() {
 
   const mainCollectionDocID = profile.id;
   const mainCollectionRef = firestore
-    .collection("ProfilesTesting")
+    .collection("Profiles")
     .doc(mainCollectionDocID);
 
   var firstNameInput = document.getElementById("firstName");

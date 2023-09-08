@@ -1,19 +1,26 @@
+document.addEventListener("deviceready", function() {
+    // This part is moved to addAppts function in addappt.js
+}, false);
 
-document.addEventListener("deviceready", scheduleNewNotification);
-        
+// Function to request notification permission
+function requestNotificationPermission(callback) {
+    cordova.plugins.notification.local.requestPermission(function(granted) {
+        if (granted) {
+            callback(true);
+        } else {
+            cordova.plugins.notification.local.requestPermission(function(granted) {
+                callback(granted);
+            });
+        }
+    });
+}
+
 function scheduleNewNotification(apptLocation, apptDateTime, reminderTime) {
-    // Calculate the reminder time in milliseconds
     const reminderTimeInMs = reminderTime * 60 * 1000;
-  
-    // Convert appointment date-time to milliseconds
     const apptTimeInMs = new Date(apptDateTime).getTime();
-  
-    // Calculate the time to show the notification
     const notifTimeInMs = apptTimeInMs - reminderTimeInMs;
 
-    // Check if the Cordova local notification plugin is available
     if (typeof cordova !== 'undefined' && cordova.plugins && cordova.plugins.notification && cordova.plugins.notification.local) {
-        // Schedule the notification
         cordova.plugins.notification.local.schedule({
             id: 1,
             title: "New Appointment Reminder",

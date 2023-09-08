@@ -73,7 +73,7 @@ function displayData() {
 
   var mainProfileId = profile.id;
   var mainProfileRef = firestore
-    .collection("ProfilesTesting")
+    .collection("Profiles")
     .doc(mainProfileId);
   var subCollectionRef = mainProfileRef.collection("Medicine");
 

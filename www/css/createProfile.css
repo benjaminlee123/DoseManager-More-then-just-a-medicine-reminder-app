@@ -36,19 +36,34 @@ select {
   border-radius: 4px;
 }
 
+/* Common button styling */
 button {
   padding: 10px 20px;
-  background-color: #4b946a;
   border: none;
   color: #fff;
   cursor: pointer;
   border-radius: 5px;
   transition: 0.3s;
   margin-top: 10px;
+  width: 100%;  /* Make the button take up the full width of its container */
 }
 
-button:hover {
-  background-color: #388a58; /* slightly darker shade on hover */
+/* Styling for the Save button */
+button#saveBtn {
+  background-color: #4b946a;
+}
+
+button#saveBtn:hover {
+  background-color: #388a58; /* Slightly darker shade on hover */
+}
+
+/* Styling for the Back to Profile Login button */
+button#backToProfileLoginBtn {
+  background-color: #ff0000a3;  /* Red background */
+}
+
+button#backToProfileLoginBtn:hover {
+  background-color: #cc0000;  /* Slightly darker red on hover */
 }
 .VIpgJd-ZVi9od-ORHb-OEVmcd {
   display: none !important;

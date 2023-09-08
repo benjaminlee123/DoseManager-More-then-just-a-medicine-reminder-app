@@ -17,7 +17,7 @@ function addProfile() {
   var firestore = firebase.firestore();
 
   // Reference to the "ProfileTable" collection
-  var profilesCollection = firestore.collection("ProfilesTesting");
+  var profilesCollection = firestore.collection("Profiles");
 
   // Get reference to the form DOM element
   var form = document.getElementById("profileForm");
@@ -31,7 +31,7 @@ function addProfile() {
     var lastNameInput = document.getElementById("lastName");
     var genderInput = document.getElementById("gender");
     var dobInput = document.getElementById("dob");
-
+    
     // Retrieve values from the input fields
     var firstName = firstNameInput.value;
     var lastName = lastNameInput.value;
@@ -61,4 +61,11 @@ function addProfile() {
         console.error("Error adding profile: ", error);
       });
   });
+// Get reference to the Back buttons
+var backToProfileLoginBtn = document.getElementById("backToProfileLoginBtn");
+
+// Add click event listeners to the Back buttons
+backToProfileLoginBtn.addEventListener("click", function() {
+  window.location.href = "profilelogin.html";
+});
 }
