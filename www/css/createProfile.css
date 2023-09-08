@@ -1,60 +1,91 @@
-/* Personal Information Form Styling */
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-  }
-  
-  .container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  label {
-    font-weight: bold;
-  }
-  
-  input, select {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  button {
-    padding: 10px 20px;
-    background-color: #4B946A;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: 0.3s;
-    margin-top: 10px;
-  }
-  
-  button:hover {
-    background-color: #388a58; /* slightly darker shade on hover */
-  }
-  .VIpgJd-ZVi9od-ORHb-OEVmcd {
-    display: none !important;
-  }
-  #goog-gt-tt {
-    display: none !important;
-  }
-  #google_translate_element {
-    display: none !important;
-  }
+body 
+{
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+.container
+{
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 
+{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* ------------------- form styling ------------------- */
+form 
+{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+label 
+{
+  font-weight: bold;
+}
+input, select 
+{
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* ------------------- buttons styling ------------------- */
+.buttons 
+{
+  display: flex; 
+  justify-content: space-between; 
+}
+#saveBtn
+{
+  background-color: #388a58;
+}
+#cancelBtn 
+{
+  background-color: #ff3333;
+}
+#saveBtn, #cancelBtn 
+{
+  padding: 10px 20px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+#saveBtn:hover, #cancelBtn:hover 
+{
+  opacity: 0.5;
+}
+a 
+{
+  text-decoration: none; 
+  color: inherit; 
+  cursor: text; 
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* ------------------- google translate styling ------------------- */
+.VIpgJd-ZVi9od-ORHb-OEVmcd 
+{
+  display: none !important;
+}
+#goog-gt-tt 
+{
+  display: none !important;
+}
+#google_translate_element 
+{
+  display: none !important;
+}
