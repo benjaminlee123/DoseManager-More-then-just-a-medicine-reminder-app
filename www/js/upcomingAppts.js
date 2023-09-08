@@ -120,8 +120,8 @@ function displayData() {
         <br>
         <div>
           <button class="delete-button btn btn-primary" id="deleteButton" data-item-id="#">Delete</button>
-          <button class="reschedule-button btn btn-primary" id="rescheduleButton" data-item-id="${subDoc.id}">Reschedule</button>
-        </div>
+          <!-- <button class="reschedule-button btn btn-primary" id="rescheduleButton" data-item-id="${subDoc.id}">Reschedule</button> -->
+          </div>
         `;
 
         //Add to the missed appointment counter to be displayed at the top of the page
