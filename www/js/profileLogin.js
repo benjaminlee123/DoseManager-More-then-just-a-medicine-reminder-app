@@ -42,15 +42,13 @@ function displayData() {
         console.log(profName);
 
         var profileCard = `
-        <div class="row">
-            <div class="col-md-6">
-              <a class="profileIcon" href="home.html?id=${id}">
+        <div class="profile-card">
+            <a class="profileIcon" href="home.html?id=${id}">
                 <img id="profileImg" src="img/profile-${i}.jpg" alt="profile image">
-              </a>
-              <p class="text-center fw-bold">${profName}</p>
-            </div>
+            </a>
+            <p class="text-center fw-bold">${profName}</p>
         </div>
-        `;
+    `;
 
         i++;
         if (i == 6) {

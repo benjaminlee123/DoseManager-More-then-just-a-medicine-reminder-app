@@ -1,0 +1,35 @@
+/* ------------------- styling logo ------------------- */
+#logo
+{
+    border-radius: 50%;
+    margin-top: 10%;
+}
+
+/* ------------------- styling create profile button ------------------- */
+#addProfBtn
+{
+    margin-bottom: 20%;
+}
+
+/* ------------------- styling profile icons ------------------- */
+#profile-list 
+{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px; 
+}
+.profile-card
+{
+    box-sizing: border-box; 
+    text-align: center; 
+    padding: 10px; 
+}
+.profile-card img 
+{
+    max-width: 100%; 
+}
+.profile-card p 
+{
+    margin-top: 5px;
+}
+  
