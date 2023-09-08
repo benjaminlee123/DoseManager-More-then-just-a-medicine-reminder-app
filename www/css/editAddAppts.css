@@ -1,4 +1,3 @@
-
 body 
 {
   font-family: Arial, sans-serif;
@@ -39,21 +38,22 @@ input, select
   border-radius: 4px;
 }
 
+
 /* ------------------- buttons styling ------------------- */
 .buttons 
 {
   display: flex; 
   justify-content: space-between; 
 }
-#saveBtn
+#update-button
 {
   background-color: #388a58;
 }
-#cancelBtn 
+#cancel-button
 {
   background-color: #ff3333;
 }
-#saveBtn, #cancelBtn 
+#update-button, #cancel-button
 {
   padding: 10px 20px;
   border: none;
@@ -63,31 +63,7 @@ input, select
   transition: 0.3s;
   margin-top: 10px;
 }
-#saveBtn:hover, #cancelBtn:hover 
+#update-button:hover, #cancel-button:hover 
 {
   opacity: 0.5;
-}
-a 
-{
-  text-decoration: none; 
-  color: inherit; 
-  cursor: text; 
-  font-size: inherit;
-  font-weight: inherit;
-}
-
-
-
-/* ------------------- google translate styling ------------------- */
-.VIpgJd-ZVi9od-ORHb-OEVmcd 
-{
-  display: none !important;
-}
-#goog-gt-tt 
-{
-  display: none !important;
-}
-#google_translate_element 
-{
-  display: none !important;
 }
