@@ -114,6 +114,11 @@ function displayData() {
             </div>
           </div>
         </div>
+        <br>
+        <div>
+          <button id="editButton">Edit</button>
+          <button id="deleteButton">Delete</button>
+        </div>
       `;
         medicationList.innerHTML += medicationCard;
       });

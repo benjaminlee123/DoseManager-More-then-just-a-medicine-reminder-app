@@ -1,60 +1,54 @@
-#cancelIcon {
+/* ------------------- cancel icon styling ------------------- */
+#cancelIcon 
+{
   font-size: 30px;
   padding: 20px;
 }
 
-#profileImg {
+/* ------------------- profile image styling ------------------- */
+#profileImg 
+{
   width: 40px;
 }
 
-.card {
+/* ------------------- blue buttons styling ------------------- */
+.card 
+{
   margin-top: 3rem;
-  background-color: rgba(0, 150, 255, 0.5);
-  width: 330px;
-  /*width: 75%;
-  height: 5%;
-  border-radius: 10px;*/
+  background-color: #0096ff;
+  width: 75%;  
+  height: 5%; 
+  border-radius: 10px;
 }
-
-.card-header h2 {
+.card-header h2 
+{
   position: relative;
   color: white;
+  text-align: center; 
+  line-height: 100px; 
+  height: 100px; 
 }
-i {
+i 
+{
   padding: 10px;
 }
 
-.btn-danger:hover {
+/* ------------------- change & delete buttons styling ------------------- */
+.btn-danger:hover  
+{
   background-color: #e08a8c;
 }
-.close {
+.close 
+{
   border: none;
   background-color: transparent;
 }
-.footer {
-  position: fixed;
-  bottom: 0;
-  margin: 0;
-  width: 100%;
-  background-color: #0096ff;
-  justify-content: space-between;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-a {
+a 
+{
   text-decoration: none;
 }
 
-.navBarLinks {
-  text-align: center;
-  flex: 1;
-}
-.navBarIcons {
-  margin-top: 10px;
-  width: 20%;
-}
-/*google banner*/
+/* ------------------- google banner ------------------- */
 .VIpgJd-ZVi9od-ORHb-OEVmcd {
   display: none !important;
 }

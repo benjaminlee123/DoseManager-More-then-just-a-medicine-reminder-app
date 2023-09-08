@@ -1,32 +1,38 @@
-#saveLanguageBtn {
-  width: 80%;
+h1 
+{
+  text-align: center;
+}
+
+/* ------------------- language buttons ------------------- */
+.button-container 
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#engButton, #chiButton, #malayButton, #tamilButton
+{
+  margin-top: 3rem;
+  background-color: #0096ff;
+  width: 75%;  
+  height: 20%; 
+  border-radius: 10px;
+}
+
+/* ------------------- save button ------------------- */
+#saveLanguageBtn 
+{
+  background-color: black;
+  width: 75%;
   position: fixed;
   bottom: 100px;
   z-index: 1;
 }
-
-#engButton {
-  background-color: #0096ff;
-  color: white;
-}
-
-#chiButton {
-  background-color: #0096ff;
-  color: white;
-}
-
-#malayButton {
-  background-color: #0096ff;
-  color: white;
-}
-
-#tamilButton {
-  background-color: #0096ff;
-  color: white;
-}
-
-/*for google translate banner*/
-#goog-gt-tt {
+  
+/* ------------------- google translate ------------------- */
+#goog-gt-tt 
+{
   display: none !important;
 }
 .VIpgJd-ZVi9od-ORHb-OEVmcd {

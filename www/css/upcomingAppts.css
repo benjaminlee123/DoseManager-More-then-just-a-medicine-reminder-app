@@ -1,12 +1,106 @@
-body {
-  margin-bottom: 100px !important;
+body
+{
+  margin-bottom: 100px!important;
 }
 
-.card {
+/* ------------------- total appointments styling ------------------- */
+#totalApptCard 
+{
+  background-color: white !important;
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 75%;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ------------------- createNewAppt styling ------------------- */
+.center-container 
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#addApptBtn 
+{
+  width: 75%;  
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  height: 50px;
+  line-height: 50px; 
+  border-radius: 10px;
+}
+
+/* ------------------- appointment cards styling ------------------- */
+.card-body
+{
+  width: 75%;
+}
+.card-title
+{
+  font-weight: bold;
+}
+#upcomingAppt, #missedAppt 
+{
   background-color: rgb(255, 127, 80) !important;
+  color: black; 
+}
+#apptStatus
+{
+  color: white;
+  font-weight: bold;
 }
 
-.footer {
+/* ------------------- appointment cards styling ------------------- */
+#appt-list-container 
+{
+  width: 75%;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+#appt-list .card 
+{
+  width: 100%;
+}
+
+/* ------------------- appointment info styling ------------------- */
+.apptInfo 
+{
+  display: flex;
+  align-items: center; 
+}
+#apptStatus 
+{
+  flex: 1; 
+  margin: 0;
+}
+#editButton
+{
+  background-color: #0096ff!important;
+  width: 20%;
+  margin-left: 10px;
+}
+#deleteButton
+{
+  background-color: #0096ff!important;
+  width: 20%;
+  margin-left: 10px; 
+}
+#rescheduleButton
+{
+  background-color: #0096ff!important;
+  width: 20%;
+  margin-left: 10px; 
+}
+
+/* ------------------- footer styling ------------------- */
+.footer 
+{
   position: fixed;
   bottom: 0;
   margin: 0;
@@ -17,42 +111,27 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-
-a {
+a 
+{
   text-decoration: none;
 }
-
-.navBarLinks {
+.navBarLinks 
+{
   text-align: center;
   flex: 1;
 }
-.navBarIcons {
+.navBarIcons 
+{
   margin-top: 10px;
   width: 20%;
 }
 
-#upcomingApptBox {
-  background-color: rgb(255, 127, 80) !important;
-}
-
-#missedApptBox {
-  background-color: rgb(255, 0, 0) !important;
-}
-
-#totalApptCard {
-  background-color: white !important;
-}
-
-#upcomingAppt {
-  background-color: rgb(255, 127, 80) !important;
-}
-
-#missedAppt {
-  background-color: rgb(255, 0, 0) !important;
-}
-.VIpgJd-ZVi9od-ORHb-OEVmcd {
+/* ------------------- google translate styling ------------------- */
+.VIpgJd-ZVi9od-ORHb-OEVmcd 
+{
   display: none !important;
 }
-#goog-gt-tt {
+#goog-gt-tt 
+{
   display: none !important;
 }
