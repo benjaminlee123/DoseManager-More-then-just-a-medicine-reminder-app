@@ -1,13 +1,30 @@
 /* -------------------- med cards styling -------------------- */
+#medsListContainer
+{
+  width: 80%;
+  max-height: 60vh;
+  overflow-y: auto;
+  margin: 0 auto; 
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+#medication-list .card 
+{
+  width: 100%;
+}
+.card-body
+{
+  width: 75%;
+}
+.card-title
+{
+  font-weight: bold;
+}
 #card 
 {
   background-color: rgb(255, 127, 80);
-  border: 1px solid transparent; /* This sets the border color to transparent */
-}
-#med-desc 
-{
-  width: 50%;
-}
+  border: 1px solid transparent; }
 #dosage-amt 
 {
   width: 25%;
@@ -17,7 +34,7 @@
   right: 10%;
   background-color: white;
   color: black;
-  border: 1px solid transparent; /* This sets the border color to transparent */
+  border: 1px solid transparent; 
 }
 #editButton, #deleteButton 
 {
@@ -26,8 +43,9 @@
   width: 20%;
   margin-left: 10px;
   border-radius: 5px; 
-  border: 1px solid transparent; /* This sets the border color to transparent */
+  border: 1px solid transparent; 
 }
+
 
 /* -------------------- addMed button styling -------------------- */
 #addMedBtn 
