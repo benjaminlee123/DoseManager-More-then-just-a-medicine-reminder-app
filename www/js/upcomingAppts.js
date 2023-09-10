@@ -1,6 +1,5 @@
 document.addEventListener("deviceready", displayData);
 
-
 function displayData() {
   //getting reference for div id
   var apptList = document.getElementById("appt-list");
@@ -21,18 +20,20 @@ function displayData() {
     measurementId: "G-XDL965JQ9H",
   };
 
-
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   var firestore = firebase.firestore();
   //var apptsCollection = firestore.collection("Appointments");
 
-  function getProfileIdFromURL(){
+  function getProfileIdFromURL() {
     var urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get("id");
-  };
+    var params = {};
+    params.id = urlParams.get("id");
+    params.pic = urlParams.get("pic");
+    return params;
+  }
 
-  profileId = getProfileIdFromURL();
+  profile = getProfileIdFromURL();
   var addApptsButton = document.getElementById("addApptBtn");
   var medicationFooterButton = document.getElementById("medication-footer");
   var appointmentFooterButton = document.getElementById("appointment-footer");
@@ -40,36 +41,38 @@ function displayData() {
 
   addApptsButton.addEventListener("click", handleAddApptsButtonClick);
   medicationFooterButton.addEventListener("click", handleMedFooterButtonClick);
-  appointmentFooterButton.addEventListener("click", handleApptFooterButtonClick);
+  appointmentFooterButton.addEventListener(
+    "click",
+    handleApptFooterButtonClick
+  );
   profileFooterButton.addEventListener("click", handleProfileFooterButtonClick);
 
-  function handleAddApptsButtonClick(){
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `addNewAppt.html?id=${profileId}`;
+  function handleAddApptsButtonClick() {
+    var profile = getProfileIdFromURL();
+    console.log(profile);
+    window.location.href = `addNewAppt.html?id=${profile.id}&pic=${profile.pic}`;
   }
 
-
-  function handleMedFooterButtonClick(){
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `home.html?id=${profileId}`;
+  function handleMedFooterButtonClick() {
+    var profile = getProfileIdFromURL();
+    console.log(profile);
+    window.location.href = `home.html?id=${profile.id}&pic=${profile.pic}`;
   }
 
-  function handleApptFooterButtonClick(){
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `upcomingappt.html?id=${profileId}`;
+  function handleApptFooterButtonClick() {
+    var profile = getProfileIdFromURL();
+    console.log(profile);
+    window.location.href = `upcomingappt.html?id=${profile.id}&pic=${profile.pic}`;
   }
 
-  function handleProfileFooterButtonClick(){
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `profile.html?id=${profileId}`;
+  function handleProfileFooterButtonClick() {
+    var profile = getProfileIdFromURL();
+    console.log(profile);
+    window.location.href = `profile.html?id=${profile.id}&pic=${profile.pic}`;
   }
- 
-  var mainProfileId = profileId;
-  var mainProfileRef = firestore.collection("ProfilesTesting").doc(mainProfileId);
+
+  var mainProfileId = profile.id;
+  var mainProfileRef = firestore.collection("Profiles").doc(mainProfileId);
   var subCollectionRef = mainProfileRef.collection("Appointments");
 
   //retrieving data from firebase by timestamp
@@ -85,10 +88,10 @@ function displayData() {
         var id = subDoc.id;
         var formattedDate = formatDate(apptDateTime);
 
-        console.log(id);  
-        if(apptDateTime > currentDateTime){
-        //populating html page with each appointment card details
-        var apptCard = `
+        console.log(id);
+        if (apptDateTime > currentDateTime) {
+          //populating html page with each appointment card details
+          var apptCard = `
         <div id = "upcomingAppt" class="card mt-4 rounded-5">
             <div class="card-body">
                 <h5 class="card-title">${subDocData.apptLocation}</h5>
@@ -100,15 +103,14 @@ function displayData() {
         <br>
         <div>
           <button class="edit-button btn btn-primary" id="editButton" data-item-id="${subDoc.id}">Edit</button>
-          <button class="delete-button btn btn-primary" id="deleteButton" data-item-id="#">Delete</button>
+          <button class="delete-button btn btn-primary" id="deleteButton" data-item-id="${subDoc.id}">Delete</button>
         </div>
         `;
-        //Add to the upcoming appointment counter to be displayed at the top of the page  
-        upcomingAppts ++;
-
+          //Add to the upcoming appointment counter to be displayed at the top of the page
+          upcomingAppts++;
         } else if (apptDateTime < currentDateTime) {
-        //populating html page with each appointment card details
-        var apptCard = `
+          //populating html page with each appointment card details
+          var apptCard = `
         <div id = "missedAppt" class="card mt-4 rounded-5">
             <div class="card-body">
                 <h5 class="card-title" id="apptLocation">${subDocData.apptLocation}</h5>
@@ -119,31 +121,57 @@ function displayData() {
         </div>
         <br>
         <div>
-          <button class="delete-button btn btn-primary" id="deleteButton" data-item-id="#">Delete</button>
+          <button class="delete-button btn btn-primary" id="deleteButton" data-item-id="${subDoc.id}">Delete</button>
           <!-- <button class="reschedule-button btn btn-primary" id="rescheduleButton" data-item-id="${subDoc.id}">Reschedule</button> -->
           </div>
         `;
 
-        //Add to the missed appointment counter to be displayed at the top of the page
-        missedAppts ++;
-        };
+          //Add to the missed appointment counter to be displayed at the top of the page
+          missedAppts++;
+        }
 
         apptList.innerHTML += apptCard;
         updateUpcomingApptsHtml(upcomingAppts);
         updateMissedApptsHtml(missedAppts);
 
-        var editButtons = document.getElementsByClassName("edit-button");
-        Array.from(editButtons).forEach(function(button){
-          button.addEventListener("click", handleEditButtonClick);
-        })
+        //delete buttons
+        var deleteButton = document.getElementsByClassName("delete-button");
 
-        
-        function handleEditButtonClick(event){
+        Array.from(deleteButton).forEach(function (button) {
+          button.addEventListener("click", handleDeleteButtonClick);
+        });
+
+        function handleDeleteButtonClick(event) {
           var itemId = event.target.getAttribute("data-item-id");
-        
-          if(itemId){
-            window.location.href = `editAppt.html?id=${profileId}&apptId=${itemId}`;
-          }else{
+          if (itemId) {
+            if (confirm("Are you sure you want to delete this appointment?")) {
+              // Delete the document from Firestore
+              subCollectionRef
+                .doc(itemId)
+                .delete()
+                .then(function () {
+                  console.log("Item deleted successfully");
+                  window.location.href = `upcomingappt.html?id=${profile.id}&pic=${profile.pic}`;
+                })
+                .catch(function (error) {
+                  console.log("Error deleting item:", error);
+                });
+            }
+          }
+        }
+
+        //edit buttons
+        var editButtons = document.getElementsByClassName("edit-button");
+        Array.from(editButtons).forEach(function (button) {
+          button.addEventListener("click", handleEditButtonClick);
+        });
+
+        function handleEditButtonClick(event) {
+          var itemId = event.target.getAttribute("data-item-id");
+          console.log(itemId);
+          if (itemId) {
+            window.location.href = `editAppt.html?id=${profile.id}&apptId=${itemId}&pic=${profile.pic}`;
+          } else {
             console.log("Item ID not found in the button");
           }
         }
@@ -153,21 +181,26 @@ function displayData() {
       console.error("Error getting appointment documents: ", error);
     });
 
-    function updateUpcomingApptsHtml(upcomingAppts) {
-      var totalUpcomingAppts = document.getElementById("upcoming-appts");
-      totalUpcomingAppts.textContent = upcomingAppts;
-    }
+  function updateUpcomingApptsHtml(upcomingAppts) {
+    var totalUpcomingAppts = document.getElementById("upcoming-appts");
+    totalUpcomingAppts.textContent = upcomingAppts;
+  }
 
-    function updateMissedApptsHtml(missedAppts) {
-      var totalMissedAppts = document.getElementById("missed-appts");
-      totalMissedAppts.textContent = missedAppts;
-    }
+  function updateMissedApptsHtml(missedAppts) {
+    var totalMissedAppts = document.getElementById("missed-appts");
+    totalMissedAppts.textContent = missedAppts;
+  }
 
-    function formatDate(inputDate) {
-      const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-      return new Date(inputDate).toLocaleDateString('en-US', options);
-    }
-    
+  function formatDate(inputDate) {
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    };
+    return new Date(inputDate).toLocaleDateString("en-US", options);
+  }
 }
 function googleTranslateElementInit() {
   new google.translate.TranslateElement(

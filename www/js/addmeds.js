@@ -18,7 +18,7 @@ function addMeds() {
   firebase.initializeApp(firebaseConfig);
   var firestore = firebase.firestore();
 
-  var profilesCollection = firestore.collection("ProfilesTesting");
+  var profilesCollection = firestore.collection("Profiles");
 
   function getProfileIdFromURL() {
     var urlParams = new URLSearchParams(window.location.search);
@@ -26,6 +26,15 @@ function addMeds() {
     params.id = urlParams.get("id");
     params.pic = urlParams.get("pic");
     return params;
+  }
+
+  //cancel icon button
+  var cancelIconButton = document.getElementById("cancelIcon");
+
+  cancelIconButton.addEventListener("click", handleCancelIconButtonClick);
+
+  function handleCancelIconButtonClick() {
+    window.location.href = `home.html?id=${profile.id}&pic=${profile.pic}`;
   }
 
   var profile = getProfileIdFromURL();
@@ -37,14 +46,6 @@ function addMeds() {
   //getting reference for form element
   var form = document.getElementById("formData");
 
-  //getting reference to back to home button
-  var homeBtn = document.getElementById("homeBtn");
-
-  //passing profileID into html to display correct home page
-  homeBtn.addEventListener("click", function () {
-    window.location.href = `home.html?id=${profile.id}&pic=${profile.pic}`;
-  });
-
   form.addEventListener("submit", function (event) {
     // Prevent the default form submission behavior
     event.preventDefault();
@@ -52,15 +53,30 @@ function addMeds() {
     //Get the values of the input fields by their IDs
     var medNameInput = document.getElementById("medName");
     var medDescInput = document.getElementById("medDesc");
+    var medTypeInput = document.getElementById("type");
+    var medAmtInput = document.getElementById("medAmt");
+    var medMealInput = document.getElementById("mealType");
+    var medReminderInput = document.getElementById("medTime");
+    var medFrequencyInput = document.getElementById("frequency");
 
     //Retrieve the values from the input fields
     var medName = medNameInput.value;
     var medDesc = medDescInput.value;
+    var medType = medTypeInput.value;
+    var mealType = medMealInput.value;
+    var medAmt = medAmtInput.value;
+    var medReminder = medReminderInput.value;
+    var medFrequency = medFrequencyInput.value;
 
     //object to store details of med
     var newMeds = {
       name: medName,
       description: medDesc,
+      type: medType,
+      amount: medAmt,
+      meal: mealType,
+      reminderTime: medReminder,
+      frequency: medFrequency,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     };
 

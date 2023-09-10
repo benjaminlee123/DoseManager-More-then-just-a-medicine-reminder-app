@@ -1,4 +1,4 @@
-document.addEventListener('deviceready',displayData);
+document.addEventListener("deviceready", displayData);
 
 function displayData() {
   //getting reference for div id
@@ -20,69 +20,75 @@ function displayData() {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   var firestore = firebase.firestore();
-  //var medsCollection = firestore.collection("Medicine");
 
-  function getProfileIdFromURL(){
+  function getProfileIdFromURL() {
     var urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get("id");
-  };
+    var params = {};
+    params.id = urlParams.get("id");
+    params.pic = urlParams.get("pic");
+    return params;
+  }
 
-  profileId = getProfileIdFromURL();
-  console.log(profileId);
+  profile = getProfileIdFromURL();
+  console.log(profile);
 
   var addMedsButton = document.getElementById("addMedBtn");
   var medicationFooterButton = document.getElementById("medication-footer");
   var appointmentFooterButton = document.getElementById("appointment-footer");
   var profileFooterButton = document.getElementById("profile-footer");
-  
+
   addMedsButton.addEventListener("click", handleAddMedsButtonClick);
   medicationFooterButton.addEventListener("click", handleMedFooterButtonClick);
-  appointmentFooterButton.addEventListener("click", handleApptFooterButtonClick);
+  appointmentFooterButton.addEventListener(
+    "click",
+    handleApptFooterButtonClick
+  );
   profileFooterButton.addEventListener("click", handleProfileFooterButtonClick);
 
-  function handleAddMedsButtonClick(){
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `addmeds.html?id=${profileId}`;
+  function handleAddMedsButtonClick() {
+    var profile = getProfileIdFromURL();
+    console.log(profile);
+    window.location.href = `addmeds.html?id=${profile.id}&pic=${profile.pic}`;
   }
 
-  function handleMedFooterButtonClick(){
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `home.html?id=${profileId}`;
+  function handleMedFooterButtonClick() {
+    var profile = getProfileIdFromURL();
+    console.log(profile);
+    window.location.href = `home.html?id=${profile.id}&pic=${profile.pic}`;
   }
 
-  function handleApptFooterButtonClick(){
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `upcomingappt.html?id=${profileId}`;
+  function handleApptFooterButtonClick() {
+    var profile = getProfileIdFromURL();
+    console.log(profile);
+    window.location.href = `upcomingappt.html?id=${profile.id}&pic=${profile.pic}`;
   }
 
-  function handleProfileFooterButtonClick(){
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `profile.html?id=${profileId}`;
+  function handleProfileFooterButtonClick() {
+    var profile = getProfileIdFromURL();
+    console.log(profile);
+    window.location.href = `profile.html?id=${profile.id}&pic=${profile.pic}`;
   }
- 
-  var mainProfileId = profileId;
-  var mainProfileRef = firestore.collection("ProfilesTesting").doc(mainProfileId);
+
+  var mainProfileId = profile.id;
+  var mainProfileRef = firestore.collection("Profiles").doc(mainProfileId);
   var subCollectionRef = mainProfileRef.collection("Medicine");
 
   mainProfileRef
     .get()
-    .then(function(doc){
-        if(doc.exists){
-            var userData = doc.data();
-            var userName = userData.name;
+    .then(function (doc) {
+      if (doc.exists) {
+        var userData = doc.data();
+        var userName = userData.name;
 
-            var userProfileName = document.getElementById("userProfileName");
-            userProfileName.textContent = "Welcome, " + userName;
-        } else {
-            console.log("User document not found");
-        }
-    }).catch(function(error){
-        console.error("Error getting user document: ", error);
+        var userProfileName = document.getElementById("userProfileName");
+        userProfileName.textContent = "Welcome, " + userName;
+      } else {
+        console.log("User document not found");
+      }
     })
+    .catch(function (error) {
+      console.error("Error getting user document: ", error);
+    });
 
   //retrieving data from firebase
   subCollectionRef
@@ -90,7 +96,6 @@ function displayData() {
     .then(function (querySnapshot) {
       querySnapshot.forEach(function (subDoc) {
         var subDocData = subDoc.data();
-
         //populating html page with each medicine card details
         var medicationCard = `
         <div id="card" class="card mt-4 rounded-5">
@@ -104,21 +109,65 @@ function displayData() {
         </div>
         <br>
         <div>
-          <button id="editButton">Edit</button>
-          <button id="deleteButton">Delete</button>
+          <button class="editButton" data-item-id="${subDoc.id}">Edit</button>
+          <button class="deleteButton" data-item-id="${subDoc.id}">Delete</button>
         </div>
       `;
         medicationList.innerHTML += medicationCard;
 
-        // doc.data() contains the document's data
-        //console.log("Medicine ID:", doc.id);
-        //console.log("Medicine Data:", doc.data());
+        //referencing edit button of each medicine
+        var editButtons = document.getElementsByClassName("editButton");
+
+        //array of edit buttons
+        Array.from(editButtons).forEach(function (button) {
+          button.addEventListener("click", handleEditButtonClick);
+        });
+
+        //function to handle the edit button of each medicine
+        function handleEditButtonClick(event) {
+          var itemId = event.target.getAttribute("data-item-id");
+
+          if (itemId) {
+            window.location.href = `editmeds.html?id=${profile.id}&pic=${profile.pic}&medId=${itemId}`;
+          } else {
+            console.log("Item ID not found in the button");
+          }
+        }
+        //referencing delete button of each medicine
+        var deleteButton = document.getElementsByClassName("deleteButton");
+
+        //array of delete buttons
+        Array.from(deleteButton).forEach(function (button) {
+          button.addEventListener("click", handleDeleteButtonClick);
+        });
       });
     })
     .catch(function (error) {
-      console.error("Error getting medicine documents: ", error);
+      console.error("Error deleting medicine documents: ", error);
     });
+
+  //function to handle the delete button of each medicine
+  function handleDeleteButtonClick(event) {
+    var itemId = event.target.getAttribute("data-item-id");
+    console.log(itemId);
+    if (itemId) {
+      if (confirm("Are you sure you want to delete this Medicine?")) {
+        // Delete the document from Firestore
+        subCollectionRef
+          .doc(itemId)
+          .delete()
+          .then(function () {
+            console.log("Item deleted successfully");
+            window.location.href = `home.html?id=${profile.id}&pic=${profile.pic}`;
+          })
+          .catch(function (error) {
+            console.log("Error deleting item:", error);
+          });
+      }
+    }
+  }
 }
+
 function googleTranslateElementInit() {
   new google.translate.TranslateElement(
     { pageLanguage: "en" },

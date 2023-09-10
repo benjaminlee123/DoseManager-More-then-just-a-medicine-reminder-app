@@ -7,7 +7,6 @@ function displayData() {
 
   // Clear previous content
   profileList.innerHTML = "";
-  //displayedProfiles.innerHTML = "";
 
   //firebase config
   const firebaseConfig = {
@@ -23,7 +22,7 @@ function displayData() {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   var firestore = firebase.firestore();
-  var profilesCollection = firestore.collection("ProfilesTesting");
+  var profilesCollection = firestore.collection("Profiles");
 
   //retrieving data from firebase by timestamp
   //orderBy("apptDateTime") ensures the data is displaying the earliest appt first
@@ -43,7 +42,7 @@ function displayData() {
 
         var profileCard = `
         <div class="profile-card">
-            <a class="profileIcon" href="home.html?id=${id}">
+            <a class="profileIcon" href="home.html?id=${id}&pic=${i}">
                 <img id="profileImg" src="img/profile-${i}.jpg" alt="profile image">
             </a>
             <p class="text-center fw-bold">${profName}</p>

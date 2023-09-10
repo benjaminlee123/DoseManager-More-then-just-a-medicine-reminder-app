@@ -1,11 +1,9 @@
-body 
-{
+body {
   font-family: Arial, sans-serif;
   background-color: #f2f2f2;
 }
 
-.container
-{
+.container {
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
@@ -14,47 +12,40 @@ body
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-h1 
-{
+h1 {
   text-align: center;
   margin-bottom: 20px;
 }
 
 /* ------------------- form styling ------------------- */
-form 
-{
+form {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-label 
-{
+label {
   font-weight: bold;
 }
-input, select 
-{
+input,
+select {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
-
 /* ------------------- buttons styling ------------------- */
-.buttons 
-{
-  display: flex; 
-  justify-content: space-between; 
+.buttons {
+  display: flex;
+  justify-content: space-between;
 }
-#updateSaveButton
-{
+#updateSaveButton {
   background-color: #388a58;
 }
-#cancelButton
-{
+#cancelButton {
   background-color: #ff3333;
 }
-#updateSaveButton, #cancelButton
-{
+#updateSaveButton,
+#cancelButton {
   padding: 10px 20px;
   border: none;
   color: #fff;
@@ -63,7 +54,12 @@ input, select
   transition: 0.3s;
   margin-top: 10px;
 }
-#updateSaveButton:hover, #cancelButton:hover 
-{
+#updateSaveButton:hover,
+#cancelButton:hover {
   opacity: 0.5;
+}
+
+/* -------------------- google translate banner styling -------------------- */
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
+  display: none !important;
 }

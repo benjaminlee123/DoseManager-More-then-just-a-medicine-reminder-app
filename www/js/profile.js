@@ -16,20 +16,27 @@ function username() {
   firebase.initializeApp(firebaseConfig);
   var firestore = firebase.firestore();
 
-  function getProfileIdFromURL(){
+  function getProfileIdFromURL() {
     var urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get("id");
-  };
+    var params = {};
+    params.id = urlParams.get("id");
+    params.pic = urlParams.get("pic");
+    return params;
+  }
 
-  profileId = getProfileIdFromURL();
-  console.log(profileId);
+  profile = getProfileIdFromURL();
+  console.log(profile);
 
+  var profileImg = document.getElementById("profile-pic");
   var cancelIconButton = document.getElementById("cancelIcon");
   var personalInfoButton = document.getElementById("profile-personalInfo");
   var notifButton = document.getElementById("profile-notifications");
   var profApptButton = document.getElementById("profile-appointments");
   var languageButton = document.getElementById("profile-language");
   var deleteProfileButton = document.getElementById("delete-profile");
+
+  //displaying the profile pic
+  profileImg.innerHTML += `<img id="profileImg" src="img/profile-${profile.pic}.jpg" alt="profile image">`;
 
   cancelIconButton.addEventListener("click", handleCancelIconButtonClick);
   personalInfoButton.addEventListener("click", handlePersonalInfoButtonClick);
@@ -38,71 +45,74 @@ function username() {
   languageButton.addEventListener("click", handlelanguageButtonButtonClick);
   deleteProfileButton.addEventListener("click", handleDeleteProfileButtonClick);
 
-  function handleCancelIconButtonClick(){
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `home.html?id=${profileId}`;
+  function handleCancelIconButtonClick() {
+    var profile = getProfileIdFromURL();
+    console.log(profile);
+    window.location.href = `home.html?id=${profile.id}&pic=${profile.pic}`;
   }
 
-  function handlePersonalInfoButtonClick(){
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `personalinfo.html?id=${profileId}`;
+  function handlePersonalInfoButtonClick() {
+    var profile = getProfileIdFromURL();
+    console.log(profile);
+    window.location.href = `personalinfo.html?id=${profile.id}&pic=${profile.pic}`;
   }
 
-  function handleNotifButtonButtonClick(){
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `notifications.html?id=${profileId}`;
+  function handleNotifButtonButtonClick() {
+    var profile = getProfileIdFromURL();
+    console.log(profile);
+    window.location.href = `notifications.html?id=${profile.id}&pic=${profile.pic}`;
   }
 
-  function handleProfApptButtonButtonClick(){
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `upcomingappt.html?id=${profileId}`;
+  function handleProfApptButtonButtonClick() {
+    var profile = getProfileIdFromURL();
+    console.log(profile);
+    window.location.href = `upcomingappt.html?id=${profile.id}&pic=${profile.pic}`;
   }
 
-  function handlelanguageButtonButtonClick(){
-    var profileId = getProfileIdFromURL();
-    console.log(profileId);
-    window.location.href = `languagesetting.html?id=${profileId}`;
+  function handlelanguageButtonButtonClick() {
+    var profile = getProfileIdFromURL();
+    console.log(profile);
+    window.location.href = `languagesetting.html?id=${profile.id}&pic=${profile.pic}`;
   }
   function handleDeleteProfileButtonClick() {
     var confirmation = window.confirm("Do you want to delete this profile?");
     if (confirmation) {
-      var profileId = getProfileIdFromURL();
-      firestore.collection("ProfilesTesting").doc(profileId)
-      .delete()
-      .then(() => {
-        console.log("Profile successfully deleted!");
-        window.location.href = "profilelogin.html";
-      })
-      .catch((error) => {
-        console.error("Error removing profile: ", error);
-      });
+      var profile = getProfileIdFromURL();
+      firestore
+        .collection("Profiles")
+        .doc(profile.id)
+        .delete()
+        .then(() => {
+          console.log("Profile successfully deleted!");
+          window.location.href = "profilelogin.html";
+        })
+        .catch((error) => {
+          console.error("Error removing profile: ", error);
+        });
     }
   }
 
-  var mainProfileId = profileId;
-  var mainProfileRef = firestore.collection("ProfilesTesting").doc(mainProfileId);
+  var mainProfileId = profile.id;
+  var mainProfileRef = firestore.collection("Profiles").doc(mainProfileId);
 
   mainProfileRef
-  .get()
-  .then(function(doc){
-      if(doc.exists){
-          var userData = doc.data();
-          var userName = userData.name;
+    .get()
+    .then(function (doc) {
+      if (doc.exists) {
+        var userData = doc.data();
+        var userName = userData.name;
 
-          var userProfileName = document.getElementById("profileName");
-          userProfileName.textContent = userName;
+        var userProfileName = document.getElementById("profileName");
+        userProfileName.textContent = userName;
       } else {
-          console.log("User document not found");
+        console.log("User document not found");
       }
-  }).catch(function(error){
+    })
+    .catch(function (error) {
       console.error("Error getting user document: ", error);
-  })
+    });
 }
- function googleTranslateElementInit() {
+function googleTranslateElementInit() {
   new google.translate.TranslateElement(
     { pageLanguage: "en" },
     "google_translate_element"
