@@ -97,7 +97,7 @@ function displayData() {
           <div class="card-body">
             <h5 class="card-title">${subDocData.name}</h5>
             <p id="med-desc" class="card-text">${subDocData.description}</p>
-            <div id="dosage-amt" class="border border-success rounded-circle">
+            <div id="dosage-amt" class="rounded">
               <p class="text-center">1 pill twice a day</p>
             </div>
           </div>
