@@ -45,15 +45,15 @@ input, select
   display: flex; 
   justify-content: space-between; 
 }
-#update-button
+#updateSaveButton
 {
   background-color: #388a58;
 }
-#cancel-button
+#cancelButton
 {
   background-color: #ff3333;
 }
-#update-button, #cancel-button
+#updateSaveButton, #cancelButton
 {
   padding: 10px 20px;
   border: none;
@@ -63,7 +63,7 @@ input, select
   transition: 0.3s;
   margin-top: 10px;
 }
-#update-button:hover, #cancel-button:hover 
+#updateSaveButton:hover, #cancelButton:hover 
 {
   opacity: 0.5;
 }

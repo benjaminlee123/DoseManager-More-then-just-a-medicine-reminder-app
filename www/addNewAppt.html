@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add New Appointment</title>
-    <link rel="stylesheet" href="css/upcomingAppts.css" />
+    <link rel="stylesheet" href="css/editAddAppts.css" />
 
     <!--firebase-->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
@@ -30,31 +30,47 @@
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"
     ></script>
-  </head>
+  </head> 
   <body>
     <div class="container">
+
       <h1 class="text-center fw-bold p-4">Create An Appointment</h1>
+
       <div class="container">
+
         <form id="formData">
-          <label for="apptLocation">Appointment Location</label><br />
-          <input type="text" id="apptLocation" name="apptLocation" /><br />
-          <label for="apptDateTime">Appointment Date & Time</label><br />
-          <input type="datetime-local" id="apptDateTime" name="apptDateTime" /><br />
-          <label for="docName">Doctor Name</label><br />
-          <input type="text" id="docName" name="docName" /><br />   <!-- ... -->
-            <label for="reminderTime">Set Reminder</label><br />
-            <select id="reminderTime">
-              <option value="5">5 minutes before</option>
-              <option value="15">15 minutes before</option>
-              <option value="30">30 minutes before</option>
-              <option value="60">1 hour before</option>
-            </select>
-          <button id="saveBtn" type="submit" class="btn btn-primary">
-            Save
-          </button>
+          <label for="apptLocation">Appointment Location</label>
+          <input type="text" id="apptLocation" name="apptLocation"/>
+          <br>
+
+          <label for="apptDateTime">Appointment Date & Time</label>
+          <input type="datetime-local" id="apptDateTime" name="apptDateTime"/>
+          <br>
+
+          <label for="docName">Doctor Name</label>
+          <input type="text" id="docName" name="docName"/>
+          <br>
+
+          <label for="reminderTime">Set Reminder</label>
+          <select id="reminderTime">
+            <option value="5">5 minutes before</option>
+            <option value="15">15 minutes before</option>
+            <option value="30">30 minutes before</option>
+            <option value="60">1 hour before</option>
+          </select>
+          <br>
+
+          <div class="buttons">
+            <button id="updateSaveButton" class="btn btn-primary">Save</button>
+            <a id="cancelButton" class="btn btn-danger">Cancel</a>
+          </div>
+          <br>
         </form>
-        <a id="back-button" class="btn btn-danger">Back to Appointments</a>
+        
       </div>
+
     </div>
+
   </body>
+
 </html>

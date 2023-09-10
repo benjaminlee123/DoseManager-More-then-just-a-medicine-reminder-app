@@ -29,7 +29,7 @@ function addAppts() {
   const mainCollectionRef = firestore.collection("ProfilesTesting").doc(mainCollectionDocID);
   const subcollectionName = "Appointments";
 
-  var backButton = document.getElementById("back-button");
+  var backButton = document.getElementById("cancelButton");
 
   //getting referenece for form DOM element
   var form = document.getElementById("formData");
