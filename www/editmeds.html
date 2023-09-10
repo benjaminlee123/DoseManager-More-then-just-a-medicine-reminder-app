@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add medication</title>
+    <title>edit medication</title>
 
     <!--css-->
     <link rel="stylesheet" href="css/addMeds.css" />
@@ -23,7 +23,7 @@
 
     <!--linking JS files-->
     <script src="cordova.js"></script>
-    <script src="js/addmeds.js"></script>
+    <script src="js/editmeds.js"></script>
 
     <!--bootstrap-->
     <link
@@ -42,7 +42,7 @@
     <i id="cancelIcon" class="fa-solid fa-circle-xmark" style="color: #ff0000">
     </i>
     <div class="container">
-      <h1 class="text-center fw-bold p-4">Add Medication</h1>
+      <h1 class="text-center fw-bold p-4">Edit Medication</h1>
       <div
         id="medForm"
         class="container p-4 rounded-5 border border-secondary-subtle"
@@ -104,14 +104,8 @@
           </datalist>
 
           <div class="container p-0 pt-4">
-            <button
-              id="submitBtn"
-              type="submit"
-              form="formData"
-              class="btn btn-success"
-            >
-              Submit
-            </button>
+            <button id="saveBtn" class="btn btn-success">save</button>
+            <button id="delBtn" class="btn btn-danger">Delete</button>
           </div>
         </form>
       </div>

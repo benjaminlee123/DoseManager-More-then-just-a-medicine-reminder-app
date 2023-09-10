@@ -1,53 +1,35 @@
+/*--------------------- home page styling--------------------- */
+#body {
+  background-color: #eaeadb;
+}
+
 /* -------------------- med cards styling -------------------- */
-#card 
-{
-  background-color: rgb(255, 127, 80);
+#card {
   border: 1px solid transparent; /* This sets the border color to transparent */
+  background-color: #f7f7ed;
 }
-#med-desc 
-{
-  width: 50%;
+.card-body p {
+  margin: 0%;
 }
-#dosage-amt 
-{
-  width: 25%;
-  position: absolute;
-  top: 10%;
-  padding: 2%;
-  right: 10%;
-  background-color: white;
-  color: black;
-  border: 1px solid transparent; /* This sets the border color to transparent */
+#med-desc {
+  width: 100%;
 }
-#editButton, #deleteButton 
-{
-  background-color: #0096ff!important;
-  color: white;
+
+#editBtn {
+  margin-top: 10px;
   width: 20%;
-  margin-left: 10px;
-  border-radius: 5px; 
-  border: 1px solid transparent; /* This sets the border color to transparent */
 }
 
 /* -------------------- addMed button styling -------------------- */
-#addMedBtn 
-{
+#addMedBtn {
   width: 80%;
   height: 5%;
   position: fixed;
-  bottom: 100px;
-  z-index: 1;
-  background-color: black;
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  color: white; 
+  color: white;
 }
 
-
 /* -------------------- footer styling -------------------- */
-.footer 
-{
+.footer {
   position: fixed;
   bottom: 0;
   margin: 0;
@@ -58,23 +40,19 @@
   justify-content: space-between;
   align-items: center;
 }
-a 
-{
+a {
   text-decoration: none;
 }
-.navBarLinks 
-{
+.navBarLinks {
   text-align: center;
   flex: 1;
 }
-.navBarIcons 
-{
+.navBarIcons {
   margin-top: 10px;
   width: 20%;
 }
 
 /* -------------------- google translate banner styling -------------------- */
-.VIpgJd-ZVi9od-ORHb-OEVmcd 
-{
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
   display: none !important;
 }

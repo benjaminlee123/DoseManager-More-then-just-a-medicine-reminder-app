@@ -143,7 +143,7 @@ function displayData() {
           var itemId = event.target.getAttribute("data-item-id");
 
           if (itemId) {
-            window.location.href = `editAppt.html?id=${profile.id}&apptId=${itemId}`;
+            window.location.href = `editAppt.html?id=${profile.id}&pic=${profile.pic}&apptId=${itemId}`;
           } else {
             console.log("Item ID not found in the button");
           }

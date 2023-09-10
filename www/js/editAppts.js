@@ -15,6 +15,7 @@ function editAppts() {
   firebase.initializeApp(firebaseConfig);
   var firestore = firebase.firestore();
 
+  //getting data passed from url
   function getParametersFromURL() {
     var urlParams = new URLSearchParams(window.location.search);
     var profile = {};
@@ -30,6 +31,7 @@ function editAppts() {
   console.log("profId:", profile.id);
   console.log("apptId:", apptId);
 
+  //selecting the collections
   const mainCollectionDocID = profile.id;
   const mainCollectionRef = firestore
     .collection("Profiles")
@@ -46,6 +48,7 @@ function editAppts() {
   var deleteButton = document.getElementById("delete-button");
   var backButton = document.getElementById("back-button");
 
+  //retrieving the current appointment information
   subcollectionRef
     .get()
     .then(function (doc) {
