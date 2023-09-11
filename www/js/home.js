@@ -103,7 +103,7 @@ function displayData() {
             <h5 class="card-title">${subDocData.name}</h5>
             <p id="med-desc" class="card-text">${subDocData.description}</p>
             <div id="dosage-amt" class="rounded">
-              <p class="text-center">${subDocData.amount} ${subDocData.type} ${subDocData.frequency}</p>
+              <p class="text-center">Dosage: ${subDocData.amount} ${subDocData.type} ${subDocData.frequency}</p>
             </div>
           </div>
         </div>
