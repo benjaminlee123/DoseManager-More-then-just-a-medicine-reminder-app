@@ -4,6 +4,12 @@
 }
 
 /* -------------------- med cards styling -------------------- */
+#medication-list {
+  max-height: 65vh;
+  overflow-y: auto;
+  padding-bottom: 10%;
+}
+
 #card {
   border: 1px solid transparent; /* This sets the border color to transparent */
   background-color: #f7f7ed;

@@ -112,8 +112,8 @@ function displayData() {
             <p id="med-desc" class="card-text">${subDocData.description}</p>
           </div>
         </div>
-        <div>
-          <button id="editBtn" class="editButton btn btn-success" data-item-id="${subDoc.id}">Edit</button>
+        <div class="pb-2">
+          <button id="editBtn" class="editButton btn btn-primary" data-item-id="${subDoc.id}">Edit</button>
         </div>
       `;
         medicationList.innerHTML += medicationCard;

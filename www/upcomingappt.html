@@ -15,7 +15,6 @@
     <script src="js/index.js"></script>
     <script src="js/upcomingAppts.js"></script>
 
-    
     <!--google translate-->
     <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
@@ -33,77 +32,68 @@
     ></script>
   </head>
 
-  <body>
-    <h1 class="text-center p-4">Upcoming Appointments</h1>
+  <body id="body">
+    <div class="container">
+      <h1 class="text-center p-4 fw-bold">Upcoming Appointments</h1>
 
-    <!-- total appointments card -->
-    <div class="card p-2" id="totalApptCard">
-      <div class="card-body">
-        <p class="card-text">You have <span id="upcoming-appts">0</span> upcoming appointment(s) and <span id="missed-appts">0</span> missed appointment(s).</p>
-      </div>
-    </div>
-    <br>
-
-    <!-- create new appointment -->
-    <div class="center-container">
-      <div id="addApptBtn">
-        <a>Create New Appointment</a>
-      </div>
-    </div>    
-    <br>
-
-    <!-- appointment cards -->
-    <div id="appt-list-container" class="container p-2">
-      <div id="appt-list" class="card">
-        <div id="appt-list" class="container p-2">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Appointment Location</h5>
-              <p class="card-text">Appointment Date & Time</p>
-              <p class="card-text">Doctor's Name</p>
-            </div>
-          </div>
+      <!-- total appointments card -->
+      <div class="card p-2" id="totalApptCard">
+        <div class="card-body">
+          <p class="card-text fw-bold">
+            You have <span id="upcoming-appts">0</span> upcoming appointment(s)
+            and <span id="missed-appts">0</span> missed appointment(s).
+          </p>
         </div>
       </div>
+      <br />
+
+      <!-- create new appointment -->
+      <div class="center-container">
+        <div id="addApptBtn">
+          <a>Create New Appointment</a>
+        </div>
+      </div>
+      <br />
     </div>
-    <br>
-    
+
+    <!-- appointment cards -->
+    <div id="appt-list" class="container"></div>
+    <br />
+
+    <!-- footer -->
+    <footer class="footer">
+      <a id="medication-footer">
+        <div class="navBarLinks">
+          <img
+            src="img/medicineIcon.png"
+            alt="Medicine Icon"
+            class="navBarIcons"
+          />
+          <p class="text-white">Medications</p>
+        </div>
+      </a>
+
+      <a id="appointment-footer">
+        <div class="navBarLinks">
+          <img
+            src="img/calendarIcon.png"
+            alt="Calendar Icon"
+            class="navBarIcons"
+          />
+          <p class="text-white">Appointments</p>
+        </div>
+      </a>
+
+      <a id="profile-footer">
+        <div class="navBarLinks">
+          <img
+            src="img/profileIcon.png"
+            alt="Profile Icon"
+            class="navBarIcons"
+          />
+          <p class="text-white">Profile</p>
+        </div>
+      </a>
+    </footer>
   </body>
-
-  <!-- footer -->
-  <footer class="footer">
-    <a id="medication-footer">
-      <div class="navBarLinks">
-        <img
-        src="img/medicineIcon.png"
-        alt="Medicine Icon"
-        class="navBarIcons"
-        />
-      <p class="text-white">Medications</p>
-      </div>
-    </a>
-
-    <a id="appointment-footer">
-      <div class="navBarLinks">
-        <img
-        src="img/calendarIcon.png"
-        alt="Calendar Icon"
-        class="navBarIcons"
-        />
-        <p class="text-white">Appointments</p>
-      </div>
-    </a>
-
-    <a id="profile-footer">
-      <div class="navBarLinks">
-        <img
-        src="img/profileIcon.png"
-        alt="Profile Icon"
-        class="navBarIcons"
-        />
-        <p class="text-white">Profile</p>
-      </div>
-    </a>
-  </footer>
-
 </html>

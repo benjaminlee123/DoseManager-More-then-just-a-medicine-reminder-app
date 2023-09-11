@@ -54,6 +54,7 @@ function editMeds() {
   var medNameInput = document.getElementById("medName");
   var medDescInput = document.getElementById("medDesc");
   var medTypeInput = document.getElementById("type");
+  var medAmtInput = document.getElementById("medAmt");
   var medMealInput = document.getElementById("mealType");
   var medReminderInput = document.getElementById("medTime");
   var medFrequencyInput = document.getElementById("frequency");
@@ -67,6 +68,7 @@ function editMeds() {
         medNameInput.value = itemData.name;
         medDescInput.value = itemData.description;
         medTypeInput.value = itemData.type;
+        medAmtInput.value = itemData.amount;
         medMealInput.value = itemData.meal;
         medReminderInput.value = itemData.reminderTime;
         medFrequencyInput.value = itemData.frequency;
@@ -93,6 +95,7 @@ function editMeds() {
     var newMedNameInput = medNameInput.value;
     var newMedDescInput = medDescInput.value;
     var newMedTypeInput = medTypeInput.value;
+    var newMedAmtInput = medAmtInput.value;
     var newMedMealInput = medMealInput.value;
     var newMedReminderInput = medReminderInput.value;
     var newMedFrequencyInput = medFrequencyInput.value;
@@ -103,6 +106,7 @@ function editMeds() {
         description: newMedDescInput,
         type: newMedTypeInput,
         meal: newMedMealInput,
+        amount: newMedAmtInput,
         reminderTime: newMedReminderInput,
         frequency: newMedFrequencyInput,
       })

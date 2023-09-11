@@ -22,7 +22,7 @@
     <script src="www/js/profile.js"></script>
 
     <!--css files-->
-    <link rel="stylesheet" href="www/css/profiles.css" />
+    <link rel="stylesheet" href="css/profiles.css" />
 
     <!--font awesome kit-->
     <script
@@ -33,62 +33,45 @@
     <title>Profile</title>
   </head>
 
-  <body>
-    <i
-    id="cancelIcon"
-    class="fa-solid fa-circle-xmark"
-    style="color: #ff0000"
-    >
+  <body id="body">
+    <i id="cancelIcon" class="fa-solid fa-circle-xmark" style="color: #ff0000">
     </i>
 
-   <div id="profile-pic" class="display-5 text-center pb-2"></div>
+    <div id="profile-pic" class="display-5 text-center pb-2"></div>
 
     <div class="container">
-      <div class="row justify-content-center align-items-center">
-        <div>
-          <h2 id="profileName" class="text-center card-title"></h2>
-          <p class="text-center card-text">Singapore</p>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <h2 class="text-center">
-              <i class="fa-solid fa-pencil" style="color: #000205"></i
-              ><a id="profile-personalInfo">Edit Your Particulars</a>
-            </h2>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <h2 class="text-center">
-              <i class="fa-solid fa-bell" style="color: #0a0a0a"></i
-              ><a id="profile-notifications">Notifications</a>
-            </h2>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <h2 class="text-center">
-              <i class="fa-solid fa-calendar-days" style="color: #000000"></i
-              ><a id="profile-appointments">Appointments</a>
-            </h2>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <h2 class="text-center">
-              <i class="fa-solid fa-language" style="color: #000000"></i
-              ><a id="profile-language">Language</a>
-            </h2>
-          </div>
-        </div>
-
+      <div class="container">
+        <h2 id="profileName" class="text-center card-title"></h2>
+        <p class="text-center card-text">Singapore</p>
       </div>
+      <div class="container">
+        <div class="row">
+          <button class="btn btn-primary" id="profile-personalInfo">
+            <i class="fa-solid fa-pencil" style="color: #000205"></i
+            ><a class="btn btn-primary" id="profile-personalInfo"
+              >Edit Your Particulars</a
+            >
+          </button>
+        </div>
 
-      <br>
+        <div class="row">
+          <button class="btn btn-primary" id="profile-notifications">
+            <i class="fa-solid fa-bell"></i>
+            Notifications
+          </button>
+        </div>
+
+        <div class="row">
+          <i class="fa-solid fa-calendar-days" style="color: #000000"></i
+          ><a id="profile-appointments">Appointments</a>
+        </div>
+
+        <div class="row">
+          <i class="fa-solid fa-language" style="color: #000000"></i
+          ><a id="profile-language">Language</a>
+        </div>
+      </div>
+      <br />
       <div class="col-12 mt-3 text-center">
         <a href="profilelogin.html" class="btn btn-success">Change Profile</a>
         <button id="delete-profile" class="btn btn-danger">
@@ -96,7 +79,5 @@
         </button>
       </div>
     </div>
-
   </body>
-
 </html>

@@ -88,22 +88,20 @@ function displayData() {
         var id = subDoc.id;
         var formattedDate = formatDate(apptDateTime);
 
-        console.log(id);
         if (apptDateTime > currentDateTime) {
           //populating html page with each appointment card details
           var apptCard = `
         <div id = "upcomingAppt" class="card mt-4 rounded-5">
             <div class="card-body">
                 <h5 class="card-title">${subDocData.apptLocation}</h5>
-                <p id="apptDateTime" class="card-text">${formattedDate}</p>
-                <p id="docName" class="card-text">${subDocData.docName}</p>
-                <p id="apptStatus">Appointment Status: Upcoming</p>  
+                <p id="apptDateTime" class="card-text fw-bold">${formattedDate}</p>
+                <p id="docName" class="card-text fw-bold">${subDocData.docName}</p>
+                <p id="apptStatus">Appointment Status:</p>
+                <p id="upcoming">Upcoming</p> 
             </div>
         </div>
-        <br>
         <div>
           <button class="edit-button btn btn-primary" id="editButton" data-item-id="${subDoc.id}">Edit</button>
-          <button class="delete-button btn btn-primary" id="deleteButton" data-item-id="#">Delete</button>
         </div>
         `;
           //Add to the upcoming appointment counter to be displayed at the top of the page
@@ -114,16 +112,14 @@ function displayData() {
         <div id = "missedAppt" class="card mt-4 rounded-5">
             <div class="card-body">
                 <h5 class="card-title" id="apptLocation">${subDocData.apptLocation}</h5>
-                <p id="apptDateTime" class="card-text">${formattedDate}</p>
-                <p id="docName" class="card-text">${subDocData.docName}</p>
-                <p id="apptStatus">Appointment Status: Missed</p>  
+                <p id="apptDateTime" class="card-text fw-bold">${formattedDate}</p>
+                <p id="docName" class="card-text fw-bold">${subDocData.docName}</p>
+                <p id="apptStatus">Appointment Status:</p> 
+                <p id="missed">Missed</p> 
             </div>
         </div>
-        <br>
         <div>
-          <button class="delete-button btn btn-primary" id="deleteButton" data-item-id="#">Delete</button>
-          <!-- <button class="reschedule-button btn btn-primary" id="rescheduleButton" data-item-id="${subDoc.id}">Reschedule</button> -->
-          </div>
+          <button class="btn btn-danger deleteButton" id="deleteButton" data-item-id="${subDoc.id}">Delete</button>
         `;
 
           //Add to the missed appointment counter to be displayed at the top of the page
@@ -134,6 +130,33 @@ function displayData() {
         updateUpcomingApptsHtml(upcomingAppts);
         updateMissedApptsHtml(missedAppts);
 
+        //delete appointment buttons
+        var delBtn = document.getElementsByClassName("deleteButton");
+
+        Array.from(delBtn).forEach(function (button) {
+          button.addEventListener("click", handleDeleteButtonClick);
+        });
+
+        function handleDeleteButtonClick(event) {
+          var itemId = event.target.getAttribute("data-item-id");
+          if (itemId) {
+            if (confirm("Are you sure you want to delete this appointment?")) {
+              // Delete the document from Firestore
+              subCollectionRef
+                .doc(itemId)
+                .delete()
+                .then(function () {
+                  console.log("appointment deleted successfully");
+                  window.location.href = `upcomingappt.html?id=${profile.id}&pic=${profile.pic}`;
+                })
+                .catch(function (error) {
+                  console.log("Error deleting appointment:", error);
+                });
+            }
+          }
+        }
+
+        //edit appointment buttons
         var editButtons = document.getElementsByClassName("edit-button");
         Array.from(editButtons).forEach(function (button) {
           button.addEventListener("click", handleEditButtonClick);
