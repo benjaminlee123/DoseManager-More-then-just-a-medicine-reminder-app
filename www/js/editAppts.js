@@ -14,7 +14,7 @@ function editAppts() {
 
   firebase.initializeApp(firebaseConfig);
   var firestore = firebase.firestore();
-
+  var profilesCollection = firestore.collection("Profiles");
   function getParametersFromURL() {
     var urlParams = new URLSearchParams(window.location.search);
     var profile = {};

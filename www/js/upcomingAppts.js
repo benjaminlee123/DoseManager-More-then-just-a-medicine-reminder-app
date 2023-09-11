@@ -74,9 +74,7 @@ function displayData() {
   }
 
   var mainProfileId = profile.id;
-  var mainProfileRef = firestore
-    .collection("ProfilesTesting")
-    .doc(mainProfileId);
+  var mainProfileRef = firestore.collection("Profiles").doc(mainProfileId);
   var subCollectionRef = mainProfileRef.collection("Appointments");
 
   //retrieving data from firebase by timestamp
@@ -124,6 +122,7 @@ function displayData() {
 
           //Add to the missed appointment counter to be displayed at the top of the page
           missedAppts++;
+          console.log("missed: ", subDoc.id);
         }
 
         apptList.innerHTML += apptCard;
@@ -141,7 +140,8 @@ function displayData() {
           if (itemId && picID) {
             window.location.href = `editAppt.html?id=${profile.id}&apptId=${itemId}&pic=${picID}`;
           } else {
-            console.log("Item ID not found in the button");
+            //console.log("Item ID not found in the button");
+            console.log(itemId);
           }
         }
       });
