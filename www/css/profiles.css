@@ -17,6 +17,13 @@
 i {
   padding: 10px;
 }
+/*-------------styling of the 4 main blue buttons-----------*/
+#profile-personalInfo,
+#profile-notifications,
+#profile-appointments,
+#profile-language {
+  width: 80%;
+}
 
 /* ------------------- change & delete buttons styling ------------------- */
 .btn-danger:hover {

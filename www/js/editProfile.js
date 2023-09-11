@@ -37,6 +37,11 @@ function editProfile() {
   var genderInput = document.getElementById("gender");
   var dateOfBirthInput = document.getElementById("dob");
   var saveButton = document.getElementById("saveBtn");
+  var homeButton = document.getElementById("homeBtn");
+
+  function handleHomeButton() {}
+
+  homeButton.addEventListener("click", handleHomeButton);
 
   mainCollectionRef
     .get()

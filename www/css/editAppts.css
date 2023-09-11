@@ -1,0 +1,19 @@
+#body {
+  background-color: #eaeadb;
+}
+
+/**/
+#apptForm {
+  background-color: #f7f7ed;
+}
+
+/*cancel icon top left*/
+#back-button {
+  font-size: 30px;
+  padding: 15px;
+}
+
+/*delete btn*/
+#delete-button {
+  float: right;
+}
