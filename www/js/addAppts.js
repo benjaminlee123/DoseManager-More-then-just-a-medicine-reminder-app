@@ -1,5 +1,5 @@
 document.addEventListener("deviceready", addAppts);
-var userName; //i know alr the username code need to get from addappts.js cuz u calling the function in this js instead gotta move the code over
+
 function addAppts() {
   // Request notification permission when the addAppts function is called
   requestNotificationPermission(function (granted) {
@@ -37,7 +37,6 @@ function addAppts() {
   firestore = firebase.firestore();
 
   }
-  var apptsCollection = firestore.collection("Appointments");
 
   function getProfileItemIdFromURL() {
     var urlParams = new URLSearchParams(window.location.search);
@@ -55,24 +54,6 @@ function addAppts() {
     .collection("Profiles")
     .doc(mainCollectionDocID);
   const subcollectionName = "Appointments";
-
-  //ADDED IN like that the userName will have a value alr from this code, can prob remove the code from notif.js
-  //yea
-  //the other lines also can remove but try that later, see if this works first
-  mainProfileRef
-  .get()
-  .then(function (doc) {
-      if (doc.exists) {
-      var userData = doc.data();
-      userName = userData.name;
-      console.log(userName);
-      } else {
-      console.log("User document not found");
-      }
-  })
-  .catch(function (error) {
-      console.error("Error getting user document: ", error);
-  });
 
   var backButton = document.getElementById("back-button");
 
@@ -103,13 +84,17 @@ function addAppts() {
       docName: docName,
     };
   
+
+    var checkUserName = getUserName(mainCollectionDocID, firestore);
+    console.log(checkUserName);
+
     try {
 
        // Add the appointment to Firestore
        const docRef = await mainCollectionRef.collection(subcollectionName).add(newAppts);
 
       // Schedule the local notification and await its completion
-      await scheduleAppointmentNotification(apptLocation, apptDateTime, reminderTime, docRef.id, mainCollectionDocID,userName);
+      await scheduleAppointmentNotification(apptLocation, apptDateTime, reminderTime, docRef.id, mainCollectionDocID);
   
      
       console.log("Document added to subcollection with ID: ", docRef.id);

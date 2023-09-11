@@ -1,8 +1,6 @@
 document.addEventListener("deviceready", function() {
-var firestore;
-      // Initialize Firebase
-var userName; 
-  const firebaseConfig = { //can u push ur code in lemme work on it i try u go rest ah npn i just console log stuff to see if the username is defined
+// Initialize Firebase
+  const firebaseConfig = {
     apiKey: "AIzaSyAt4SUmSwvkHdas68AYQdjOe7fkfL547gQ",
     authDomain: "dosemanager-d0236.firebaseapp.com",
     projectId: "dosemanager-d0236",
@@ -12,16 +10,11 @@ var userName;
     measurementId: "G-XDL965JQ9H",
   };
   if (!firebase.apps.length) { 
-  firebase.initializeApp(firebaseConfig);
-    firestore = firebase.firestore();
-  var profilesCollection = firestore.collection("Profiles");
-  var profile = getProfileIdFromURL(); 
-  var userId = profile.id;  
-  var mainProfileId = profile.id;
-  var mainProfileRef = firestore
-      .collection("Profiles")
-      .doc(mainProfileId);
+    firebase.initializeApp(firebaseConfig);
   }
+
+  firestore = firebase.firestore();
+
   function getProfileIdFromURL() {
     var urlParams = new URLSearchParams(window.location.search);
         return {
@@ -29,6 +22,9 @@ var userName;
             pic: urlParams.get("pic")
         };
     } 
+
+    var profile = getProfileIdFromURL(); 
+    var userId = profile.id;  
 // Get profile ID from URL
 
      // Initialize action buttons for notifications
@@ -129,7 +125,28 @@ function requestNotificationPermission(callback) {
 function generateUniqueNotificationId() {
     return new Date().getTime();
 }
-function scheduleAppointmentNotification(apptLocation, apptDateTime, reminderTime,appointmentId,userId,userName) {
+
+//Function to retrieve the userName in the profile
+function getUserName(userId, firestore) {
+  const mainProfileRef = firestore.collection("Profiles").doc(userId);
+
+  return mainProfileRef
+    .get()
+    .then(function (doc) {
+      if (doc.exists) {
+        const userData = doc.data();
+        return userData.name;
+      } else {
+        return null; // User document not found
+      }
+    })
+    .catch(function (error) {
+      console.error("Error getting user document: ", error);
+      return null;
+    });
+}
+
+function scheduleAppointmentNotification(apptLocation, apptDateTime, reminderTime, appointmentId, userId) {
     return new Promise((resolve, reject) => {
         const reminderTimeInMs = reminderTime * 60 * 1000;
         const apptTimeInMs = new Date(apptDateTime).getTime();
@@ -157,24 +174,30 @@ function scheduleAppointmentNotification(apptLocation, apptDateTime, reminderTim
 
         // Schedule the notification if the Cordova plugin is available
         if (typeof cordova !== 'undefined' && cordova.plugins && cordova.plugins.notification && cordova.plugins.notification.local) {
-            cordova.plugins.notification.local.schedule({
-                id: notifId,
-                title: "New Appointment Reminder",
-                text: `${userName},You have an appointment at ${apptLocation} in ${reminderTime} minutes.`,
-                actions: 'appointment-actions',
-                data: { firestoreDocumentId: appointmentId },
-                trigger: { at: new Date(notifTimeInMs) }
-            });  //ok then gotta add new lines to get the data then ig sec lemme have a look, can prob just copy paste from the home.js one then chng a bit
-                //nope, this notif .js is based on the  add appt js, its jus manipulating the data based on the notif actions 
-            // Update the notification ID in Firebase
-            const apptRef = firebase.firestore()
-            .collection("Profiles")
-            .doc(userId) 
-            .collection("Appointments")
-            .doc(appointmentId);
-            apptRef.update({ notificationId: notifId });
+            getUserName(userId, firestore)
+                .then((userName) => {
+                    cordova.plugins.notification.local.schedule({
+                        id: notifId,
+                        title: "New Appointment Reminder",
+                        text: `${userName},You have an appointment at ${apptLocation} in ${reminderTime} minutes.`,
+                        actions: 'appointment-actions',
+                        data: { firestoreDocumentId: appointmentId },
+                        trigger: { at: new Date(notifTimeInMs) }
+                    }); 
 
-            resolve(true);
+                    const apptRef = firebase.firestore()
+                    .collection("Profiles")
+                    .doc(userId) 
+                    .collection("Appointments")
+                    .doc(appointmentId);
+                    apptRef.update({ notificationId: notifId });
+        
+                    resolve(true);
+                })
+                .catch((error) => {
+                    console.log("Error fetching userName:", error);
+                    reject(error);
+                });
         } else {
             reject('Cordova local notification plugin is not available.');
         }
