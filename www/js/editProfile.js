@@ -39,7 +39,9 @@ function editProfile() {
   var saveButton = document.getElementById("saveBtn");
   var homeButton = document.getElementById("homeBtn");
 
-  function handleHomeButton() {}
+  function handleHomeButton() {
+    window.location.href = `profile.html?id=${profile.id}&pic=${profile.pic}`;
+  }
 
   homeButton.addEventListener("click", handleHomeButton);
 
