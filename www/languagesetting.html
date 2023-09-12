@@ -27,31 +27,45 @@
     <script src="js/language.js"></script>
   </head>
 
-  <body>
-    <h1>Language Settings</h1>
+  <body id="body">
+    <div class="container">
+      <h1 class="text-center fw-bold p-4">Language Settings</h1>
 
-    <div class="button-container">
-      <button id="engButton">English language</button>
-      <br />
-
-      <button id="chiButton">Chinese language</button>
-      <br />
-
-      <button id="malayButton">Malay language</button>
-      <br />
-
-      <button id="tamilButton">Tamil language</button>
-      <br />
-
-      <button
-        id="backToHomeBtn"
-        type="button"
-        class="btn btn-danger btn-lg btn-block"
+      <div
+        id="language-container"
+        class="container p-4 rounded-5 border border-secondary-subtle"
       >
-        back to home
-      </button>
-    </div>
+        <div class="row">
+          <button class="btn btn-primary" id="engButton">
+            English language
+          </button>
+        </div>
 
-    <div id="google_translate_element"></div>
+        <div class="row">
+          <button class="btn btn-primary" id="chiButton">
+            Chinese language
+          </button>
+        </div>
+
+        <div class="row">
+          <button class="btn btn-primary" id="malayButton">
+            Malay language
+          </button>
+        </div>
+
+        <div class="row">
+          <button class="btn btn-primary" id="tamilButton">
+            Tamil language
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <button id="backToHomeBtn" type="button" class="btn btn-danger mx-auto">
+          Back to home
+        </button>
+      </div>
+
+      <div id="google_translate_element"></div>
+    </div>
   </body>
 </html>

@@ -20,3 +20,14 @@ input {
   font-size: 30px;
   padding: 15px;
 }
+
+/* ------------------- google translate ------------------- */
+#goog-gt-tt {
+  display: none !important;
+}
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
+  display: none !important;
+}
+#google_translate_element {
+  display: none !important;
+}

@@ -17,3 +17,14 @@
 #delete-button {
   float: right;
 }
+
+/* ------------------- google translate ------------------- */
+#goog-gt-tt {
+  display: none !important;
+}
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
+  display: none !important;
+}
+#google_translate_element {
+  display: none !important;
+}
