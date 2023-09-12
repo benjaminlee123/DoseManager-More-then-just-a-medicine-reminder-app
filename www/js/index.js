@@ -14,22 +14,6 @@ function onDeviceReady() {
  
 }
 function loadDB() {
-  //  DoseManager's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyAt4SUmSwvkHdas68AYQdjOe7fkfL547gQ",
-    authDomain: "dosemanager-d0236.firebaseapp.com",
-    projectId: "dosemanager-d0236",
-    storageBucket: "dosemanager-d0236.appspot.com",
-    messagingSenderId: "373646054095",
-    appId: "1:373646054095:web:89660fa48e041a7d231dba",
-    measurementId: "G-XDL965JQ9H",
-  };
-  // Initialize Firebase
-
-  firebase.initializeApp(firebaseConfig);
-  //const analytics = getAnalytics(app);
-
-  var firestore = firebase.firestore();
 
   //data you want to add in
   const newMeds = {
@@ -51,19 +35,6 @@ function loadDB() {
 
 function retrieveMeds() {
   //  DoseMAanager's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyAt4SUmSwvkHdas68AYQdjOe7fkfL547gQ",
-    authDomain: "dosemanager-d0236.firebaseapp.com",
-    projectId: "dosemanager-d0236",
-    storageBucket: "dosemanager-d0236.appspot.com",
-    messagingSenderId: "373646054095",
-    appId: "1:373646054095:web:89660fa48e041a7d231dba",
-    measurementId: "G-XDL965JQ9H",
-  };
-  // Initialize Firebase
-
-  firebase.initializeApp(firebaseConfig);
-  var firestore = firebase.firestore();
   var medsCollection = firestore.collection("Medicine");
 
   medsCollection

@@ -1,20 +1,5 @@
 document.addEventListener("deviceready", function() {
-    // Initialize Firebase
-      const firebaseConfig = {
-        apiKey: "AIzaSyAt4SUmSwvkHdas68AYQdjOe7fkfL547gQ",
-        authDomain: "dosemanager-d0236.firebaseapp.com",
-        projectId: "dosemanager-d0236",
-        storageBucket: "dosemanager-d0236.appspot.com",
-        messagingSenderId: "373646054095",
-        appId: "1:373646054095:web:89660fa48e041a7d231dba",
-        measurementId: "G-XDL965JQ9H",
-      };
-      if (!firebase.apps.length) { 
-        firebase.initializeApp(firebaseConfig);
-      }
-    
-      firestore = firebase.firestore();
-    
+    console.log("Device ready event fired!");
       function getProfileIdFromURL() {
         var urlParams = new URLSearchParams(window.location.search);
             return {
@@ -29,28 +14,31 @@ document.addEventListener("deviceready", function() {
     
          // Initialize action buttons for notifications
          cordova.plugins.notification.local.addActions('appointment-actions', [
-            { id: 'confirm', title: 'Confirm' },
+            { id: 'confirm', title: 'Confirm'},
             { id: 'skip', title: 'Skip' }
         ]);
-    
+        
         cordova.plugins.notification.local.addActions('medicine-actions', [
             { id: 'taken', title: 'Taken' },
             { id: 'skip', title: 'Skip' }
         ]);
-    
+        
         // Handle appointment actions
         cordova.plugins.notification.local.on('confirm', function(notification) {
             // Handle "Yes" action here
+            console.log('Confirm action triggered with:', notification);
             // You can add logic to update Firestore as well
              // Remove the appointment from the Appointments collection
              const firestoreDocumentId = notification.data.firestoreDocumentId;
             removeAppointment(firestoreDocumentId, userId);
     
         });
-    
+        
         cordova.plugins.notification.local.on('skip', function(notification) {
+            console.log('Skip action triggered with:', notification);
             // Move the skipped appointment to MissedNotifications collection
-            markAppointmentAsMissed(notification.data.firestoreDocumentId, userId);
+            const firestoreDocumentId = notification.data.firestoreDocumentId;
+            markAppointmentAsMissed(firestoreDocumentId, userId);
           });
     
         // Handle medicine actions
@@ -67,6 +55,7 @@ document.addEventListener("deviceready", function() {
     }, false);
     
     function removeAppointment(notificationId,userId) {
+        console.log("removeAppointment called with:", notificationId, userId);
         const apptRef = firebase.firestore()
             .collection("Profiles")
             .doc(userId)
@@ -180,7 +169,9 @@ document.addEventListener("deviceready", function() {
                     text: `${userName}, You have an appointment at ${apptLocation} in ${reminderTime} minutes.`,
                     actions: 'appointment-actions',
                     data: { firestoreDocumentId: appointmentId },
-                    trigger: { at: new Date(notifTimeInMs) }
+                    trigger: { at: new Date(notifTimeInMs) },
+                    foreground: true
+
                 });
     
                 const apptRef = firebase.firestore()
@@ -202,8 +193,6 @@ document.addEventListener("deviceready", function() {
             }
         });
     }
-    
-    
     
     function scheduleMedicineNotification(startHour, interval, days, dosage) {
         let today = new Date();
