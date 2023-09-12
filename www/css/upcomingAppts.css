@@ -1,5 +1,6 @@
 #body {
   background-color: #eaeadb;
+  overflow-y: hidden;
 }
 
 /* ------------------- total appointments styling ------------------- */
@@ -42,7 +43,7 @@
 #appt-list {
   max-height: 65vh;
   overflow-y: auto;
-  padding-bottom: 20%;
+  padding-bottom: 40%;
 }
 
 /* ------------------- appointment cards styling ------------------- */

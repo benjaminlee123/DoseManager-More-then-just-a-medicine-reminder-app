@@ -22,6 +22,15 @@ function addProfile() {
   // Get reference to the form DOM element
   var form = document.getElementById("profileForm");
 
+  //Get reference to home button
+  var homebtn = document.getElementById("homeBtn");
+
+  homebtn.addEventListener("click", handleHomeButton);
+
+  function handleHomeButton() {
+    window.location.href = `profileLogin.html`;
+  }
+
   form.addEventListener("submit", function (event) {
     // Prevent the default form submission behavior
     event.preventDefault();
