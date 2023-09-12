@@ -67,10 +67,6 @@ async function addAppts() {
       docName: docName,
     };
   
-
-    var checkUserName = getUserName(mainCollectionDocID, firestore);
-    console.log(checkUserName);
-
     try {
 
        // Add the appointment to Firestore
@@ -78,7 +74,7 @@ async function addAppts() {
        const docRef = await mainCollectionRef.collection(subcollectionName).add(newAppts);
 
       // Schedule the local notification and await its completion
-      await scheduleAppointmentNotification(apptLocation, apptDateTime, reminderTime, docRef.id, mainCollectionDocID,userName);
+      await scheduleAppointmentNotification(apptLocation, apptDateTime, reminderTime, docRef.id, mainCollectionDocID);
   
      
       console.log("Document added to subcollection with ID: ", docRef.id);
