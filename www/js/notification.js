@@ -1,6 +1,27 @@
 document.addEventListener("deviceready", scheduleNewNotification);
 
 function scheduleNewNotification(apptLocation, apptDateTime, reminderTime) {
+  //referencing home button
+  var homeBtn = document.getElementById("homeBtn");
+
+  homeBtn.addEventListener("click", handleHomeBtn);
+
+  //getting data from url
+  function getProfileIdFromURL() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var params = {};
+    params.id = urlParams.get("id");
+    params.pic = urlParams.get("pic");
+    return params;
+  }
+
+  let profile = getProfileIdFromURL();
+  function handleHomeBtn(event) {
+    var itemId = event.target.getAttribute("data-item-id");
+
+    window.location.href = `home.html?id=${profile.id}&pic=${profile.pic}&medId=${itemId}`;
+  }
+
   // Calculate the reminder time in milliseconds
   const reminderTimeInMs = reminderTime * 60 * 1000;
 
