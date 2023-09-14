@@ -11,7 +11,7 @@ document.addEventListener("deviceready", function() {
         var profile = getProfileIdFromURL(); 
         var userId = profile.id;  
     // Get profile ID from URL
-    
+        
          // Initialize action buttons for notifications
          cordova.plugins.notification.local.addActions('appointment-actions', [
             { id: 'confirm', title: 'Confirm'},
@@ -20,11 +20,12 @@ document.addEventListener("deviceready", function() {
         
         cordova.plugins.notification.local.addActions('medicine-actions', [
             { id: 'taken', title: 'Taken' },
-            { id: 'skip', title: 'Skip' }
+            { id: 'skipping', title: 'Skip' }
         ]);
         
         // Handle appointment actions
         cordova.plugins.notification.local.on('confirm', function(notification) {
+            
             // Handle "Yes" action here
             console.log('Confirm action triggered with:', notification);
             // You can add logic to update Firestore as well
@@ -45,16 +46,23 @@ document.addEventListener("deviceready", function() {
         cordova.plugins.notification.local.on('taken', function(notification) {
         // Logic to mark medicine as taken
          // Logic to mark medicine as taken based on userId
-         markMedicineAsTaken(notification.id, userId);
+         // Retrieve Firestore document ID from notification data
+        const firestoreDocumentId = notification.data.firestoreDocumentId;
+         markMedicineAsTaken(firestoreDocumentId.id, userId);
+         
+
         });
+        cordova.plugins.notification.local.on('skipping', function(notification) {
+            console.log('Skip action triggered with:', notification);
+            // Move the skipped appointment to MissedNotifications collection
+            const firestoreDocumentId = notification.data.firestoreDocumentId;
+            markMedicineAsMissed(firestoreDocumentId, userId);
+          });
     
-        cordova.plugins.notification.local.on('skip', function(notification) {
-        // Logic to mark medicine as missed
-        markMedicineAsMissed(notification.id, userId);
-        });
+    
     }, false);
     
-    function removeAppointment(notificationId,userId) {
+    function removeAppointment(notificationId, userId) {
         console.log("removeAppointment called with:", notificationId, userId);
         const apptRef = firebase.firestore()
             .collection("Profiles")
@@ -169,7 +177,7 @@ document.addEventListener("deviceready", function() {
                     text: `${userName}, You have an appointment at ${apptLocation} in ${reminderTime} minutes.`,
                     actions: 'appointment-actions',
                     data: { firestoreDocumentId: appointmentId },
-                    trigger: { at: new Date(notifTimeInMs) },
+                            trigger: { at: new Date(notifTimeInMs) },
                     foreground: true
 
                 });
@@ -194,22 +202,97 @@ document.addEventListener("deviceready", function() {
         });
     }
     
-    function scheduleMedicineNotification(startHour, interval, days, dosage) {
+    function scheduleMedicineNotification(startHour, interval, days, dosage,medicineId,userId,userName) {
         let today = new Date();
         let startTime = new Date(`${today.toDateString()} ${startHour}`);
-        let startTimeInMs = startTime.getTime();
-      
-        for (let day = 0; day < days; day++) {
-            for (let time = startTimeInMs; time <= startTimeInMs + (12 * 60 * 60 * 1000); time += (interval * 60 * 1000)) {
-                let notificationTime = new Date(time + day * 24 * 60 * 60 * 1000);
-                cordova.plugins.notification.local.schedule({
-                    id: time,
-                    title: 'Medicine Reminder',
-                    text: `It's time to take your ${dosage} dosage.`,
-                    actions: 'medicine-actions',
-                    trigger: { at: notificationTime },
-                    foreground: true
-                });
-            }
-        }
+        
+        const notifId = generateUniqueNotificationId();
+    
+        // Log the values for debugging
+        console.log("Start Time:", startTime);
+        console.log("Interval:", interval);
+        console.log("Days:", days);
+        console.log("Dosage:", dosage);
+    
+        cordova.plugins.notification.local.schedule({
+            id: notifId,
+            title: 'Medicine Reminder',
+            text: `${userName},It's time to take your ${dosage} dosage.`,
+            actions: 'medicine-actions',
+            data: { firestoreDocumentId:medicineId},
+            trigger: {
+                every: {
+                    hour: startTime.getHours(),
+                    minute: startTime.getMinutes()
+                }
+            },
+            foreground: true
+        });
+    
+        console.log("Medicine notification scheduled.");
+        return notifId;  // Returning the generated notifId
     }
+    
+    
+    
+    function markMedicineAsMissed(medicineId, userId) {
+        let today = new Date();
+        today.setHours(0, 0, 0, 0);
+    
+        const medRef = firebase.firestore().collection("Profiles").doc(userId).collection("Medicine").doc(medicineId);
+        const missedRef = firebase.firestore().collection("Profiles").doc(userId).collection("MissedNotifications").doc("Medicine");
+    
+        medRef.get().then((doc) => {
+            if (doc.exists) {
+                const medicineData = doc.data();
+                
+                // Update the DailyLogs to mark it as missed
+                medRef.collection("DailyLogs").where("date", "==", today).get().then(snapshot => {
+                    snapshot.forEach(doc => {
+                        doc.ref.update({
+                            status: "missed"
+                        });
+                    });
+                });
+    
+                // Move to MissedNotifications collection
+                missedRef.set({
+                    [medicineId]: medicineData
+                }, { merge: true }).then(() => {
+                    // Delete the original medicine entry
+                    medRef.delete();
+                });
+            } else {
+                console.log("No such medicine!");
+            }
+        }).catch((error) => {
+            console.log("Error getting medicine:", error);
+        });
+    }
+    
+    
+    function markMedicineAsTaken(medicineId, userId) {
+        let today = new Date();
+        today.setHours(0, 0, 0, 0);
+    
+        firebase.firestore()
+          .collection("Profiles")
+          .doc(userId)
+          .collection("Medicine")
+          .doc(medicineId)
+          .collection("DailyLogs")
+          .where("date", "==", today)
+          .get()
+          .then(snapshot => {
+              snapshot.forEach(doc => {
+                  doc.ref.update({
+                      status: "taken",
+                      timeTaken: new Date()  // current time
+                  });
+              });
+    
+              // Delete the medicine entry
+              //return firebase.firestore().collection("Profiles").doc(userId).collection("Medicine").doc(medicineId).delete();
+          });
+    }
+    

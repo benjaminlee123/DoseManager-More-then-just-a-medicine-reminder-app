@@ -1,26 +1,39 @@
-#card {
-  background-color: rgb(179, 236, 236);
+/*--------------------- home page styling--------------------- */
+#body {
+  background-color: #eaeadb;
 }
+
+/* -------------------- med cards styling -------------------- */
+#medication-list {
+  max-height: 55vh; /* Adjusted to prevent overlapping with the footer */
+  overflow-y: auto;
+  padding-bottom: 5%; /* This will ensure space for the addMed button */
+}
+
+#card {
+  border: 1px solid transparent; /* This sets the border color to transparent */
+  background-color: #f7f7ed;
+}
+.card-body p {
+  margin: 0%;
+}
+#med-desc {
+  width: 100%;
+}
+
+#editBtn {
+  margin-top: 10px;
+  width: 20%;
+}
+
+/* Modify the addMed button styling */
 #addMedBtn {
   width: 80%;
-  position: fixed;
-  bottom: 100px;
-  z-index: 1;
+  margin: 10px 0;  /* Add some margin at the top and bottom */
+  color: white;
 }
 
-#med-desc {
-  width: 50%;
-}
-
-#dosage-amt {
-  width: 25%;
-  position: absolute;
-  top: 10%;
-  padding: 2%;
-  right: 10%;
-  background-color: brown;
-}
-
+/* -------------------- footer styling -------------------- */
 .footer {
   position: fixed;
   bottom: 0;
@@ -35,7 +48,6 @@
 a {
   text-decoration: none;
 }
-
 .navBarLinks {
   text-align: center;
   flex: 1;
@@ -44,9 +56,12 @@ a {
   margin-top: 10px;
   width: 20%;
 }
+/* Add padding to the bottom of the container to prevent overlap with the footer */
+.container {
+  padding-bottom: 80px;  /* Adjust as per your requirement */
+}
+
+/* -------------------- google translate banner styling -------------------- */
 .VIpgJd-ZVi9od-ORHb-OEVmcd {
   display: none !important;
 }
-
-
-

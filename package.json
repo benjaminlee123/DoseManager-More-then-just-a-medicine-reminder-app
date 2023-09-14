@@ -19,7 +19,6 @@
     "cordova-plugin-badge-fix": "^0.8.10",
     "cordova-plugin-browsersync": "^1.1.0",
     "cordova-plugin-device": "^2.1.0",
-    "cordova-plugin-firebase-messaging": "^7.0.4",
     "cordova-plugin-local-notification-12": "^0.1.4",
     "cordova-support-android-plugin": "~2.0.4",
     "cordova.plugins.diagnostic": "^7.1.2"
@@ -31,10 +30,6 @@
         "IOS_FIREBASE_POD_VERSION": "9.3.0",
         "ANALYTICS_COLLECTION_ENABLED": "true",
         "AUTOMATIC_SCREEN_REPORTING_ENABLED": "true"
-      },
-      "cordova-plugin-firebase-messaging": {
-        "ANDROID_FIREBASE_BOM_VERSION": "30.3.1",
-        "IOS_FIREBASE_POD_VERSION": "9.3.0"
       },
       "cordova-plugin-local-notification-12": {
         "ANDROID_SUPPORT_V4_VERSION": "26.+",

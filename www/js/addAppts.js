@@ -74,7 +74,7 @@ async function addAppts() {
        const docRef = await mainCollectionRef.collection(subcollectionName).add(newAppts);
 
       // Schedule the local notification and await its completion
-      await scheduleAppointmentNotification(apptLocation, apptDateTime, reminderTime, docRef.id, mainCollectionDocID);
+      await scheduleAppointmentNotification(apptLocation, apptDateTime, reminderTime, docRef.id, mainCollectionDocID,userName);
   
      
       console.log("Document added to subcollection with ID: ", docRef.id);
