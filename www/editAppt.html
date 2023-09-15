@@ -33,10 +33,12 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body>
+  <body id="body">
+    <i id="back-button" class="fa-solid fa-circle-xmark" style="color: #ff0000">
+    </i>
     <div class="container">
       <h1 class="text-center fw-bold p-4">Edit Appointment</h1>
-      <div class="container">
+      <div id="apptForm" class="container border rounded-5 p-4">
         <form id="editData">
           <label for="apptLocation">Appointment Location</label><br />
           <input type="text" id="editApptLocation" name="apptLocation" /><br />
@@ -48,11 +50,11 @@
           /><br />
           <label for="docName">Doctor Name</label><br />
           <input type="text" id="editDocName" name="docName" /><br />
-
-          <button id="update-button" class="btn btn-primary">Update</button>
-          <button id="delete-button" class="btn btn-danger">Delete</button>
+          <div class="container mt-3 p-0">
+            <button id="update-button" class="btn btn-primary">Update</button>
+            <button id="delete-button" class="btn btn-danger">Delete</button>
+          </div>
         </form>
-        <a id="back-button" class="btn btn-info">Back to Appointments</a>
       </div>
     </div>
   </body>

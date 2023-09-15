@@ -33,50 +33,35 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body>
-    <div class="container-fluid overflow-auto">
-      <h1 class="text-center p-4">Upcoming Appointments</h1>
+  <body id="body">
+    <div class="container">
+      <h1 class="text-center p-4 fw-bold">Upcoming Appointments</h1>
 
+      <!-- total appointments card -->
       <div class="card p-2" id="totalApptCard">
         <div class="card-body">
-          <p class="card-text">
-            You have <span id="upcoming-appts">Loading...</span> Upcoming
-            Appointments
-          </p>
-          <br />
-          <p class="card-text">
-            and <span id="missed-appts">Loading...</span> Missed Appointments
+          <p class="card-text fw-bold">
+            You have <span id="upcoming-appts">0</span> upcoming appointment(s)
+            and <span id="missed-appts">0</span> missed appointment(s).
           </p>
         </div>
       </div>
+      <br />
 
-      <div id="apptLegend" class="container p-2">
-        <div class="row">
-          <div class="col-4 col-md-4 rounded text-center" id="upcomingApptBox">
-            <p>Upcoming Appointment</p>
-          </div>
-
-          <div class="col-4 col-md-4"></div>
-
-          <div class="col-4 col-md-4 rounded text-center" id="missedApptBox">
-            <p>Missed Appointment</p>
-          </div>
+      <!-- create new appointment -->
+      <div class="center-container">
+        <div id="addApptBtn">
+          <a>Create New Appointment</a>
         </div>
       </div>
-
-      <div id="appt-list" class="container p-2">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Appointment Location</h5>
-            <p class="card-text">Appointment Date & Time</p>
-            <p class="card-text">Doctor's Name</p>
-          </div>
-        </div>
-      </div>
-      <div class="d-flex justify-content-center">
-        <a id="addApptBtn" class="btn btn-success">Create New Appointment</a>
-      </div>
+      <br />
     </div>
+
+    <!-- appointment cards -->
+    <div id="appt-list" class="container"></div>
+    <br />
+
+    <!-- footer -->
     <footer class="footer">
       <a id="medication-footer">
         <div class="navBarLinks">

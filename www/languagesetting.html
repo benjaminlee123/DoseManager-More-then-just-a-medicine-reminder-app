@@ -32,30 +32,46 @@
     <script src="js/init.js"></script>
     <script src="js/language.js"></script>
   </head>
-  <body>
-    <h1 class="text-center mt-4">Language settings</h1>
+ 
+  <body id="body">
     <div class="container">
+      <h1 class="text-center fw-bold p-4">Language Settings</h1>
+
       <div
-        class="d-flex justify-content-center flex-column align-items-center mt-4"
+        id="language-container"
+        class="container p-4 rounded-5 border border-secondary-subtle"
       >
-        <button id="engButton" class="btn btn-info w-50 mt-2">
-          English language
-        </button>
-        <button id="chiButton" class="btn btn-info w-50 mt-2">
-          Chinese language
-        </button>
-        <button id="malayButton" class="btn btn-info w-50 mt-2">
-          Malay language
-        </button>
-        <button id="tamilButton" class="btn btn-info w-50 mt-2">
-          Tamil language
-        </button>
-        <button id="backToHomeBtn" type="button" class="btn btn-danger btn-lg btn-block mt-4">
-          Back to Home
-        </button>
-        
+        <div class="row">
+          <button class="btn btn-primary" id="engButton">
+            English language
+          </button>
+        </div>
+
+        <div class="row">
+          <button class="btn btn-primary" id="chiButton">
+            Chinese language
+          </button>
+        </div>
+
+        <div class="row">
+          <button class="btn btn-primary" id="malayButton">
+            Malay language
+          </button>
+        </div>
+
+        <div class="row">
+          <button class="btn btn-primary" id="tamilButton">
+            Tamil language
+          </button>
+        </div>
       </div>
+      <div class="row">
+        <button id="backToHomeBtn" type="button" class="btn btn-danger mx-auto">
+          Back to home
+        </button>
+      </div>
+
+      <div id="google_translate_element"></div>
     </div>
-    <div id="google_translate_element"></div>
   </body>
 </html>

@@ -1,29 +1,31 @@
+/*body styling*/
+#body {
+  background-color: #eaeadb;
+}
+
+/* ------------------- cancel icon styling ------------------- */
 #cancelIcon {
   font-size: 30px;
   padding: 20px;
 }
 
+/* ------------------- profile image styling ------------------- */
 #profileImg {
   width: 40px;
 }
 
-.card {
-  margin-top: 3rem;
- background-color: rgba(0, 150, 255, 0.5);  
- width: 330px;
-  /*width: 75%;
-  height: 5%;
-  border-radius: 10px;*/
-}
-
-.card-header h2 {
-  position: relative;
-  color: white;
-}
 i {
   padding: 10px;
 }
+/*-------------styling of the 4 main blue buttons-----------*/
+#profile-personalInfo,
+#profile-notifications,
+#profile-appointments,
+#profile-language {
+  width: 80%;
+}
 
+/* ------------------- change & delete buttons styling ------------------- */
 .btn-danger:hover {
   background-color: #e08a8c;
 }
@@ -31,30 +33,11 @@ i {
   border: none;
   background-color: transparent;
 }
-.footer {
-  position: fixed;
-  bottom: 0;
-  margin: 0;
-  width: 100%;
-  background-color: #0096ff;
-  justify-content: space-between;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 a {
   text-decoration: none;
 }
 
-.navBarLinks {
-  text-align: center;
-  flex: 1;
-}
-.navBarIcons {
-  margin-top: 10px;
-  width: 20%;
-}
-/*google banner*/
+/* ------------------- google banner ------------------- */
 .VIpgJd-ZVi9od-ORHb-OEVmcd {
   display: none !important;
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add New Appointment</title>
-    <link rel="stylesheet" href="css/upcomingAppts.css" />
+    <link rel="stylesheet" href="css/addAppts.css" />
 
     <!--firebase-->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
@@ -32,17 +32,38 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body>
+  <body id="body">
     <div class="container">
       <h1 class="text-center fw-bold p-4">Create An Appointment</h1>
-      <div class="container">
+      <div
+        id="appointment-form"
+        class="container p-4 rounded-5 border border-secondary-subtle"
+      >
         <form id="formData">
-          <label for="apptLocation">Appointment Location</label><br />
-          <input type="text" id="apptLocation" name="apptLocation" /><br />
-          <label for="apptDateTime">Appointment Date & Time</label><br />
-          <input type="datetime-local" id="apptDateTime" name="apptDateTime" /><br />
-          <label for="docName">Doctor Name</label><br />
-          <input type="text" id="docName" name="docName" /><br /> 
+          <div class="form-group">
+            <!--location-->
+            <label for="apptLocation">Appointment Location</label><br />
+            <input type="text" id="apptLocation" name="apptLocation" />
+          </div>
+
+          <div class="form-group">
+            <!--date & time-->
+            <label for="apptDateTime">Appointment Date & Time</label><br />
+            <input
+              type="datetime-local"
+              id="apptDateTime"
+              name="apptDateTime"
+            />
+          </div>
+
+          <div class="form-group">
+            <!--doctor name-->
+            <label for="docName">Doctor Name</label><br />
+            <input type="text" id="docName" name="docName" />
+          </div>
+
+          <div class="form-group">
+            <!--reminder time-->
             <label for="reminderTime">Set Reminder</label><br />
             <select id="reminderTime">
               <option value="5">5 minutes before</option>
@@ -50,11 +71,20 @@
               <option value="30">30 minutes before</option>
               <option value="60">1 hour before</option>
             </select>
-          <button id="saveBtn" type="submit" class="btn btn-primary">
-            Save
-          </button>
+          </div>
+
+          <div class="row mt-4">
+            <button id="saveBtn" type="submit" class="btn btn-primary mx-auto">
+              Save
+            </button>
+          </div>
         </form>
-        <a id="back-button" class="btn btn-danger">Back to Appointments</a>
+
+        <div class="row mt-2">
+          <a id="back-button" type="button" class="btn btn-danger mx-auto"
+            >Back to Appointments</a
+          >
+        </div>
       </div>
     </div>
   </body>

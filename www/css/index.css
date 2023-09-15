@@ -25,8 +25,9 @@ body {
   margin: 0;
   padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0)
     env(safe-area-inset-bottom, 0) env(safe-area-inset-left, 0);
-  text-transform: uppercase;
+  /*text-transform: ;*/
   width: 100%;
+  background-color: #eaeadb;
 }
 
 .app {
@@ -119,16 +120,6 @@ h2 {
 #profileImg {
   width: 80px;
   height: 80px;
-}
-
-button {
-  padding: 10px 20px;
-  background-color: #4b946a;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: 0.3s;
 }
 
 button:hover {
