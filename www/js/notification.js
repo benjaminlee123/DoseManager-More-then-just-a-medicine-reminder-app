@@ -48,16 +48,32 @@ document.addEventListener("deviceready", function() {
          // Logic to mark medicine as taken based on userId
          // Retrieve Firestore document ID from notification data
         const firestoreDocumentId = notification.data.firestoreDocumentId;
-         markMedicineAsTaken(firestoreDocumentId.id, userId);
+         markMedicineAsTaken(firestoreDocumentId, userId);
          
 
         });
         cordova.plugins.notification.local.on('skipping', function(notification) {
             console.log('Skip action triggered with:', notification);
-            // Move the skipped appointment to MissedNotifications collection
+            
             const firestoreDocumentId = notification.data.firestoreDocumentId;
             markMedicineAsMissed(firestoreDocumentId, userId);
-          });
+        
+            // Fetch the frequency of the medicine from Firestore
+            const medRef = firebase.firestore().collection("Profiles").doc(userId).collection("Medicine").doc(firestoreDocumentId.id);
+            
+            medRef.get().then((doc) => {
+                if (doc.exists) {
+                    const medicineData = doc.data();
+                    const frequency = medicineData.frequency; 
+                    handleMedicineReminderTriggered(firestoreDocumentId.id, userId, frequency);
+                } else {
+                    console.log("No such medicine in Firestore!");
+                }
+            }).catch((error) => {
+                console.log("Error getting medicine:", error);
+            });
+        });
+        
     
     
     }, false);
@@ -238,6 +254,7 @@ document.addEventListener("deviceready", function() {
     function markMedicineAsMissed(medicineId, userId) {
         let today = new Date();
         today.setHours(0, 0, 0, 0);
+        console.log("markMedicineAsMissed - Date for Query:", today);
     
         const medRef = firebase.firestore().collection("Profiles").doc(userId).collection("Medicine").doc(medicineId);
         const missedRef = firebase.firestore().collection("Profiles").doc(userId).collection("MissedNotifications").doc("Medicine");
@@ -247,20 +264,22 @@ document.addEventListener("deviceready", function() {
                 const medicineData = doc.data();
                 
                 // Update the DailyLogs to mark it as missed
-                medRef.collection("DailyLogs").where("date", "==", today).get().then(snapshot => {
+                medRef.collection("DailyLogs").where("date", ">=", today).get().then(snapshot => {
+                    console.log("markMedicineAsMissed - DailyLogs fetched:", snapshot.docs.length);
                     snapshot.forEach(doc => {
+                        console.log("Updating DailyLog with missed status for medicineId:", medicineId);
                         doc.ref.update({
                             status: "missed"
                         });
                     });
                 });
-    
+        
                 // Move to MissedNotifications collection
                 missedRef.set({
                     [medicineId]: medicineData
                 }, { merge: true }).then(() => {
-                    // Delete the original medicine entry
-                    medRef.delete();
+                    // Keep the original medicine entry (commented the delete for now)
+                    // medRef.delete();
                 });
             } else {
                 console.log("No such medicine!");
@@ -270,29 +289,30 @@ document.addEventListener("deviceready", function() {
         });
     }
     
-    
     function markMedicineAsTaken(medicineId, userId) {
         let today = new Date();
         today.setHours(0, 0, 0, 0);
+        console.log("markMedicineAsTaken - Date for Query:", today);
     
-        firebase.firestore()
-          .collection("Profiles")
-          .doc(userId)
-          .collection("Medicine")
-          .doc(medicineId)
-          .collection("DailyLogs")
-          .where("date", "==", today)
-          .get()
-          .then(snapshot => {
-              snapshot.forEach(doc => {
-                  doc.ref.update({
-                      status: "taken",
-                      timeTaken: new Date()  // current time
-                  });
-              });
+        const medRef = firebase.firestore().collection("Profiles").doc(userId).collection("Medicine").doc(medicineId);
     
-              // Delete the medicine entry
-              //return firebase.firestore().collection("Profiles").doc(userId).collection("Medicine").doc(medicineId).delete();
-          });
+        medRef.get().then((doc) => {
+            if (doc.exists) {
+                // Update the DailyLogs to mark it as taken
+                medRef.collection("DailyLogs").where("date", ">=", today).get().then(snapshot => {
+                    console.log("markMedicineAsTaken - DailyLogs fetched:", snapshot.docs.length);
+                    snapshot.forEach(doc => {
+                        console.log("Updating DailyLog with taken status for medicineId:", medicineId);
+                        doc.ref.update({
+                            status: "taken"
+                        });
+                    });
+                });
+            } else {
+                console.log("No such medicine!");
+            }
+        }).catch((error) => {
+            console.log("Error getting medicine:", error);
+        });
     }
     

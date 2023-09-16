@@ -1,101 +1,52 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Notification Card Design</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Missed Notifications</title>
+    <!--firebase-->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <!--google translate-->
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script src="cordova.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/history.js"></script>
+
+    <!--bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/notifications.css">
 </head>
-<body>
-	<div class="wrapper">
 
-  <div class="notifications">
+<body id="body">
+    <div class="container">
+        <h1 class="text-center pt-4 fw-bold" id="userProfileName"></h1>
+        <!-- Username will be populated by JavaScript -->
 
-    <div class="notifications__item">
-      <div class="notifications__item__avatar">
-        <img src="https://cdn.pixabay.com/photo/2018/11/13/21/43/instagram-3814049__340.png" />
-      </div>
+        <section id="missed-appointments" class="container p-2  display-3">
+            <h2>Missed Appointments</h2>
+            <div id="appointment-list">
+                <!-- Missed appointments will be populated here -->
+            </div>
+        </section>
+        
+        <section id="missed-medicines" class="container p-2  display-3">
+            <h2>Missed Medicines</h2>
+            <div id="medicine-list">
+                <!-- Missed medicines will be populated here -->
+            </div>
+        </section>
 
-      <div class="notifications__item__content">
-        <span class="notifications__item__title">Kumaran Roa</span>
-        <span class="notifications__item__message">Lorem ipsum More lorem</span>
-      </div>
-
-      <div>
-        <div class="notifications__item__option archive js-option">
-          <i class="fas fa-folder"></i>
-        </div>
-        <div class="notifications__item__option delete js-option">
-          <i class="fas fa-trash"></i>
-        </div>
-      </div>
+        <button id="backToHomeBtn" class="btn btn-success mt-3 mb-3">Back to Home</button>
     </div>
-
-    <div class="notifications__item">
-      <div class="notifications__item__avatar">
-        <img src="https://cdn.pixabay.com/photo/2018/11/13/21/43/instagram-3814049__340.png" />
-      </div>
-
-      <div class="notifications__item__content">
-        <span class="notifications__item__title">Udhaya Chetty</span>
-        <span class="notifications__item__message">Lorem ipsum More lorem</span>
-      </div>
-
-      <div>
-        <div class="notifications__item__option archive js-option">
-          <i class="fas fa-folder"></i>
-        </div>
-        <div class="notifications__item__option delete js-option">
-          <i class="fas fa-trash"></i>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="notifications__item">
-      <div class="notifications__item__avatar">
-        <img src="https://cdn.pixabay.com/photo/2018/11/13/21/43/instagram-3814049__340.png" />
-      </div>
-
-      <div class="notifications__item__content">
-        <span class="notifications__item__title">Josh Manu</span>
-        <span class="notifications__item__message">Lorem ipsum More lorem</span>
-      </div>
-
-      <div>
-        <div class="notifications__item__option archive js-option">
-          <i class="fas fa-folder"></i>
-        </div>
-        <div class="notifications__item__option delete js-option">
-          <i class="fas fa-trash"></i>
-        </div>
-      </div>
-    </div>
-
-    <div class="notifications__item">
-      <div class="notifications__item__avatar">
-        <img src="https://cdn.pixabay.com/photo/2018/11/13/21/43/instagram-3814049__340.png" />
-      </div>
-
-      <div class="notifications__item__content">
-        <span class="notifications__item__title">Niranjan</span>
-        <span class="notifications__item__message">Lorem ipsum More lorem</span>
-      </div>
-
-      <div>
-        <div class="notifications__item__option archive js-option">
-          <i class="fas fa-folder"></i>
-        </div>
-        <div class="notifications__item__option delete js-option">
-          <i class="fas fa-trash"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="credit">Made with<span style="color:tomato;font-size:20px;">❤</span>by<a href="https://www.learningrobo.com/">Learning Robo</a></div>
-<script type="text/javascript" src="script.js"></script>
+    <!-- Add other necessary HTML components from your existing code -->
 </body>
+
 </html>

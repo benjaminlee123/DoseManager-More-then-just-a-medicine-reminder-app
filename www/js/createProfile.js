@@ -24,7 +24,11 @@ function addProfile() {
     var lastName = lastNameInput.value;
     var gender = genderInput.value;
     var dob = dobInput.value;
-
+    // Validate the input fields
+    if (!firstName || !lastName || !gender || !dob) {
+      alert("All fields must be filled out!");
+      return; // Exit the function if any field is empty
+    }
     // Create a new profile object
     var newProfile = {
       name: firstName + " " + lastName,

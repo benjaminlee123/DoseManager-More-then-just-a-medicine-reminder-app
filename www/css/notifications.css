@@ -1,153 +1,58 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-* { box-sizing: border-box; }
-
+/*--------------------- notifications page styling--------------------- */
 body {
-  margin: 0;
-  padding: 0;
+  background-color: #eaeadb;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  /* You can change this to your preferred font */
 }
 
-html,
-body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background-color: #85FFBD;
-  background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  color: black;
+/* -------------------- missed notifications cards styling -------------------- */
+#appointment-list, #medicine-list {
+  max-height: 45vh;
+  overflow-y: auto;
+  padding-bottom: 5%;
 }
 
-.wrapper {
-  width: 480px;
-  margin: 50px auto;
+.card {
+  border: 1px solid transparent;
+  background-color: #f7f7ed;
+  margin-top: 15px;
+  font-size: 15px;
+}
+.card-body p {
+  margin: 0%;
+}
+.card-title {
+  font-weight: bold;
+  font-size: 18px;
 }
 
-
-.notifications__item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: 105px;
-  margin-bottom: 20px;
-  padding: 0 20px;
-
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-  transition: all .3s ease-in;
-  cursor: pointer;
-}
-
-.notifications__item__avatar {
-  width: 75px;
-  height: 75px;
-  overflow: hidden;
-  margin-right: 20px;
-
-  border-radius: 50%;
-}
-
-.notifications__item__avatar img {
-  width: 100%;
-  height: 100%;
-}
-
-.notifications__item__content { width: calc( 100% - 105px ); }
-.notifications__item__title,
-.notifications__item__message { display: block; }
-
-.notifications__item__title {
-  letter-spacing: 2px;
-  font-family: 'atvice', sans-serif;
-  font-size: 17px;
-}
-
-.notifications__item__message {
-  font-family: Roboto, sans-serif;
-  font-size: 14px;
-  color: #929292;
-}
-
-.notifications__item__option {
-  width: 20px;
-  height: 20px;
-  margin: 8px 0;
-
-  border-radius: 50%;
-  color: white;
-  opacity: 0;
-
-  font-size: 10px;
+/* -------------------- section headings -------------------- */
+h1, h2 {
+  margin-top: 20px;
+  margin-bottom: 15px;
   text-align: center;
-  line-height: 20px;
-
-  cursor: pointer;
-  transition: all .2s;
 }
 
-.notifications__item__option.archive { background-color: #3dc98c; }
-
-.notifications__item__option.delete { background-color: #c93d4d; }
-
-
-/*
-* Animation part
-*/
-.notifications__item:hover {
-  background-color: #f7f7f7;
-  transform: scale( 0.95 );
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.notifications__item:hover .notifications__item__option { opacity: 1; }
-
-.notifications__item.archive .notifications__item__title,
-.notifications__item.delete .notifications__item__title {
+#backToHomeBtn {
+  display: block;
+  width: 80%;
+  margin: 20px auto;
+  background-color: #0096ff;
   color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1.2em;
+  transition: background-color 0.3s;
 }
 
-.notifications__item.archive .notifications__item__message,
-.notifications__item.delete .notifications__item__message {
-  color: #f3f3f3;
+#backToHomeBtn:hover {
+  background-color: #0077cc;
 }
 
-.notifications__item.archive {
-  background-color: #3dc98c;
-  animation: archiveAnimation 1.5s cubic-bezier(0, 0, 0, 1.12) forwards;
-  animation-delay: .6s;
+/* -------------------- google translate banner styling (if used) -------------------- */
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
+  display: none !important;
 }
-
-.notifications__item.delete {
-  background-color: #c93d4d;
-  animation: deleteAnimation 1.5s cubic-bezier(0, 0, 0, 1.12) forwards;
-  animation-delay: .6s;
-}
-
-
-@keyframes archiveAnimation{
-  to {
-    transform: translateX( 100px );
-    opacity: 0;
-  }
-}
-
-@keyframes deleteAnimation{
-  to {
-    transform: translateX( -100px );
-    opacity: 0;
-  }
-}
-.credit a {
-    text-decoration: none;
-    color: #000;
-    font-weight: 800;
-}
-
-.credit {
-    text-align: center;
-    font-family: Verdana,Geneva,Tahoma,sans-serif;
-}
-

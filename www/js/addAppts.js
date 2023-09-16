@@ -52,7 +52,11 @@ async function addAppts() {
     var apptDateTime = document.getElementById("apptDateTime").value;
     var docName = document.getElementById("docName").value;
     var reminderTime = parseInt(document.getElementById("reminderTime").value, 10);
-  
+   // Check if any of the fields are empty
+   if (!apptLocation || !apptDateTime || !docName || isNaN(reminderTime)) {
+    window.alert("Please fill out all fields and provide a valid reminder time.");
+    return; // Exit the function
+  }
     // Check if the appointment time has already passed
     const apptTimeInMs = new Date(apptDateTime).getTime();
     const currentTimeInMs = new Date().getTime();

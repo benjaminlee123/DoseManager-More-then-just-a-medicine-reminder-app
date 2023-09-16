@@ -1,7 +1,7 @@
 document.addEventListener("deviceready", editProfile);
 
 function editProfile() {
-  //firebase config
+  // Firebase config
 
   function getProfileItemIdFromURL() {
     var urlParams = new URLSearchParams(window.location.search);
@@ -15,9 +15,7 @@ function editProfile() {
   console.log(profile);
 
   const mainCollectionDocID = profile.id;
-  const mainCollectionRef = firestore
-    .collection("Profiles")
-    .doc(mainCollectionDocID);
+  const mainCollectionRef = firestore.collection("Profiles").doc(mainCollectionDocID);
 
   var firstNameInput = document.getElementById("firstName");
   var lastNameInput = document.getElementById("lastName");
@@ -48,13 +46,30 @@ function editProfile() {
     // Prevent the default form submission behavior
     event.preventDefault();
   });
+   
+  var homeBtn = document.getElementById("homeBtn");
+  homeBtn.addEventListener("click", function () {
+    window.location.href = `profile.html?id=${profile.id}&pic=${profile.pic}`;
+  });
 
   saveButton.addEventListener("click", function () {
+
+    // Validate the input fields
+   if (
+    firstNameInput.value.trim() === "" ||
+    lastNameInput.value.trim() === "" ||
+    dateOfBirthInput.value.trim() === "" ||
+    genderInput.value.trim() === ""
+  ) {
+    alert("All fields must be filled out!");
+    return; // Exit the function if any field is empty
+  }
+
     var newFirstNameInput = firstNameInput.value;
     var newLastNameInput = lastNameInput.value;
     var newGenderInput = genderInput.value;
     var newDobInput = dateOfBirthInput.value;
-
+    
     mainCollectionRef
       .update({
         name: newFirstNameInput + " " + newLastNameInput,
@@ -72,6 +87,7 @@ function editProfile() {
       });
   });
 }
+
 function googleTranslateElementInit() {
   new google.translate.TranslateElement(
     { pageLanguage: "en" },

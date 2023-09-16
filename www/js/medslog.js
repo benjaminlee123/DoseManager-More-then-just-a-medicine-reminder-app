@@ -1,6 +1,6 @@
 document.addEventListener("deviceready", displayLogs);
 
-function displayLogs() {
+ function displayLogs() {
     var dailyLogList = document.getElementById("daily-log-list");
     dailyLogList.innerHTML = "";
 
@@ -9,11 +9,23 @@ function displayLogs() {
         var params = {};
         params.id = urlParams.get("id");
         params.pic = urlParams.get("pic");
+        params.medId = urlParams.get("medId");
         return params;
     }
 
     var profile = getProfileIdFromURL();
     var medicineId = profile.medId;
+
+     //home button
+    var homeBtn = document.getElementById("backToHomeBtn");
+    homeBtn.addEventListener("click", handlebackToHomeBtnClick);
+
+    function handlebackToHomeBtnClick(event) {
+        var profile = getProfileIdFromURL();
+        console.log(profile);
+        window.location.href = `home.html?id=${profile.id}&pic=${profile.pic}`;
+    }
+
 
     // Fetching the medicine name first
     firebase.firestore()
@@ -54,4 +66,5 @@ function displayLogs() {
             console.error("Error getting medicine details: ", error);
         });
 }
+
 

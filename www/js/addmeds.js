@@ -108,39 +108,11 @@ function handleCancelIconButtonClick() {
 
              // Update the medicine document with the notificationId
              await docRef.update({ notificationId: notifId });
-            // Assuming you want to create logs based on frequency
-            var date = new Date();
-            if (newMeds.frequency === "Everyday") {
-                // Logs for the next 7 days
-                for (let i = 0; i < 7; i++) {
-                    date.setDate(date.getDate() + 1); // Advance a day
-                    docRef.collection("DailyLogs").add({
-                        date: new Date(date),
-                        status: "pending"
-                    });
-                }
-            } else if (newMeds.frequency === "Every Week") {
-                // Logs for the next 9 weeks
-                for (let i = 0; i < 9; i++) {
-                    date.setDate(date.getDate() + 7); // Advance a week
-                    docRef.collection("DailyLogs").add({
-                        date: new Date(date),
-                        status: "pending"
-                    });
-                }
-            } else if (newMeds.frequency === "Every Month") {
-                // Logs for the next 6 months
-                for (let i = 0; i < 6; i++) {
-                    date.setMonth(date.getMonth() + 1); // Advance a month
-                    docRef.collection("DailyLogs").add({
-                        date: new Date(date),
-                        status: "pending"
-                    });
-                }
-            }
-    
-
-            // Navigate to home.html after the submit button is pressed
+             docRef.collection("DailyLogs").add({
+              date: new Date(),
+              status: "pending"
+            });
+           // Navigate to home.html after the submit button is pressed
             var profile = getProfileIdFromURL();
             window.location.href = `home.html?id=${profile.id}&pic=${profile.pic}`;
         })
@@ -148,6 +120,24 @@ function handleCancelIconButtonClick() {
             console.error("Error adding profile: ", error);
         });
 });
+function handleMedicineReminderTriggered(medicineId, userId, frequency) {
+  const medRef = firebase.firestore().collection("Profiles").doc(userId).collection("Medicine").doc(medicineId);
+  
+  // Create a DailyLog for the current reminder
+  medRef.collection("DailyLogs").add({
+      date: new Date(),
+      status: "pending"
+  });
+
+  // Schedule the next reminder based on the frequency
+  if (frequency === "Everyday") {
+      scheduleMedicineNotification(/* parameters for the next day */);
+  } else if (frequency === "Every Week") {
+      scheduleMedicineNotification(/* parameters for the next week */);
+  } else if (frequency === "Every Month") {
+      scheduleMedicineNotification(/* parameters for the next month */);
+  }
+}
 
 // Function to determine the interval for the notification based on the frequency
 function getIntervalBasedOnFrequency(frequency) {

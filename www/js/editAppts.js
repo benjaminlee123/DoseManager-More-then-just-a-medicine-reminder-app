@@ -58,6 +58,11 @@ function editAppts() {
   });
 
   updateButton.addEventListener("click", function () {
+     // Validate input fields to prevent empty submission
+ if (apptLocationInput.value.trim() === '' || apptDateTimeInput.value.trim() === '' || docNameInput.value.trim() === '') {
+  alert("Please fill out all fields.");
+  return;
+}
     var newApptLocation = apptLocationInput.value;
     var newApptDateTime = apptDateTimeInput.value;
     var newDocName = docNameInput.value;
@@ -68,6 +73,7 @@ function editAppts() {
         apptDateTime: newApptDateTime,
         docName: newDocName,
       })
+
       .then(function () {
         console.log("Item Updated Successfully");
         window.location.href = `upcomingappt.html?id=${profile.id}&pic=${profile.pic}`;
