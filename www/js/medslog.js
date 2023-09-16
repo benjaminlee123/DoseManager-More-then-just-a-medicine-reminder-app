@@ -49,10 +49,22 @@ document.addEventListener("deviceready", displayLogs);
             dailyLogsRef.get().then(function(querySnapshot) {
                 querySnapshot.forEach(function(log) {
                     var logData = log.data();
+                var statusText = '';
+                switch(logData.status) {
+                    case 'taken': 
+                        statusText = 'taken';
+                        break;
+                    case 'missed':
+                        statusText = 'missed';
+                        break;
+                    default: // handles 'pending' or any other state
+                        statusText = 'is pending';
+                        break;
+                }
                     var logEntry = `
                         <div class="card mt-4">
                             <div class="card-body">
-                                <h5 class="card-title">${medicineName} ${logData.status === "taken" ? "taken" : "missed"} on ${new Date(logData.date.seconds * 1000).toDateString()} ${logData.timeTaken ? `at ${new Date(logData.timeTaken.seconds * 1000).toLocaleTimeString()}` : ""}.</h5>
+                            ${medicineName} ${statusText} on ${new Date(logData.date.seconds * 1000).toLocaleString()} ${logData.timeTaken ? `at ${new Date(logData.timeTaken.seconds * 1000).toLocaleTimeString()}` : ""}.
                             </div>
                         </div>
                     `;

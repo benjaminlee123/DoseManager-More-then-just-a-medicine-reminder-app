@@ -69,6 +69,7 @@ async function addAppts() {
       apptLocation: apptLocation,
       apptDateTime: apptDateTime,
       docName: docName,
+      status: "upcoming"  // Setting the default status to "upcoming"
     };
   
     try {

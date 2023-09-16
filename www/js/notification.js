@@ -105,14 +105,17 @@ document.addEventListener("deviceready", function() {
         apptRef.get().then((doc) => {
             if (doc.exists) {
               const appointmentData = doc.data();
-              
-              // Create a new document in MissedNotifications collection
-              missedRef.set({
-                [appointmentId]: appointmentData
-              }, { merge: true })
-              .then(() => {
-                // Delete the original appointment
-                apptRef.delete();
+               // Update the status of the appointment to "missed"
+              apptRef.update({ status: "missed" }).then(() => {
+                  console.log("Appointment status updated to missed.");
+    
+                // Create a new document in MissedNotifications collection
+                missedRef.set({
+                  [appointmentId]: appointmentData
+                }, { merge: true })
+                .then(() => {
+                  // Do something after setting missed notification
+                });
               });
             } else {
               console.log("No such appointment!");
@@ -120,7 +123,7 @@ document.addEventListener("deviceready", function() {
           }).catch((error) => {
             console.log("Error getting appointment:", error);
           });
-        }
+    }
     
     // Function to request notification permission
     function requestNotificationPermission(callback) {
