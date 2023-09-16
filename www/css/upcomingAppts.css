@@ -43,7 +43,7 @@
 #appt-list {
   max-height: 65vh;
   overflow-y: auto;
-  padding-bottom: 40%;
+  padding-bottom: 45%;
 }
 
 /* ------------------- appointment cards styling ------------------- */
@@ -80,7 +80,8 @@
 
 #editButton,
 #deleteButton {
-  margin-top: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   width: 20%;
 }
 
@@ -95,6 +96,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: 10px;
 }
 a {
   text-decoration: none;
