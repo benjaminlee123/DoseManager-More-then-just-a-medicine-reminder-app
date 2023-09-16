@@ -23,10 +23,12 @@ function handleHomeButtonClick(profile) {
 function displayMissedAppointments(appointments, appointmentList) {
     for (let appointmentId in appointments) {
         let appointment = appointments[appointmentId];
+        let formattedDate = new Date(appointment.apptDateTime).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' });
+        let formattedTime = new Date(appointment.apptDateTime).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
         appointmentList.innerHTML += `
             <div class="card mt-4">
                 <div class="card-body">
-                    <h5 class="card-title">Missed appointment at ${appointment.apptLocation} on ${new Date(appointment.apptDateTime).toDateString()}.</h5>
+                <h5 class="card-title">Missed appointment at ${appointment.apptLocation} on ${formattedDate}, ${formattedTime}.</h5>
                 </div>
             </div>
         `;
@@ -36,10 +38,15 @@ function displayMissedAppointments(appointments, appointmentList) {
 function displayMissedMedicines(medicines, medicineList) {
     for (let medicineId in medicines) {
         let medicine = medicines[medicineId];
+         
+        let timestampInMillis = medicine.timestamp.seconds * 1000;
+        let formattedDate = new Date(timestampInMillis).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' });
+        let formattedTime = new Date(timestampInMillis).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+        
         medicineList.innerHTML += `
             <div class="card mt-4">
                 <div class="card-body">
-                <h5 class="card-title">Missed ${medicine.name} dosage on ${new Date(medicine.timestamp.seconds * 1000).toLocaleString()}.</h5>
+                <h5 class="card-title">Missed ${medicine.name} dosage on ${formattedDate}, ${formattedTime}.</h5>
                 </div>
             </div>
         `;
@@ -91,7 +98,7 @@ function displayMissedNotifications() {
         var userName = userData.name;
 
         var userProfileName = document.getElementById("userProfileName");
-        userProfileName.textContent = userName+ "'s Medicine Notification Log";
+        userProfileName.textContent = userName+ "'s Missed Notification Log";
       } else {
         console.log("User document not found");
       }

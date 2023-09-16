@@ -46,17 +46,15 @@ function determineAppointmentStatus(subDoc, subCollectionRef) {
   var subDocData = subDoc.data();
   var apptDateTime = new Date(subDocData.apptDateTime);
   var currentDateTime = new Date();
-  console.log('Appointment Date:', apptDateTime);
-  console.log('Current Date:', currentDateTime);
 
-  var hasReminder = subDocData.reminderTime !== undefined && subDocData.reminderTime !== null;
-
-  if (subDocData.status === "upcoming" && apptDateTime < currentDateTime && hasReminder) {
+  if (subDocData.status === "upcoming" && apptDateTime < currentDateTime) {
       subCollectionRef.doc(subDoc.id).update({ status: "missed" });
       return "missed";
   }
+  
   return subDocData.status;
 }
+
 
 
 function renderAppointmentCard(subDoc, status) {
