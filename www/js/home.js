@@ -6,20 +6,6 @@ function displayData() {
 
   // Clear previous content
   medicationList.innerHTML = "";
-  //firebase config
-  const firebaseConfig = {
-    apiKey: "AIzaSyAt4SUmSwvkHdas68AYQdjOe7fkfL547gQ",
-    authDomain: "dosemanager-d0236.firebaseapp.com",
-    projectId: "dosemanager-d0236",
-    storageBucket: "dosemanager-d0236.appspot.com",
-    messagingSenderId: "373646054095",
-    appId: "1:373646054095:web:89660fa48e041a7d231dba",
-    measurementId: "G-XDL965JQ9H",
-  };
-
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  var firestore = firebase.firestore();
   //var medsCollection = firestore.collection("Medicine");
 
   function getProfileIdFromURL() {
@@ -114,6 +100,7 @@ function displayData() {
         </div>
         <div class="pb-2">
           <button id="editBtn" class="editButton btn btn-primary" data-item-id="${subDoc.id}">Edit</button>
+          <button id="logBtn" class="logButton btn btn-info" data-item-id="${subDoc.id}">View Log</button> 
         </div>
       `;
         medicationList.innerHTML += medicationCard;
@@ -125,6 +112,11 @@ function displayData() {
         Array.from(editButtons).forEach(function (button) {
           button.addEventListener("click", handleEditButtonClick);
         });
+        // referencing view log button of each medicine
+        var logButtons = document.getElementsByClassName("logButton");
+        Array.from(logButtons).forEach(function(button) {
+            button.addEventListener("click", handleLogButtonClick);
+        });
 
         //function to handle the edit button of each medicine
         function handleEditButtonClick(event) {
@@ -134,6 +126,15 @@ function displayData() {
             window.location.href = `editmeds.html?id=${profile.id}&pic=${profile.pic}&medId=${itemId}`;
           } else {
             console.log("Item ID not found in the button");
+          }
+        }
+        // function to handle the view log button of each medicine
+        function handleLogButtonClick(event) {
+          var itemId = event.target.getAttribute("data-item-id");
+          if (itemId) {
+              window.location.href = `medslog.html?id=${profile.id}&pic=${profile.pic}&medId=${itemId}`;
+          } else {
+              console.log("Item ID not found in the button");
           }
         }
       });

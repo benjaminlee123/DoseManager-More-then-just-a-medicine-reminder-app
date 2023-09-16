@@ -1,12 +1,22 @@
 #body {
-  background-color: #eaeadb;
-}
-
-#appointment-form {
-  background-color: #f7f7ed;
-}
-
-#saveBtn,
-#back-button {
-  width: 80%;
-}
+    background-color: #eaeadb;
+  }
+  
+  #appointment-form {
+    background-color: #f7f7ed;
+  }
+  
+  #saveBtn,
+  #back-button {
+    width: 80%;
+  }
+  /* ------------------- google translate ------------------- */
+  #goog-gt-tt {
+    display: none !important;
+  }
+  .VIpgJd-ZVi9od-ORHb-OEVmcd {
+    display: none !important;
+  }
+  #google_translate_element {
+    display: none !important;
+  }

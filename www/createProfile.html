@@ -11,12 +11,13 @@
 
     <!-- JavaScript files -->
     <script src="cordova.js"></script>
+    <script src="js/init.js"></script>
     <script src="js/index.js"></script>
     <script src="js/createProfile.js"></script>
 
     <!--google translate-->
     <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+    
     <!--bootstrap-->
     <link
       rel="stylesheet"
@@ -30,6 +31,7 @@
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"
     ></script>
+
 
     <!-- CSS file -->
     <link rel="stylesheet" href="css/createProfile.css" />
@@ -49,8 +51,9 @@
         </select>
         <label for="dob">Date of Birth:</label>
         <input type="date" id="dob" placeholder="Enter your date of birth" />
-        <button id="saveBtn" type="submit" class="btn btn-primary">Save</button>
-        <button id="homeBtn" type="button" class="btn btn-danger">Back</button>
+        <button id="saveBtn" type="submit" class="btn btn-primary">Save</button>  
+        <!-- Back to Profile Login button -->
+        <button id="backToProfileLoginBtn" type="button" class="btn btn-danger">Back to Profile Login</button>
       </form>
     </div>
   </body>

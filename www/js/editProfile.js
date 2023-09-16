@@ -1,20 +1,7 @@
 document.addEventListener("deviceready", editProfile);
 
 function editProfile() {
-  //firebase config
-  const firebaseConfig = {
-    apiKey: "AIzaSyAt4SUmSwvkHdas68AYQdjOe7fkfL547gQ",
-    authDomain: "dosemanager-d0236.firebaseapp.com",
-    projectId: "dosemanager-d0236",
-    storageBucket: "dosemanager-d0236.appspot.com",
-    messagingSenderId: "373646054095",
-    appId: "1:373646054095:web:89660fa48e041a7d231dba",
-    measurementId: "G-XDL965JQ9H",
-  };
-
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  var firestore = firebase.firestore();
+  // Firebase config
 
   function getProfileItemIdFromURL() {
     var urlParams = new URLSearchParams(window.location.search);
@@ -28,22 +15,13 @@ function editProfile() {
   console.log(profile);
 
   const mainCollectionDocID = profile.id;
-  const mainCollectionRef = firestore
-    .collection("Profiles")
-    .doc(mainCollectionDocID);
+  const mainCollectionRef = firestore.collection("Profiles").doc(mainCollectionDocID);
 
   var firstNameInput = document.getElementById("firstName");
   var lastNameInput = document.getElementById("lastName");
   var genderInput = document.getElementById("gender");
   var dateOfBirthInput = document.getElementById("dob");
   var saveButton = document.getElementById("saveBtn");
-  var homeButton = document.getElementById("homeBtn");
-
-  function handleHomeButton() {
-    window.location.href = `profile.html?id=${profile.id}&pic=${profile.pic}`;
-  }
-
-  homeButton.addEventListener("click", handleHomeButton);
 
   mainCollectionRef
     .get()
@@ -68,13 +46,30 @@ function editProfile() {
     // Prevent the default form submission behavior
     event.preventDefault();
   });
+   
+  var homeBtn = document.getElementById("homeBtn");
+  homeBtn.addEventListener("click", function () {
+    window.location.href = `profile.html?id=${profile.id}&pic=${profile.pic}`;
+  });
 
   saveButton.addEventListener("click", function () {
+
+    // Validate the input fields
+   if (
+    firstNameInput.value.trim() === "" ||
+    lastNameInput.value.trim() === "" ||
+    dateOfBirthInput.value.trim() === "" ||
+    genderInput.value.trim() === ""
+  ) {
+    alert("All fields must be filled out!");
+    return; // Exit the function if any field is empty
+  }
+
     var newFirstNameInput = firstNameInput.value;
     var newLastNameInput = lastNameInput.value;
     var newGenderInput = genderInput.value;
     var newDobInput = dateOfBirthInput.value;
-
+    
     mainCollectionRef
       .update({
         name: newFirstNameInput + " " + newLastNameInput,
@@ -92,6 +87,7 @@ function editProfile() {
       });
   });
 }
+
 function googleTranslateElementInit() {
   new google.translate.TranslateElement(
     { pageLanguage: "en" },

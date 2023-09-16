@@ -1,33 +1,33 @@
 #body {
-  background-color: #eaeadb;
-}
-#medForm {
-  background-color: #f7f7ed;
-}
-input {
-  width: 100%;
-}
-#medTime {
-  width: 30%;
-}
-#saveBtn {
-  width: 30%;
-}
-#delBtn {
-  float: right;
-}
-#cancelIcon {
-  font-size: 30px;
-  padding: 15px;
-}
-
-/* ------------------- google translate ------------------- */
-#goog-gt-tt {
-  display: none !important;
-}
-.VIpgJd-ZVi9od-ORHb-OEVmcd {
-  display: none !important;
-}
-#google_translate_element {
-  display: none !important;
-}
+    background-color: #eaeadb;
+  }
+  #medForm {
+    background-color: #f7f7ed;
+  }
+  input {
+    width: 100%;
+  }
+  #medTime {
+    width: 30%;
+  }
+  #saveBtn {
+    width: 30%;
+  }
+  #delBtn {
+    float: right;
+  }
+  #cancelIcon {
+    font-size: 30px;
+    padding: 15px;
+  }
+  
+  /* ------------------- google translate ------------------- */
+  #goog-gt-tt {
+    display: none !important;
+  }
+  .VIpgJd-ZVi9od-ORHb-OEVmcd {
+    display: none !important;
+  }
+  #google_translate_element {
+    display: none !important;
+  }

@@ -1,21 +1,8 @@
 document.addEventListener("deviceready", editAppts);
 
 function editAppts() {
-  //firebase config
-  const firebaseConfig = {
-    apiKey: "AIzaSyAt4SUmSwvkHdas68AYQdjOe7fkfL547gQ",
-    authDomain: "dosemanager-d0236.firebaseapp.com",
-    projectId: "dosemanager-d0236",
-    storageBucket: "dosemanager-d0236.appspot.com",
-    messagingSenderId: "373646054095",
-    appId: "1:373646054095:web:89660fa48e041a7d231dba",
-    measurementId: "G-XDL965JQ9H",
-  };
 
-  firebase.initializeApp(firebaseConfig);
-  var firestore = firebase.firestore();
-
-  //getting data passed from url
+  var profilesCollection = firestore.collection("Profiles");
   function getParametersFromURL() {
     var urlParams = new URLSearchParams(window.location.search);
     var profile = {};
@@ -31,7 +18,6 @@ function editAppts() {
   console.log("profId:", profile.id);
   console.log("apptId:", apptId);
 
-  //selecting the collections
   const mainCollectionDocID = profile.id;
   const mainCollectionRef = firestore
     .collection("Profiles")
@@ -48,7 +34,6 @@ function editAppts() {
   var deleteButton = document.getElementById("delete-button");
   var backButton = document.getElementById("back-button");
 
-  //retrieving the current appointment information
   subcollectionRef
     .get()
     .then(function (doc) {
@@ -73,6 +58,11 @@ function editAppts() {
   });
 
   updateButton.addEventListener("click", function () {
+     // Validate input fields to prevent empty submission
+ if (apptLocationInput.value.trim() === '' || apptDateTimeInput.value.trim() === '' || docNameInput.value.trim() === '') {
+  alert("Please fill out all fields.");
+  return;
+}
     var newApptLocation = apptLocationInput.value;
     var newApptDateTime = apptDateTimeInput.value;
     var newDocName = docNameInput.value;
@@ -83,6 +73,7 @@ function editAppts() {
         apptDateTime: newApptDateTime,
         docName: newDocName,
       })
+
       .then(function () {
         console.log("Item Updated Successfully");
         window.location.href = `upcomingappt.html?id=${profile.id}&pic=${profile.pic}`;

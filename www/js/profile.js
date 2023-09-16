@@ -2,19 +2,6 @@ document.addEventListener("deviceready", username);
 
 function username() {
   //firebase config
-  const firebaseConfig = {
-    apiKey: "AIzaSyAt4SUmSwvkHdas68AYQdjOe7fkfL547gQ",
-    authDomain: "dosemanager-d0236.firebaseapp.com",
-    projectId: "dosemanager-d0236",
-    storageBucket: "dosemanager-d0236.appspot.com",
-    messagingSenderId: "373646054095",
-    appId: "1:373646054095:web:89660fa48e041a7d231dba",
-    measurementId: "G-XDL965JQ9H",
-  };
-
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  var firestore = firebase.firestore();
 
   function getProfileIdFromURL() {
     var urlParams = new URLSearchParams(window.location.search);
@@ -93,7 +80,9 @@ function username() {
   }
 
   var mainProfileId = profile.id;
-  var mainProfileRef = firestore.collection("Profiles").doc(mainProfileId);
+  var mainProfileRef = firestore
+    .collection("Profiles")
+    .doc(mainProfileId);
 
   mainProfileRef
     .get()
