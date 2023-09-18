@@ -3,11 +3,11 @@ body {
   background-color: #eaeadb;
   font-family: Arial, sans-serif;
   font-size: 15px;
-  /* You can change this to your preferred font */
 }
 
 /* -------------------- missed notifications cards styling -------------------- */
-#appointment-list, #medicine-list {
+#appointment-list,
+#medicine-list {
   max-height: 45vh;
   overflow-y: auto;
   padding-bottom: 5%;
@@ -18,17 +18,33 @@ body {
   background-color: #f7f7ed;
   margin-top: 15px;
   font-size: 15px;
+  transition: background-color 0.3s; /* smooth transition for hover effects */
 }
+
+.card.missed-appointment {
+  background-color: #ffe4e1; /* subtle red for missed appointments */
+}
+
+.card.missed-medicine {
+  background-color: #fff3cd; /* subtle yellow for missed medicines */
+}
+
+.card:hover {
+  background-color: #f0f0f0; /* slightly darker shade on hover for better UX */
+}
+
 .card-body p {
   margin: 0%;
 }
+
 .card-title {
   font-weight: bold;
   font-size: 18px;
 }
 
 /* -------------------- section headings -------------------- */
-h1, h2 {
+h1,
+h2 {
   margin-top: 20px;
   margin-bottom: 15px;
   text-align: center;
@@ -38,7 +54,6 @@ h1, h2 {
   display: block;
   width: 80%;
   margin: 20px auto;
-  background-color: #0096ff;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -48,9 +63,7 @@ h1, h2 {
   transition: background-color 0.3s;
 }
 
-#backToHomeBtn:hover {
-  background-color: #0077cc;
-}
+
 
 /* -------------------- google translate banner styling (if used) -------------------- */
 .VIpgJd-ZVi9od-ORHb-OEVmcd {
