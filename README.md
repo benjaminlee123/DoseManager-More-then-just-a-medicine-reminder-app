@@ -1,1 +1,1 @@
-# DoseManager Project done by Team 66
+# Apache Cordova Medicine Medicine Reminder Android App Project done by Team 66
