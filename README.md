@@ -1,6 +1,6 @@
 # Apache Cordova Medicine Reminder Android App Project done by Team 66
 
-##Project Received Grade Classification of First-Class Honours
+## Project Received Grade Classification of First-Class Honours
 ![Appointment Notification](images/apptmentnotif.jpg)
 ![Chinese Language](images/chineselanguage.jpg)
 ![Language Setting](images/languagesetting.jpg)
